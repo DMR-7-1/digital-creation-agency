@@ -68,7 +68,7 @@ const ServicesPage = () => {
               flexDirection: 'column'
             }}>
               {plan.highlight && (
-                <div style={{ 
+                <div className="recommended-badge" style={{ 
                   position: 'absolute', top: -12, right: 20, 
                   background: 'var(--color-primary)', color: 'black', 
                   padding: '0.25rem 1rem', borderRadius: '20px', fontWeight: 'bold', fontSize: '0.8rem' 
