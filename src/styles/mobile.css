@@ -369,10 +369,12 @@
   /* 4. HERO LOGO: Visible & Professional */
   .mobile-hero-logo {
     display: block !important;
-    max-width: 220px !important; /* Much bigger (was 140px) */
+    max-width: 220px !important; /* Base layout width */
     width: 60% !important;
     margin: 0 auto 1rem !important;
-    margin-top: -3.5rem !important; /* Safe zone: Tight but no cutoff (was -4.5rem) */
+    margin-top: -3.5rem !important; /* Keep the safe positioning */
+    transform: scale(1.4) !important; /* Make logo 40% bigger visually */
+    transform-origin: center top !important; /* Anchor top so it grows DOWN (safe from navbar) */
     animation: fadeIn 1s ease-out;
   }
   
