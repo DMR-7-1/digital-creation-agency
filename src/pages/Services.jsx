@@ -157,6 +157,7 @@ const ServicesPage = () => {
             </div>
           </div>
         </div>
+      </div>
 
       <style>{`
         @media (max-width: 768px) {
