@@ -353,7 +353,11 @@
 
   /* HOME PAGE: Prevent big empty space, but keep logo safe */
   #hero {
-    padding-top: 0.5rem !important; /* Extremely tight spacing (was 1.5rem) */
+    padding-top: 0 !important; /* Start immediately */
+    margin-top: 0 !important;
+    min-height: auto !important; /* Kill 100vh */
+    height: auto !important; /* Kill any fixed height */
+    display: block !important; /* Kill flex centering from parent */
   }
   
   /* OTHER PAGES (About, Blog, Portfolio): Remove big empty space */
