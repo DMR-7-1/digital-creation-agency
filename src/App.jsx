@@ -8,6 +8,8 @@ import About from './pages/About';
 import Blog from './pages/Blog';
 import Portfolio from './pages/Portfolio';
 
+import Footer from './components/Footer';
+
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -33,11 +35,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-        <footer>
-          <div className="container" style={{padding: '2rem 0', textAlign: 'center', opacity: 0.5}}>
-            <p>© 2026 Digital Creation Agency. Built for Algeria.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </Router>
   );

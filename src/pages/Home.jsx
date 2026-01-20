@@ -9,8 +9,10 @@ const Home = () => {
     <div className="animate-fade-in">
       <Hero />
       <Services preview={true} /> {/* Pass preview prop to show less/summary */}
-      <About />
-      <Contact />
+      <div className="mobile-home-hidden">
+        <About />
+        <Contact />
+      </div>
     </div>
   );
 };

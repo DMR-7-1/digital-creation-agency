@@ -9,6 +9,11 @@
   /* ========================================
      1. NUCLEAR OVERFLOW KILL
      ======================================== */
+  /* Hide About and Contact sections on Home Mobile ONLY */
+  .mobile-home-hidden {
+    display: none !important;
+  }
+
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
