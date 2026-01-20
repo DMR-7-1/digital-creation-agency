@@ -135,7 +135,7 @@ const Navbar = () => {
               alt="Digital Creation" 
               style={{ 
                 height: isScrolled ? '120px' : '160px',
-                maxHeight: '80px', // Smaller mobile logo
+                maxHeight: '110px', // Bigger mobile logo as requested
                 width: 'auto',
                 transition: 'all 0.4s ease',
                 filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',

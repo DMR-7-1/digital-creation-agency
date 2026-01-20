@@ -71,6 +71,7 @@ const Portfolio = () => {
           </div>
 
           <div
+            className="mobile-dense-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
