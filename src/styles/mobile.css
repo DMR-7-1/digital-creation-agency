@@ -1,22 +1,21 @@
 /* =========================================
-   PROJECT PHOENIX: Fresh Mobile Mobile Experience
+   PROJECT PHOENIX: High-Density Mobile Rescue
    Target: Phones (< 768px)
-   Strategy: Horizontal Swiping & App-Like Snap
+   Strategy: Compact Vertical Stack & Safe Zones
    ========================================= */
 
 @media (max-width: 768px) {
   
-  /* 1. Global Reset for Mobile */
+  /* 1. Global Reset & Overlap Fix */
   html, body {
     overflow-x: hidden !important;
     width: 100vw !important;
-    position: relative;
-    font-size: 14px; /* Phone-optimized base */
   }
-
-  .container {
-    padding: 0 1.25rem !important;
-    width: 100% !important;
+  
+  /* "Safe Zone" for Content - Prevents Navbar Overlap */
+  #hero {
+    padding-top: 100px !important; /* Force content down below navbar */
+    min-height: auto !important; /* Remove huge height constraints */
   }
 
   .section {
@@ -24,89 +23,99 @@
     padding-bottom: 2rem !important;
   }
 
-  /* 2. THE APP-LIKE SLIDERS (Horizontal Swipe) 
-     Targeting the classes we added: .services-grid-system, .portfolio-grid-system, .pricing-grid-system
-     and broadly any grid inside mobile that should swipe.
+  /* 2. THE COMPACT GRIDS (Vertical Standard) 
+     Reverting to vertical but making it SLEEK and COMPACT.
   */
   .services-grid-system, 
   .portfolio-grid-system, 
   .pricing-grid-system,
   .sectors-grid {
-    display: flex !important; /* Switch from Grid to Flex */
-    overflow-x: auto !important; /* Enable Swipe */
-    scroll-snap-type: x mandatory; /* Snap effect */
-    gap: 1.5rem !important;
-    padding-bottom: 2rem !important; /* Space for scrollbar/touch */
-    margin-right: -1.25rem !important; /* Bleed to edge */
-    padding-right: 1.25rem !important; /* Visible start padding */
-    width: calc(100% + 1.25rem) !important;
-    -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+    display: flex !important;
+    flex-direction: column !important; /* Standard Vertical */
+    gap: 1rem !important; /* Tight gap */
+    width: 100% !important;
+    padding: 0 0.5rem !important;
   }
 
-  /* Hide Scrollbar for clean app feel */
-  .services-grid-system::-webkit-scrollbar,
-  .portfolio-grid-system::-webkit-scrollbar,
-  .pricing-grid-system::-webkit-scrollbar,
-  .sectors-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* The Cards inside the sliders */
-  .services-grid-system > *,
-  .portfolio-grid-system > *,
-  .pricing-grid-system > *,
-  .sectors-grid > * {
-    flex: 0 0 85vw !important; /* Card takes 85% of screen width */
-    width: 85vw !important;
-    scroll-snap-align: center; /* Snap to center */
+  /* 3. Transforming "Big Boxes" into "Sleek Rows" (High Density) */
+  /* Services & Features: Icon Left + Text Right layout */
+  .services-grid-system > *, 
+  .sectors-grid .sector-card {
+    display: flex !important;
+    flex-direction: row !important; /* Side by Side */
+    align-items: flex-start !important;
+    text-align: right !important; /* Maintain Arabic flow */
+    gap: 1rem !important;
+    padding: 1rem !important; /* Compact Padding */
     margin: 0 !important;
+    width: 100% !important;
   }
 
-  /* 3. Navbar Mobile Optimization */
-  .nav-logo-mobile {
-    max-height: 48px !important;
-    width: auto !important;
-    /* Ensure it doesn't touch edges */
-    margin: 5px 0 !important;  
+  /* Icon Constraint in sleek rows */
+  .services-grid-system > * svg,
+  .services-grid-system > * img {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important; /* Prevent squishing */
   }
   
-  /* Navbar Container */
-  nav > div {
+  /* Title/Text Constraints in sleek rows */
+  .services-grid-system h3,
+  .sectors-grid h3 {
+    font-size: 1.1rem !important; /* Professional Small Title */
+    margin-bottom: 0.25rem !important;
+  }
+  .services-grid-system p,
+  .sectors-grid p {
+    font-size: 0.85rem !important; /* Readable compact text */
+    margin-bottom: 0 !important;
+  }
+
+  /* 4. Portfolio Compact Cards */
+  .portfolio-grid-system > * {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important; /* Remove internal padding if possible or keep tight */
+  }
+  
+  /* Portfolio Image Constraint */
+  .portfolio-grid-system img {
+    height: 180px !important; /* Short height */
+    object-fit: cover !important;
+    width: 100% !important;
+  }
+  
+  /* Portfolio Text */
+  .portfolio-grid-system h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  /* 5. Pricing Cards (Keep vertical stack but compact) */
+  .pricing-grid-system > * {
+    padding: 1.5rem !important;
+  }
+
+  /* 6. Typography & General Elements */
+  h1 {
+    font-size: clamp(1.75rem, 6vw, 2.25rem) !important; /* Punchy Header */
+    line-height: 1.25 !important;
+    margin-bottom: 1rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+    text-align: center !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .container {
     padding: 0 1rem !important;
   }
 
-  /* 4. Hero Transformation */
-  #hero .container {
-    display: flex !important;
-    flex-direction: column-reverse !important; /* Image on top? Or text? User said "Phone sized". Usually Text then Visual. Let's stack cleanly. */
-    gap: 2rem !important;
-    text-align: center !important;
-  }
-
-  #hero h1 {
-    font-size: clamp(2rem, 8vw, 2.5rem) !important;
-    line-height: 1.2 !important;
-  }
-
-  #hero p {
-    font-size: 1rem !important;
-    max-width: 100% !important;
-    margin: 0 auto 1.5rem !important;
-  }
-
-  /* 5. Typography & General Elements */
-  h2 {
-    font-size: 1.75rem !important;
-    text-align: center !important;
-    line-height: 1.3 !important;
-  }
-
-  .glass-panel {
-    padding: 1.5rem !important; /* Comfortable phone padding */
-  }
-  
-  /* Form Elements */
-  input, select, textarea, button {
-    font-size: 16px !important; /* Prevent iOS zoom */
+  /* Navbar Mobile Tweak */
+  .nav-logo-mobile {
+    max-height: 40px !important; /* Ideal for 60-70px navbars */
+    margin: 0 !important;
   }
 }
