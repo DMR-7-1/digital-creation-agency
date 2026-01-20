@@ -6,14 +6,7 @@ import logoNew from '../assets/logo_new.png';
 
 const Hero = () => {
   return (
-    <section id="hero" className="section" style={{ 
-      position: 'relative', 
-      minHeight: '100vh', 
-      display: 'flex', 
-      alignItems: 'center', 
-      overflow: 'hidden',
-      paddingTop: '8rem' // Account for fixed navbar
-    }}>
+    <section id="hero" className="section">
       {/* Background Ambience - Hidden on mobile via CSS to prevent clutter */}
       <div className="hero-blob" style={{
         position: 'absolute',
