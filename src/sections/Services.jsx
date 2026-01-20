@@ -35,7 +35,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div style={{ 
+        <div className="services-home-grid" style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
           gap: '2.5rem' 
