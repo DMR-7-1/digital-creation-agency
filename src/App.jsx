@@ -1,8 +1,21 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import Portfolio from './pages/Portfolio';
 
-// ... (existing imports)
+// Scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 function App() {
   return (
@@ -20,7 +33,11 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-        <Footer />
+        <footer>
+          <div className="container" style={{padding: '2rem 0', textAlign: 'center', opacity: 0.5}}>
+            <p>© 2026 Digital Creation Agency. Built for Algeria.</p>
+          </div>
+        </footer>
       </div>
     </Router>
   );
