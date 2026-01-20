@@ -358,6 +358,9 @@
   /* 4. HERO LOGO: Visible & Professional */
   .mobile-hero-logo {
     display: block !important;
+    max-width: 220px !important; /* Much bigger (was 140px) */
+    width: 60% !important;
+    margin: 0 auto 1rem !important;
     animation: fadeIn 1s ease-out;
   }
   
