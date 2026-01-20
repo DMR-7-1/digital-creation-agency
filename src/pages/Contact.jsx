@@ -48,7 +48,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="section" style={{ paddingTop: '8rem' }}>
+    <main className="section">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>📩 تواصل معنا الآن</h1>
@@ -155,7 +155,7 @@ const ContactPage = () => {
           to { transform: rotate(360deg); }
         }
       `}</style>
-    </div>
+    </main>
   );
 };
 

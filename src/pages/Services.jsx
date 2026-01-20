@@ -22,7 +22,7 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="section" style={{ paddingTop: '8rem' }}>
+    <main className="section">
       <div className="container">
         
         {/* Page Header */}
@@ -159,7 +159,7 @@ const ServicesPage = () => {
         </div>
 
       </div>
-    </div>
+    </main>
   );
 };
 
