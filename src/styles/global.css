@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden; /* Kill scroll at root */
+  width: 100%;
+}
+
 body {
   background: 
     radial-gradient(ellipse at 20% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
@@ -16,11 +21,11 @@ body {
   color: var(--color-text-main);
   font-family: var(--font-arabic);
   direction: rtl;
-  overflow-x: hidden; /* Critical for mobile */
-  font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
   width: 100%;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Premium Scrollbar */
@@ -212,20 +217,24 @@ a {
 /* Responsive - Aggressive Overrides for Premium Mobile Feel */
 @media (max-width: 768px) {
   :root {
-    --spacing-section: 2rem; /* Even tighter for small screens */
+    --spacing-section: 2.5rem; /* Tighter section spacing */
     --spacing-container: 100%;
   }
   
   body {
-    font-size: 14px; /* Smaller base font for "too big" fix */
+    font-size: 14px; /* Optimal reading size for mobile */
+    overflow-x: hidden !important;
+    width: 100vw;
   }
 
   h1 {
-    font-size: clamp(1.8rem, 4vw, 2.2rem); /* Significantly smaller max */
+    font-size: clamp(1.75rem, 5vw, 2.25rem); /* Compact headings */
     letter-spacing: -0.01em;
+    line-height: 1.25;
   }
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 1.3;
   }
   h3 {
     font-size: 1.2rem;
@@ -237,26 +246,34 @@ a {
   }
   
   .container {
-    padding: 0 1rem;
+    padding: 0 1.25rem; /* Comfortable side padding */
     width: 100%;
-    /* Removed overflow-x: hidden to prevent content cutting */
+    overflow: hidden; /* Ensure container never spills */
   }
   
   .section {
-    padding-top: 2.5rem !important;
-    padding-bottom: 2.5rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
   
-  /* Make glass panels compact */
+  /* Make glass panels compact/sleek */
   .glass-panel {
-    padding: 1rem !important;
+    padding: 1.25rem !important;
     backdrop-filter: blur(12px);
+    width: 100%; /* Force width fit */
   }
 
   /* Critical: Ensure images/media never overflow */
   img, video, svg {
     max-width: 100%;
     height: auto;
+    object-fit: contain;
+  }
+
+  /* Force grids to single column on mobile for perfect vertical stacking */
+  /* This overrides specific component grids to prevent "squashed" columns */
+  .mobile-stack-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 

@@ -98,10 +98,10 @@ const ServicesPage = () => {
         {/* Sector-Specific Sections (from Ad Campaign) */}
         <div style={{ marginTop: '8rem' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '4rem', fontSize: '2.5rem' }}>
-            نخدم كل القطاعات
+            خبرة في العمل مع السوق الجزائري 🇩🇿
           </h2>
           
-          <div style={{ display: 'grid', gap: '4rem' }}>
+          <div className="sectors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {/* Companies */}
             <div className="glass-panel" style={{ padding: '3rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
               <div>

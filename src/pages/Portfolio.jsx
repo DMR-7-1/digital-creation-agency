@@ -162,6 +162,13 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+      <style>{`
+        @media (max-width: 768px) {
+          div[style*="display: grid"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
