@@ -85,13 +85,14 @@
 
   /* ========================================
      3. ALL GRIDS: Force Single Column Stack
+     EXCEPT .services-home-grid which should be 2x2
      ======================================== */
   .services-grid-system,
   .portfolio-grid-system,
   .pricing-grid-system,
   .sectors-grid,
-  div[style*="display: grid"],
-  div[style*="grid-template-columns"] {
+  div[style*="display: grid"]:not(.services-home-grid),
+  div[style*="grid-template-columns"]:not(.services-home-grid) {
     display: flex !important;
     flex-direction: column !important;
     gap: 1rem !important;
