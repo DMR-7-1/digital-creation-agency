@@ -41,7 +41,20 @@ const Hero = () => {
         
         {/* Text Content */}
         <div style={{ maxWidth: '650px', zIndex: 1, position: 'relative' }}>
-          <div className="glass-panel" style={{ 
+          {/* Mobile Logo - Hidden on Desktop */}
+          <img 
+            src={heroBg} 
+            alt="Digital Creation Logo" 
+            className="mobile-hero-logo"
+            style={{ 
+              display: 'none', // Hidden by default (desktop), shown via mobile.css
+              maxWidth: '120px',
+              margin: '0 auto 1rem',
+              filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))'
+            }}
+          />
+          
+          <div className="glass-panel hero-badge" style={{ 
             display: 'inline-block', 
             padding: '0.5rem 1rem', 
             marginBottom: '1.5rem', 
