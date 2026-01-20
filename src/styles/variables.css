@@ -1,0 +1,32 @@
+/* Google Fonts: Cairo (Arabic) & Inter (English) */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;600;700&display=swap");
+
+:root {
+  /* Brand Colors */
+  --color-bg: #030712; /* Rich dark background */
+  --color-surface: #111827;
+  --color-primary: #06b6d4; /* Cyan/Teal - Tech/Modern */
+  --color-secondary: #8b5cf6; /* Violet - Creative/'Vibe' */
+  --color-accent: #f59e0b; /* Amber - Alerts/Attention */
+
+  /* Text */
+  --color-text-main: #f9fafb;
+  --color-text-muted: #9ca3af;
+  --color-text-inverted: #111827;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(17, 24, 39, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --backdrop-blur: 12px;
+
+  /* Spacing */
+  --spacing-container: 1280px;
+  --spacing-section: 6rem;
+
+  /* Typography */
+  --font-arabic: "Cairo", sans-serif;
+  --font-english: "Inter", sans-serif;
+}
+
+/* Base resets handled in global.css, these are valid variables for usage */
