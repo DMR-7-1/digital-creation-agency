@@ -296,51 +296,59 @@
   }
 
   /* ========================================
-     MOBILE NAVBAR: Visible Horizontal Links
-     Instead of hamburger, show links in a row
+     MOBILE NAVBAR: 2-Row Layout (Logo Top, Links Bottom)
+     Professional App-Like Header
      ======================================== */
-  /* Hide the hamburger toggle button */
-  .mobile-toggle {
-    display: none !important;
+  
+  /* 1. Navbar Container - Stack Vertically */
+  nav > div {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    padding: 0.5rem 0 !important;
   }
 
-  /* HIDE the logo in navbar on mobile */
-  .nav-logo-mobile {
-    display: none !important;
-  }
-
-  /* Also hide the Link wrapper containing the logo */
+  /* 2. Logo - SHOW IT (Centered) */
+  .nav-logo-mobile,
   nav > div > a:first-child {
-    display: none !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+  
+  .nav-logo-mobile {
+    max-height: 40px !important;
+    width: auto !important;
   }
 
-  /* Show the desktop menu on mobile too, but styled differently */
+  /* 3. Links Row - Full Width */
   .desktop-menu {
     display: flex !important;
-    gap: 0.25rem !important;
-    flex-wrap: nowrap !important;
-    padding: 0.5rem 0.25rem !important;
-    margin: 0 !important;
-    flex: 1;
-    justify-content: space-between !important;
     width: 100% !important;
+    justify-content: space-between !important;
+    gap: 0 !important; /* Let justify-between handle spacing */
+    padding: 0 0.5rem !important;
+    margin: 0 !important;
+    border-top: 1px solid rgba(255,255,255,0.05) !important; /* Subtle divider */
+    padding-top: 0.5rem !important;
   }
 
-  /* Links in the navbar - smaller to fit all 6 */
   .desktop-menu .nav-link {
-    font-size: 0.65rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.25rem !important;
     white-space: nowrap !important;
-    padding: 0.3rem 0.35rem !important;
-    color: rgba(255,255,255,0.9) !important;
   }
 
-  .desktop-menu .nav-link.active {
-    color: #8b5cf6 !important;
-  }
-
-  /* Hide the CTA button on mobile navbar */
+  .mobile-toggle,
   .desktop-cta {
     display: none !important;
+  }
+
+  /* Navbar is taller now (~100px), so push body content down more */
+  body {
+    padding-top: 120px !important;
+  }
+
+  #hero {
+    padding-top: 1rem !important;
   }
 
   /* ========================================
