@@ -277,11 +277,22 @@ a {
     font-size: 0.9rem;
   }
 
-  /* Grid Fixes - Smart 2-Column Density */
-  div[style*="display: grid"] {
-    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)) !important; /* Forces 2 columns on most phones */
-    gap: 0.75rem !important; /* Tighter gap for density */
-    align-items: start !important;
+  /* Lists & Features - Tighten up */
+  ul {
+    margin-bottom: 1rem !important;
+  }
+  li {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.9rem;
+  }
+
+  /* UTILITY: Smart 2-Column Grid for Cards Only */
+  /* User requested "2 cards can sit beside" -> strict 2 columns for card grids */
+  .mobile-card-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 0.75rem !important;
+    align-items: stretch !important;
   }
 
   /* Visual Safety */

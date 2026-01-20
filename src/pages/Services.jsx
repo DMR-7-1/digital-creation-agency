@@ -38,7 +38,7 @@ const ServicesPage = () => {
         </div>
 
         {/* Technical Capabilities Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '6rem' }}>
+        <div className="mobile-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '6rem' }}>
           <FeatureCard 
             icon={<Zap size={32} color="#FBBF24" />}
             title="أداء عالي (High Performance)"
@@ -58,7 +58,7 @@ const ServicesPage = () => {
 
         {/* Pricing/Packages */}
         <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>باقات الخدمات</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+        <div className="mobile-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
           {plans.map((plan, idx) => (
             <div key={idx} className="glass-panel" style={{ 
               padding: '2.5rem', 
