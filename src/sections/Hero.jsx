@@ -54,7 +54,7 @@ const Hero = () => {
             </span>
           </div>
 
-          <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.3', fontSize: 'clamp(1.75rem, 5vw, 3rem)' }}>
+          <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.3', fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
             هل لديك مشروع أو شركة في الجزائر <br />
             <span style={{ 
               background: 'linear-gradient(to left, var(--color-primary), var(--color-secondary))',

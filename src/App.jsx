@@ -23,7 +23,7 @@ function App() {
       <ScrollToTop />
       <div className="app-container">
         <Navbar />
-        <main className="main-content">
+        <main style={{ minHeight: '100vh' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
@@ -33,9 +33,9 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-        <footer style={{ marginTop: 'auto' }}>
-          <div className="container" style={{ padding: '2rem 1rem', textAlign: 'center', opacity: 0.6, fontSize: '0.9rem' }}>
-            <p>© 2026 Digital Creation Agency. Built for Algeria 🇩🇿</p>
+        <footer>
+          <div className="container" style={{padding: '2rem 0', textAlign: 'center', opacity: 0.5}}>
+            <p>© 2026 Digital Creation Agency. Built for Algeria.</p>
           </div>
         </footer>
       </div>
