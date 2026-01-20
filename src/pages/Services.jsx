@@ -28,7 +28,7 @@ const ServicesPage = () => {
         {/* Page Header */}
         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
           <span style={{ color: 'var(--color-primary)', fontWeight: '700', letterSpacing: '2px' }}>خدماتنا</span>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1.5rem' }}>
             حوّل فكرتك إلى واقع رقمي مُبهر ✨
           </h1>
           <p style={{ maxWidth: '700px', margin: '0 auto', fontSize: '1.2rem', color: 'var(--color-text-muted)' }}>
@@ -38,7 +38,7 @@ const ServicesPage = () => {
         </div>
 
         {/* Technical Capabilities Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '6rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '6rem' }}>
           <FeatureCard 
             icon={<Zap size={32} color="#FBBF24" />}
             title="أداء عالي (High Performance)"

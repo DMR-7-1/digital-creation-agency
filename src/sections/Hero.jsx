@@ -37,7 +37,7 @@ const Hero = () => {
         zIndex: -1
       }} />
 
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', lg: { gridTemplateColumns: '1fr 1fr' }, gap: '3rem', alignItems: 'center' }}>
+      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', lg: { gridTemplateColumns: '1fr 1fr' }, gap: '3rem', alignItems: 'center' }}>
         
         {/* Text Content */}
         <div style={{ maxWidth: '650px', zIndex: 1 }}>
@@ -54,7 +54,7 @@ const Hero = () => {
             </span>
           </div>
 
-          <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.3', fontSize: '2.8rem' }}>
+          <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.3', fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
             هل لديك مشروع أو شركة في الجزائر <br />
             <span style={{ 
               background: 'linear-gradient(to left, var(--color-primary), var(--color-secondary))',
