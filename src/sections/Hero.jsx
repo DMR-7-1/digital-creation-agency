@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import heroBg from '../assets/hero_bg.png';
 
 const Hero = () => {
   return (
@@ -12,14 +13,6 @@ const Hero = () => {
       overflow: 'hidden',
       paddingTop: '8rem' // Account for fixed navbar
     }}>
-      {/* ... (background code skipped, can assume it remains if not touched, but replace_file_content needs context. 
-          Actually, let's just replace the specific block with buttons if possible, or the whole file if safer.
-          The file is small enough to be safe replacing the top part).
-      */}
-      {/* Background Ambience handled in CSS or below, not replacing usage. */}
-      
-      {/* Let's try to target the imports and the text content area specifically. */}
-
       {/* Background Ambience */}
       <div style={{
         position: 'absolute',
@@ -44,7 +37,7 @@ const Hero = () => {
         zIndex: -1
       }} />
 
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr', lg: { gridTemplateColumns: '1fr 1fr' }, gap: '3rem', alignItems: 'center' }}>
+      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', lg: { gridTemplateColumns: '1fr 1fr' }, gap: '3rem', alignItems: 'center' }}>
         
         {/* Text Content */}
         <div style={{ maxWidth: '650px', zIndex: 1 }}>
@@ -119,8 +112,7 @@ const Hero = () => {
           height: '450px', 
           display: 'flex', 
           justifyContent: 'center', 
-          alignItems: 'center',
-          '@media (max-width: 768px)': { display: 'none' } 
+          alignItems: 'center'
         }}>
            <div className="glass-panel" style={{
              padding: '10px',
@@ -130,7 +122,7 @@ const Hero = () => {
              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
            }}>
              <img 
-               src="/src/assets/hero_bg.png" 
+               src={heroBg} 
                alt="Team Working" 
                style={{ 
                  borderRadius: '16px', 

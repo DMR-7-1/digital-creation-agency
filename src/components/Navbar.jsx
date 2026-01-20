@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import logoImg from '../assets/logo_new.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -112,7 +113,7 @@ const Navbar = () => {
             onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             <img 
-              src="/src/assets/logo_new.png" 
+              src={logoImg} 
               alt="Digital Creation" 
               style={{ 
                 height: isScrolled ? '150px' : '200px',
