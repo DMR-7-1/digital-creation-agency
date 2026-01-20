@@ -292,7 +292,7 @@
   }
 
   nav {
-    padding: 0.4rem 0 !important;
+    padding: 0 !important; /* STRICT 50px Height */
   }
 
   /* ========================================
@@ -348,12 +348,12 @@
 
   /* Reset Body Padding for Slim Navbar */
   body {
-    padding-top: 60px !important;
+    padding-top: 50px !important; /* Matches strict Navbar height */
   }
 
   /* HOME PAGE: Prevent big empty space, but keep logo safe */
   #hero {
-    padding-top: 0 !important; /* Start immediately */
+    padding-top: 1rem !important; /* 16px gap ("Close but not too close") */
     margin-top: 0 !important;
     min-height: auto !important; /* Kill 100vh */
     height: auto !important; /* Kill any fixed height */
