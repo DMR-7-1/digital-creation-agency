@@ -327,30 +327,10 @@ a {
   .hero-blob {
     display: none !important; /* Kill the blobs on mobile */
   }
-  
-  /* Global Top Padding for Navbar Clearance */
-  #hero, .section:first-of-type, main {
-    padding-top: 8.5rem !important; /* Force content down below navbar */
-  }
-  
-  /* Fix Form Spacing on Mobile */
-  form input, form textarea, form select {
-    margin-bottom: 1rem !important;
-  }
-  form label {
-    margin-bottom: 0.5rem !important;
-    display: block;
-  }
-  
-  /* Fix Recommended Badge Clipping */
-  .recommended-badge {
-    top: -12px !important; /* Pull it in slightly */
-    right: 50% !important;
-    transform: translateX(50%) !important;
-    width: max-content !important;
-    font-size: 0.75rem !important;
-    padding: 0.25rem 0.75rem !important;
-    z-index: 10;
+  #hero {
+    min-height: auto !important;
+    padding-top: 7rem !important;
+    padding-bottom: 2rem !important;
   }
 }
 

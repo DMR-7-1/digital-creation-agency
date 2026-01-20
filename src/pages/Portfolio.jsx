@@ -54,7 +54,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <main style={{ minHeight: "100vh" }}>
+    <div style={{ paddingTop: "120px", minHeight: "100vh" }}>
       <section className="section">
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
@@ -163,7 +163,7 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 
