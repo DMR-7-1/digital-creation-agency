@@ -372,7 +372,7 @@
     max-width: 220px !important; /* Much bigger (was 140px) */
     width: 60% !important;
     margin: 0 auto 1rem !important;
-    margin-top: -4.5rem !important; /* Backed off slightly to avoid cutoff (was -5rem) */
+    margin-top: -3.5rem !important; /* Safe zone: Tight but no cutoff (was -4.5rem) */
     animation: fadeIn 1s ease-out;
   }
   
