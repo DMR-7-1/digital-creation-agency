@@ -1,0 +1,112 @@
+/* =========================================
+   PROJECT PHOENIX: Fresh Mobile Mobile Experience
+   Target: Phones (< 768px)
+   Strategy: Horizontal Swiping & App-Like Snap
+   ========================================= */
+
+@media (max-width: 768px) {
+  
+  /* 1. Global Reset for Mobile */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100vw !important;
+    position: relative;
+    font-size: 14px; /* Phone-optimized base */
+  }
+
+  .container {
+    padding: 0 1.25rem !important;
+    width: 100% !important;
+  }
+
+  .section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* 2. THE APP-LIKE SLIDERS (Horizontal Swipe) 
+     Targeting the classes we added: .services-grid-system, .portfolio-grid-system, .pricing-grid-system
+     and broadly any grid inside mobile that should swipe.
+  */
+  .services-grid-system, 
+  .portfolio-grid-system, 
+  .pricing-grid-system,
+  .sectors-grid {
+    display: flex !important; /* Switch from Grid to Flex */
+    overflow-x: auto !important; /* Enable Swipe */
+    scroll-snap-type: x mandatory; /* Snap effect */
+    gap: 1.5rem !important;
+    padding-bottom: 2rem !important; /* Space for scrollbar/touch */
+    margin-right: -1.25rem !important; /* Bleed to edge */
+    padding-right: 1.25rem !important; /* Visible start padding */
+    width: calc(100% + 1.25rem) !important;
+    -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+  }
+
+  /* Hide Scrollbar for clean app feel */
+  .services-grid-system::-webkit-scrollbar,
+  .portfolio-grid-system::-webkit-scrollbar,
+  .pricing-grid-system::-webkit-scrollbar,
+  .sectors-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The Cards inside the sliders */
+  .services-grid-system > *,
+  .portfolio-grid-system > *,
+  .pricing-grid-system > *,
+  .sectors-grid > * {
+    flex: 0 0 85vw !important; /* Card takes 85% of screen width */
+    width: 85vw !important;
+    scroll-snap-align: center; /* Snap to center */
+    margin: 0 !important;
+  }
+
+  /* 3. Navbar Mobile Optimization */
+  .nav-logo-mobile {
+    max-height: 48px !important;
+    width: auto !important;
+    /* Ensure it doesn't touch edges */
+    margin: 5px 0 !important;  
+  }
+  
+  /* Navbar Container */
+  nav > div {
+    padding: 0 1rem !important;
+  }
+
+  /* 4. Hero Transformation */
+  #hero .container {
+    display: flex !important;
+    flex-direction: column-reverse !important; /* Image on top? Or text? User said "Phone sized". Usually Text then Visual. Let's stack cleanly. */
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+
+  #hero h1 {
+    font-size: clamp(2rem, 8vw, 2.5rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  #hero p {
+    font-size: 1rem !important;
+    max-width: 100% !important;
+    margin: 0 auto 1.5rem !important;
+  }
+
+  /* 5. Typography & General Elements */
+  h2 {
+    font-size: 1.75rem !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+  }
+
+  .glass-panel {
+    padding: 1.5rem !important; /* Comfortable phone padding */
+  }
+  
+  /* Form Elements */
+  input, select, textarea, button {
+    font-size: 16px !important; /* Prevent iOS zoom */
+  }
+}
