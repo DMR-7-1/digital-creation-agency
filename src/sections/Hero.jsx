@@ -13,8 +13,8 @@ const Hero = () => {
       overflow: 'hidden',
       paddingTop: '8rem' // Account for fixed navbar
     }}>
-      {/* Background Ambience */}
-      <div style={{
+      {/* Background Ambience - Hidden on mobile via CSS to prevent clutter */}
+      <div className="hero-blob" style={{
         position: 'absolute',
         top: '-10%',
         right: '-10%',
@@ -25,7 +25,7 @@ const Hero = () => {
         filter: 'blur(80px)',
         zIndex: -1
       }} />
-      <div style={{
+      <div className="hero-blob" style={{
         position: 'absolute',
         bottom: '-10%',
         left: '-10%',
@@ -37,10 +37,10 @@ const Hero = () => {
         zIndex: -1
       }} />
 
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', lg: { gridTemplateColumns: '1fr 1fr' }, gap: '3rem', alignItems: 'center' }}>
+      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', alignItems: 'center' }}>
         
         {/* Text Content */}
-        <div style={{ maxWidth: '650px', zIndex: 1 }}>
+        <div style={{ maxWidth: '650px', zIndex: 1, position: 'relative' }}>
           <div className="glass-panel" style={{ 
             display: 'inline-block', 
             padding: '0.5rem 1rem', 
@@ -59,83 +59,53 @@ const Hero = () => {
             <span style={{ 
               background: 'linear-gradient(to left, var(--color-primary), var(--color-secondary))',
               WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
+              WebkitTextFillColor: 'transparent',
+              fontWeight: '800'
             }}>
               وتريد نظامًا أو موقعًا يليق بمستوى عملك؟
             </span>
           </h1>
 
-          <p style={{ fontSize: '1.2rem', marginBottom: '2rem', opacity: 0.95, lineHeight: '1.8' }}>
-            نحن وكالة متخصصة في <strong>بناء المواقع الإلكترونية، المتاجر الرقمية، تطبيقات الويب، والأنظمة المخصصة للشركات</strong> باحترافية عالية وتصميم عصري.
+          <p style={{ fontSize: '1.2rem', marginBottom: '2.5rem', maxWidth: '550px' }}>
+            نحن وكالة متخصصة في بناء المواقع الإلكترونية، المتاجر الرقمية، تطبيقات الويب، والأنظمة المخصصة للشركات باحترافية عالية وتصميم عصري.
           </p>
 
-          {/* Value Props from Ad - Animated */}
-          <div style={{ marginBottom: '2rem', display: 'grid', gap: '0.75rem' }}>
-            {[
-              'حلول مخصصة حسب نشاطك',
-              'تصميم حديث وسريع',
-              'أنظمة تسهّل عملك وتزيد مبيعاتك',
-              'خبرة في العمل مع السوق الجزائري'
-            ].map((text, index) => (
-              <div 
-                key={index}
-                className="fade-in-up"
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '0.5rem',
-                  animationDelay: `${0.2 + index * 0.1}s`,
-                  opacity: 0,
-                  animationFillMode: 'forwards'
-                }}
-              >
-                <span style={{ color: 'var(--color-primary)', fontSize: '1.2rem' }}>✔️</span>
-                <span>{text}</span>
-              </div>
-            ))}
-          </div>
-
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-primary" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
-              🎁 استشارة مجانية + اقتراح تقني
-              <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} />
+            <Link to="/contact" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
+              ابدأ مشروعك الآن
+              <ArrowLeft size={20} style={{ marginRight: '10px' }} />
             </Link>
-            <Link to="/services" className="btn btn-outline">
-              شاهد خدماتنا
-            </Link>
+          </div>
+          
+          <div style={{ marginTop: '3rem', display: 'flex', gap: '2rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
+             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+               <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#34d399' }}></span>
+               دعم فني مستمر
+             </div>
+             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+               <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#34d399' }}></span>
+               تصميم عصري
+             </div>
           </div>
         </div>
 
-        {/* Hero Visual (Stock Image) */}
-        <div className="hero-visual" style={{ 
-          position: 'relative', 
-          height: '450px', 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center'
-        }}>
-           <div className="glass-panel" style={{
-             padding: '10px',
-             borderRadius: '24px',
-             background: 'rgba(255,255,255,0.05)',
-             border: '1px solid rgba(255,255,255,0.1)',
-             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-           }}>
-             <img 
-               src={heroBg} 
-               alt="Team Working" 
-               style={{ 
-                 borderRadius: '16px', 
-                 maxWidth: '100%', 
-                 height: 'auto',
-                 maxHeight: '400px',
-                 objectFit: 'cover'
-               }} 
-             />
-           </div>
-
+        {/* Visual Content - Hidden on mobile to focus on copy */}
+        <div className="hero-visual" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+           <img 
+             src={heroBg} 
+             alt="Digital Creation Dashboard" 
+             className="animate-float"
+             style={{ 
+               width: '100%', 
+               maxWidth: '550px',
+               borderRadius: '20px',
+               boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+               border: '1px solid rgba(255,255,255,0.1)'
+             }} 
+           />
+           
            {/* Floating Badge */}
-           <div className="glass-panel animate-float" style={{
+           <div className="glass-panel" style={{
              position: 'absolute',
              bottom: '10%',
              left: '-5%',
@@ -162,6 +132,8 @@ const Hero = () => {
         }
         @media (max-width: 1023px) {
           .hero-visual { display: none !important; }
+          .hero-blob { opacity: 0.05 !important; width: 80vw !important; height: 80vw !important; } /* Reduce visual noise on mobile */
+          #hero { padding-top: 6rem !important; min-height: auto !important; padding-bottom: 4rem !important; } /* Compact hero on mobile */
         }
       `}</style>
     </section>

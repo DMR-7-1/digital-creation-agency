@@ -7,31 +7,20 @@
 }
 
 body {
-  background:
-    radial-gradient(
-      ellipse at 20% 0%,
-      rgba(139, 92, 246, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 80% 0%,
-      rgba(6, 182, 212, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 50% 100%,
-      rgba(139, 92, 246, 0.1) 0%,
-      transparent 50%
-    ),
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 0%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
     linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
   background-attachment: fixed;
   color: var(--color-text-main);
   font-family: var(--font-arabic);
   direction: rtl;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Critical for mobile */
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  width: 100%;
 }
 
 /* Premium Scrollbar */
@@ -42,11 +31,7 @@ body {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -54,12 +39,7 @@ body {
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -128,7 +108,7 @@ p {
 }
 
 .btn::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -137,9 +117,7 @@ p {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
   transform: translate(-50%, -50%);
-  transition:
-    width 0.6s,
-    height 0.6s;
+  transition: width 0.6s, height 0.6s;
 }
 
 .btn:hover::before {
@@ -148,11 +126,7 @@ p {
 }
 
 .btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   color: white;
   box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
 }
@@ -187,8 +161,7 @@ p {
 }
 
 @keyframes float {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
   50% {
@@ -197,8 +170,7 @@ p {
 }
 
 @keyframes pulse-glow {
-  0%,
-  100% {
+  0%, 100% {
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
   }
   50% {
@@ -237,34 +209,48 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Responsive */
+/* Responsive - Aggressive Overrides for Premium Mobile Feel */
 @media (max-width: 768px) {
   :root {
-    --spacing-section: 3rem; /* Smaller section padding */
+    --spacing-section: 2.5rem; /* Tighter section spacing */
+    --spacing-container: 100%;
+  }
+  
+  body {
+    font-size: 15px; /* Slightly smaller base font */
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Clamp for perfect fit */
+    letter-spacing: -0.02em;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
-
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
   .container {
-    padding: 0 1.25rem;
+    padding: 0 1rem;
+    width: 100%;
+    overflow-x: hidden; /* Double safety */
   }
-
+  
   .section {
-    padding-top: 4rem !important; /* Force smaller top padding */
-    padding-bottom: 4rem !important;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
   }
-
-  /* Make glass panels more compact on mobile */
+  
+  /* Make glass panels compact but readable */
   .glass-panel {
-    padding: 1.5rem !important;
+    padding: 1.25rem !important;
+    backdrop-filter: blur(12px); /* Lighter blur for performance */
   }
 }
 

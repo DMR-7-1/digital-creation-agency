@@ -14,6 +14,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
+
+  // Close menu on route change
   useEffect(() => setIsMenuOpen(false), [location]);
 
   const navLinks = [
@@ -31,6 +41,10 @@ const Navbar = () => {
         @keyframes slideIn {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
         .nav-link {
           position: relative;
@@ -94,39 +108,42 @@ const Navbar = () => {
         <div style={{ 
           maxWidth: '100%', 
           margin: '0 auto', 
-          padding: '0 2.5rem',
+          padding: '0 1.5rem', // Smaller padding on mobile
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between'
         }}>
 
-          {/* LEFT CORNER - Logo (no container) */}
+          {/* LEFT CORNER - Logo */}
           <Link 
             to="/"
             style={{
               display: 'flex',
               alignItems: 'center',
               textDecoration: 'none',
-              transition: 'transform 0.3s ease'
+              transition: 'transform 0.3s ease',
+              zIndex: 1001 // Ensure above mobile menu if needed, though menu covers all
             }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             <img 
               src={logoImg} 
               alt="Digital Creation" 
               style={{ 
-                height: isScrolled ? '150px' : '200px',
+                height: isScrolled ? '120px' : '160px', // Slightly smaller on mobile default? No, keep desktop logic but maybe clamp in CSS if needed. 
+                // Actually, let's keep the user's logic but ensure it doesn't break mobile layout.
+                // Mobile fix: max-height limit
+                maxHeight: '100px', // Force constraint on mobile
                 width: 'auto',
                 transition: 'all 0.4s ease',
                 filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',
-                marginTop: '-60px',
-                marginBottom: '-60px'
+                // Desktop overrides via media query style injection below or keep logic
+                marginTop: '-40px',
+                marginBottom: '-40px'
               }} 
             />
           </Link>
 
-          {/* CENTER - Navigation Links (spread out) */}
+          {/* CENTER - Navigation Links (Desktop) */}
           <div 
             className="desktop-menu"
             style={{
@@ -152,15 +169,13 @@ const Navbar = () => {
                   transition: 'color 0.3s ease',
                   whiteSpace: 'nowrap'
                 }}
-                onMouseEnter={(e) => e.target.style.color = '#8b5cf6'}
-                onMouseLeave={(e) => e.target.style.color = location.pathname === link.href ? '#8b5cf6' : 'rgba(255,255,255,0.9)'}
               >
                 {link.name}
               </Link>
             ))}
           </div>
 
-          {/* RIGHT CORNER - CTA Button & Mobile Toggle */}
+          {/* RIGHT CORNER - CTA & Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <Link 
               to="/contact" 
@@ -178,14 +193,6 @@ const Navbar = () => {
                 boxShadow: '0 4px 20px rgba(139, 92, 246, 0.35)',
                 transition: 'all 0.3s ease'
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(139, 92, 246, 0.5)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(139, 92, 246, 0.35)';
-              }}
             >
               <Sparkles size={16} />
               ابدأ مشروعك
@@ -193,7 +200,7 @@ const Navbar = () => {
 
             {/* Mobile Toggle */}
             <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsMenuOpen(true)}
               className="mobile-toggle"
               style={{ 
                 background: 'rgba(255, 255, 255, 0.1)',
@@ -209,76 +216,101 @@ const Navbar = () => {
                 height: '42px',
                 transition: 'all 0.3s ease'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
             >
-              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              <Menu size={24} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* NEW PREMIUM FULL SCREEN MOBILE MENU */}
       {isMenuOpen && (
         <div style={{
           position: 'fixed',
-          top: isScrolled ? '65px' : '80px',
-          left: '1rem',
-          right: '1rem',
-          zIndex: 999,
-          background: 'rgba(15, 23, 42, 0.98)',
-          backdropFilter: 'blur(24px)',
-          borderRadius: '20px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          padding: '1.5rem',
-          boxShadow: '0 25px 60px rgba(0, 0, 0, 0.5)',
-          animation: 'slideIn 0.3s ease-out'
+          inset: 0, // Top, right, bottom, left = 0
+          zIndex: 9999,
+          background: 'rgba(15, 23, 42, 0.98)', // Deep dark
+          backdropFilter: 'blur(20px)',
+          display: 'flex',
+          flexDirection: 'column',
+          animation: 'fadeIn 0.2s ease-out'
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          {/* Header of Modal */}
+          <div style={{ 
+            padding: '1.5rem', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            borderBottom: '1px solid rgba(255,255,255,0.05)'
+          }}>
+             <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'white' }}>القائمة</span>
+             <button 
+               onClick={() => setIsMenuOpen(false)}
+               style={{
+                 background: 'rgba(255,255,255,0.1)',
+                 border: 'none',
+                 borderRadius: '50%',
+                 width: '40px',
+                 height: '40px',
+                 display: 'flex',
+                 alignItems: 'center',
+                 justifyContent: 'center',
+                 color: 'white',
+                 cursor: 'pointer'
+               }}
+             >
+               <X size={24} />
+             </button>
+          </div>
+
+          {/* Links Container */}
+          <div style={{ 
+            flex: 1, 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            gap: '2rem'
+          }}>
             {navLinks.map((link, index) => (
               <Link 
                 key={link.name} 
                 to={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 style={{
-                  color: location.pathname === link.href ? '#8b5cf6' : 'rgba(255,255,255,0.9)',
+                  fontSize: '2rem', // Massive font for premium app feel
+                  fontWeight: '700',
+                  color: location.pathname === link.href ? '#8b5cf6' : 'rgba(255,255,255,0.8)',
                   textDecoration: 'none',
-                  fontWeight: '600',
-                  fontSize: '1.15rem',
-                  padding: '0.9rem 1.2rem',
-                  borderRadius: '12px',
-                  background: location.pathname === link.href 
-                    ? 'rgba(139, 92, 246, 0.15)' 
-                    : 'transparent',
-                  transition: 'all 0.3s ease',
-                  animation: `slideIn 0.3s ease-out ${index * 0.05}s backwards`
+                  transition: 'color 0.3s ease',
+                  animation: `slideIn 0.4s ease-out forwards ${index * 0.05}s`,
+                  opacity: 0 // Start hidden for animation
                 }}
               >
                 {link.name}
               </Link>
             ))}
-            
+          </div>
+
+          {/* Footer of Modal */}
+          <div style={{ padding: '2rem', width: '100%' }}>
             <Link 
-              to="/contact"
+              to="/contact" 
               onClick={() => setIsMenuOpen(false)}
-              className="cta-btn"
-              style={{
-                marginTop: '0.75rem',
-                padding: '0.9rem 1.5rem',
-                borderRadius: '12px',
+              className="btn cta-btn"
+              style={{ 
+                width: '100%', 
+                padding: '1.2rem', 
+                fontSize: '1.1rem',
+                borderRadius: '16px',
                 color: 'white',
-                fontWeight: '700',
-                fontSize: '1.05rem',
-                textDecoration: 'none',
-                textAlign: 'center',
                 display: 'flex',
-                alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.6rem'
+                gap: '0.5rem'
               }}
             >
-              <Sparkles size={18} />
-              ابدأ مشروعك الآن
+              <Sparkles size={20} />
+              ابدأ مشروعك
             </Link>
           </div>
         </div>
