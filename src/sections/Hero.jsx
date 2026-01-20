@@ -42,6 +42,18 @@ const Hero = () => {
         
         {/* Text Content */}
         <div style={{ maxWidth: '650px', zIndex: 1, position: 'relative' }}>
+          {/* Mobile Logo - Visible only on mobile via CSS */}
+          <img 
+            src={logoNew} 
+            alt="Digital Creation Logo" 
+            className="mobile-hero-logo"
+            style={{ 
+              display: 'none', 
+              maxWidth: '140px',
+              margin: '0 auto 1.5rem',
+              filter: 'drop-shadow(0 4px 15px rgba(139, 92, 246, 0.3))'
+            }}
+          />
           
           <div className="glass-panel hero-badge" style={{ 
             display: 'inline-block', 
