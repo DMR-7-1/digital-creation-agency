@@ -416,7 +416,8 @@
      16. HERO PAGE: Hide Big Image
      ======================================== */
   /* The hero visual container with the hero_bg image */
-  #hero img[alt*="Digital Creation"],
+  /* EXCLUDE the new mobile logo from this hiding rule */
+  #hero img[alt*="Digital Creation"]:not(.mobile-hero-logo),
   #hero img[alt*="Dashboard"],
   .hero-visual {
     display: none !important;
