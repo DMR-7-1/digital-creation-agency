@@ -286,8 +286,30 @@
   /* ========================================
      15. ABOUT PAGE FIXES
      ======================================== */
-  div[style*="minmax(300px"] {
+  div[style*="minmax(300px"],
+  div[style*="minmax(400px"] {
     display: flex !important;
     flex-direction: column !important;
+  }
+
+  /* HIDE the big branded logo showcase on About page */
+  /* Target the glass-panel containing the logo_full image */
+  div[style*="minmax(400px"] > .glass-panel:first-child {
+    display: none !important;
+  }
+
+  /* ========================================
+     16. HERO PAGE: Hide Big Image
+     ======================================== */
+  /* The hero visual container with the hero_bg image */
+  #hero img[alt*="Digital Creation"],
+  #hero img[alt*="Dashboard"],
+  .hero-visual {
+    display: none !important;
+  }
+
+  /* The floating badge overlay */
+  #hero .glass-panel[style*="position: absolute"] {
+    display: none !important;
   }
 }
