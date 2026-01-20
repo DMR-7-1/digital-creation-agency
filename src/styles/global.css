@@ -317,6 +317,7 @@ a {
     line-height: 1.3 !important;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* Limit text lines */
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
