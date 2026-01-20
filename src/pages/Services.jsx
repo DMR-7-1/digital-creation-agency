@@ -158,7 +158,35 @@ const ServicesPage = () => {
           </div>
         </div>
 
-      </div>
+      <style>{`
+        @media (max-width: 768px) {
+          /* Grid Single Column Enforcement */
+          .sectors-grid, div[style*="display: grid"] {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          
+          /* Compact Card Padding */
+          .glass-panel {
+            padding: 1.25rem !important;
+          }
+          
+          /* Typography Scalling */
+          h3 {
+             font-size: 1.25rem !important;
+             margin-bottom: 0.5rem !important;
+          }
+          p, li {
+             font-size: 0.95rem !important;
+             line-height: 1.5 !important;
+          }
+          
+          /* Tighter Lists */
+          ul {
+             gap: 0.5rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

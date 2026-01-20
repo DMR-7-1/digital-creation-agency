@@ -183,7 +183,8 @@ const inputStyle = {
   borderRadius: '0.5rem',
   color: 'white',
   fontFamily: 'inherit',
-  width: '100%'
+  width: '100%',
+  fontSize: '16px' // Prevents iOS zoom
 };
 
 export default ContactPage;
