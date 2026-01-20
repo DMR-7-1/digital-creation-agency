@@ -277,22 +277,48 @@ a {
     font-size: 0.9rem;
   }
 
-  /* Lists & Features - Tighten up */
-  ul {
-    margin-bottom: 1rem !important;
-  }
-  li {
-    margin-bottom: 0.5rem !important;
-    font-size: 0.9rem;
-  }
-
   /* UTILITY: Smart 2-Column Grid for Cards Only */
-  /* User requested "2 cards can sit beside" -> strict 2 columns for card grids */
   .mobile-card-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important; 
     gap: 0.75rem !important;
     align-items: stretch !important;
+  }
+
+  /* DEEP CONTENT FIX for 2-Column Cards */
+  .mobile-card-grid .glass-panel {
+    padding: 0.75rem !important; /* Very tight padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Force Icon/Text Stack in 2-col grid */
+  .mobile-card-grid .glass-panel > div[style*="display: flex"] {
+    flex-direction: column !important; /* Stack icon above text */
+    align-items: center !important; /* Center align */
+    text-align: center !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Reduce Icon Size in 2-col grid */
+  .mobile-card-grid svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* Typo reduction for 2-col grid */
+  .mobile-card-grid h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .mobile-card-grid p {
+    font-size: 0.8rem !important;
+    line-height: 1.3 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit text lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* Visual Safety */
