@@ -24,9 +24,7 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   // Close menu on route change
-  useEffect(() => {
-    if (isMenuOpen) setIsMenuOpen(false);
-  }, [location, isMenuOpen]);
+  useEffect(() => setIsMenuOpen(false), [location]);
 
   const navLinks = [
     { name: 'الرئيسية', href: '/' },
@@ -137,7 +135,7 @@ const Navbar = () => {
               alt="Digital Creation" 
               style={{ 
                 height: isScrolled ? '120px' : '160px',
-                maxHeight: '100px', // Increased per user request
+                maxHeight: '80px', // Smaller mobile logo
                 width: 'auto',
                 transition: 'all 0.4s ease',
                 filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',
