@@ -1,28 +1,33 @@
 /* =========================================
-   MOBILE RECREATION: App-Like List Views
+   MOBILE RECREATION: FINAL FIX
    Target: Phones (< 768px)
-   Strategy: Compact Rows & High Density
+   Strategy: Kill Overflow, Shrink Everything
    ========================================= */
 
 @media (max-width: 768px) {
 
   /* ========================================
-     1. NUCLEAR FIXES (Overlap & Scroll)
+     1. NUCLEAR OVERFLOW KILL
      ======================================== */
-  html {
+  html, body {
     overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
   }
 
   body {
-    padding-top: 80px !important; /* GLOBAL SAFE ZONE - Clears Navbar */
-    overflow-x: hidden !important;
-    width: 100vw !important;
-    font-size: 14px !important; /* App-sized base font */
+    padding-top: 70px !important; /* Clear navbar */
+    font-size: 14px !important;
   }
 
-  /* Kill any accidental overflow */
+  * {
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
   .container {
     padding: 0 1rem !important;
+    max-width: 100% !important;
     overflow: hidden !important;
   }
 
@@ -30,151 +35,141 @@
      2. HERO: Compact & Centered
      ======================================== */
   #hero {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
+    padding: 1.5rem 0 !important;
     min-height: auto !important;
     text-align: center !important;
   }
 
   #hero .container {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
   #hero h1 {
-    font-size: 1.75rem !important;
+    font-size: 1.5rem !important;
     line-height: 1.3 !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.75rem !important;
   }
 
   #hero p {
-    font-size: 0.95rem !important;
-    max-width: 100% !important;
-    margin-bottom: 1.5rem !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 1rem !important;
   }
 
-  /* Hide the hero visual on mobile */
-  .hero-visual {
-    display: none !important;
+  /* Hero Badge - Much Smaller */
+  #hero .glass-panel {
+    padding: 0.3rem 0.6rem !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.75rem !important;
   }
 
-  /* Hide hero blobs */
+  /* Hero Button - Center it */
+  #hero .btn {
+    margin: 0 auto !important;
+  }
+
+  /* Hide Hero Visual & Blobs */
+  .hero-visual,
   .hero-blob {
     display: none !important;
   }
 
-  /* ========================================
-     3. SECTIONS & TYPOGRAPHY
-     ======================================== */
-  .section {
-    padding: 2rem 0 !important;
-  }
-
-  h1 {
-    font-size: 1.75rem !important;
-    line-height: 1.3 !important;
-  }
-
-  h2 {
-    font-size: 1.4rem !important;
-    margin-bottom: 1.5rem !important;
-    text-align: center !important;
-  }
-
-  h3 {
-    font-size: 1.1rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  p {
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-    margin-bottom: 0.75rem !important;
+  /* Hero Stats Row */
+  #hero > div > div:last-child {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    font-size: 0.8rem !important;
   }
 
   /* ========================================
-     4. THE LIST VIEW TRANSFORMATION
-     Grids become vertical flex stacks
-     Each item becomes a horizontal row
+     3. ALL GRIDS: Force Single Column Stack
      ======================================== */
-
-  /* Grid Containers → Vertical Stacks */
   .services-grid-system,
   .portfolio-grid-system,
   .pricing-grid-system,
-  .sectors-grid {
+  .sectors-grid,
+  div[style*="display: grid"],
+  div[style*="grid-template-columns"] {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.75rem !important;
+    gap: 1rem !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
   /* ========================================
-     5. PORTFOLIO: Compact List Items
-     [ Thumbnail (80px) ] [ Content ]
+     4. ALL CARDS: Compact & Full Width
+     ======================================== */
+  .glass-panel,
+  .services-grid-system > *,
+  .portfolio-grid-system > *,
+  .pricing-grid-system > *,
+  .sector-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    margin: 0 !important;
+  }
+
+  /* ========================================
+     5. PORTFOLIO: Compact Cards
      ======================================== */
   .portfolio-grid-system > div {
     display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    padding: 0.75rem !important;
-    gap: 0.75rem !important;
-    background: rgba(17, 24, 39, 0.6) !important;
-    border-radius: 12px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-
-  /* Portfolio Thumbnail */
-  .portfolio-grid-system > div > img,
-  .portfolio-grid-system > div > div:first-child img {
-    width: 80px !important;
-    height: 80px !important;
-    min-width: 80px !important;
-    object-fit: cover !important;
-    border-radius: 8px !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Portfolio Content Area */
-  .portfolio-grid-system > div h3 {
-    font-size: 1rem !important;
-    margin-bottom: 0.25rem !important;
-  }
-
-  .portfolio-grid-system > div p {
-    font-size: 0.85rem !important;
-    margin-bottom: 0 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
+    flex-direction: column !important;
+    padding: 0 !important;
     overflow: hidden !important;
+    border-radius: 12px !important;
+  }
+
+  .portfolio-grid-system img {
+    width: 100% !important;
+    height: 150px !important;
+    object-fit: cover !important;
+  }
+
+  .portfolio-grid-system h3 {
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem 0.25rem !important;
+    margin: 0 !important;
+  }
+
+  .portfolio-grid-system p {
+    font-size: 0.85rem !important;
+    padding: 0 1rem 0.75rem !important;
+    margin: 0 !important;
+  }
+
+  /* Category Badge Fix */
+  .portfolio-grid-system span[style*="position: absolute"] {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    margin: 0.5rem !important;
+    font-size: 0.7rem !important;
   }
 
   /* ========================================
-     6. SERVICES: Sleek Icon Rows
-     [ Icon (40px) ] [ Title + Desc ]
+     6. SERVICES: Icon on Top Layout
      ======================================== */
   .services-grid-system > div {
     display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    gap: 0.75rem !important;
-    padding: 0.75rem !important;
-    background: rgba(17, 24, 39, 0.5) !important;
-    border-radius: 10px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  }
-
-  .services-grid-system > div .glass-panel {
-    padding: 0.5rem !important;
-    min-width: 40px !important;
-    display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
+    text-align: center !important;
+    padding: 1rem !important;
+    gap: 0.5rem !important;
   }
 
-  .services-grid-system > div svg {
-    width: 20px !important;
-    height: 20px !important;
+  .services-grid-system .glass-panel {
+    padding: 0.5rem !important;
+  }
+
+  .services-grid-system svg {
+    width: 24px !important;
+    height: 24px !important;
   }
 
   .services-grid-system h3 {
@@ -184,7 +179,7 @@
 
   .services-grid-system p {
     font-size: 0.8rem !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
   }
 
   /* ========================================
@@ -198,83 +193,101 @@
     font-size: 1.25rem !important;
   }
 
-  .pricing-grid-system li {
+  .pricing-grid-system ul {
     font-size: 0.85rem !important;
-    margin-bottom: 0.5rem !important;
+  }
+
+  .pricing-grid-system li {
+    margin-bottom: 0.4rem !important;
   }
 
   /* ========================================
-     8. SECTORS: Compact Cards
+     8. SECTOR CARDS: Compact
      ======================================== */
   .sector-card {
     padding: 1rem !important;
-    display: block !important;
   }
 
   .sector-card h3 {
     font-size: 1.1rem !important;
-    margin-bottom: 0.5rem !important;
   }
 
-  .sector-card p {
-    font-size: 0.85rem !important;
-  }
-
-  .sector-card ul {
-    font-size: 0.85rem !important;
-  }
-
+  .sector-card p,
   .sector-card li {
-    margin-bottom: 0.25rem !important;
+    font-size: 0.85rem !important;
   }
 
   /* ========================================
-     9. NAVBAR: Compact
+     9. TYPOGRAPHY: Phone Sized
+     ======================================== */
+  h1 {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  h3 {
+    font-size: 1rem !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ========================================
+     10. NAVBAR: Compact Logo
      ======================================== */
   .nav-logo-mobile {
     max-height: 35px !important;
     margin: 0 !important;
-    width: auto !important;
   }
 
   nav {
-    padding: 0.5rem 0 !important;
+    padding: 0.4rem 0 !important;
   }
 
   /* ========================================
-     10. GLASS PANELS: Tighter Padding
+     11. SECTIONS: Tighter Spacing
      ======================================== */
-  .glass-panel {
-    padding: 1rem !important;
-    backdrop-filter: blur(10px) !important;
+  .section {
+    padding: 1.5rem 0 !important;
   }
 
   /* ========================================
-     11. BUTTONS: Touch Friendly
+     12. BUTTONS: Touch Friendly
      ======================================== */
   .btn {
-    padding: 0.75rem 1.25rem !important;
-    font-size: 0.9rem !important;
-    min-height: 44px !important; /* iOS touch target */
+    padding: 0.6rem 1rem !important;
+    font-size: 0.85rem !important;
+    min-height: 44px !important;
   }
 
   /* ========================================
-     12. FORMS: Prevent Zoom
+     13. FORMS: Prevent iOS Zoom
      ======================================== */
   input, select, textarea {
     font-size: 16px !important;
+    padding: 0.75rem !important;
   }
 
   /* ========================================
-     13. CONTACT PAGE FIXES
+     14. CONTACT PAGE
      ======================================== */
   form {
-    gap: 1rem !important;
+    gap: 0.75rem !important;
   }
 
-  form input,
-  form select,
-  form textarea {
-    padding: 0.75rem !important;
+  /* ========================================
+     15. ABOUT PAGE FIXES
+     ======================================== */
+  div[style*="minmax(300px"] {
+    display: flex !important;
+    flex-direction: column !important;
   }
 }
