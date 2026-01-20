@@ -164,36 +164,8 @@ const Portfolio = () => {
       </section>
       <style>{`
         @media (max-width: 768px) {
-          /* Force Single Column */
           div[style*="display: grid"] {
             grid-template-columns: 1fr !important;
-            gap: 1.5rem !important;
-          }
-          
-          /* Compact Card Content */
-          .glass-panel > div:last-child {
-             padding: 1.25rem !important;
-          }
-          
-          /* Shorter Images for Mobile */
-          .glass-panel > div:first-child {
-             height: 180px !important;
-          }
-          
-          /* Typography */
-          h3 {
-             font-size: 1.2rem !important;
-             margin-bottom: 0.5rem !important;
-          }
-          p {
-             font-size: 0.9rem !important;
-             margin-bottom: 1rem !important;
-          }
-          
-          /* Tech Tags */
-          span {
-             padding: 0.3rem 0.7rem !important;
-             font-size: 0.8rem !important;
           }
         }
       `}</style>

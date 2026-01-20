@@ -48,17 +48,17 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="section" style={{ paddingTop: '8rem' }}>
+    <div className="section" style={{ paddingTop: 'clamp(6rem, 10vw, 8rem)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>📩 تواصل معنا الآن</h1>
-          <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1rem' }}>📩 تواصل معنا الآن</h1>
+          <p style={{ fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
             احصل على <strong style={{ color: 'var(--color-primary)' }}>استشارة مجانية + اقتراح تقني مناسب لمشروعك</strong>
             <br/>نرد عليك في أقل من 5 دقائق ⚡
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           
           {/* Info Side */}
           <div>
@@ -154,6 +154,13 @@ const ContactPage = () => {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
+        @media (max-width: 768px) {
+          /* Force single column stack for contact layout */
+          div[style*="display: grid"] {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+        }
       `}</style>
     </div>
   );
@@ -183,8 +190,7 @@ const inputStyle = {
   borderRadius: '0.5rem',
   color: 'white',
   fontFamily: 'inherit',
-  width: '100%',
-  fontSize: '16px' // Prevents iOS zoom
+  width: '100%'
 };
 
 export default ContactPage;

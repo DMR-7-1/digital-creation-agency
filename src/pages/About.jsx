@@ -4,13 +4,13 @@ import logoFull from '../assets/logo_full.png';
 
 const About = () => {
   return (
-    <div style={{ paddingTop: '120px' }}>
+    <div style={{ paddingTop: 'clamp(6rem, 10vw, 8rem)' }}>
       {/* Hero Section */}
       <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem' }}>
-            <h1 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>من نحن</h1>
-            <p style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1.5rem' }}>من نحن</h1>
+            <p style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', lineHeight: '1.8' }}>
               <strong style={{ color: 'var(--color-primary)' }}>Digital Creation</strong> وكالة جزائرية رائدة في مجال التحول الرقمي، 
               نساعد الشركات والمشاريع على بناء حضور رقمي قوي واحترافي.
             </p>
@@ -19,17 +19,17 @@ const About = () => {
           {/* Full Logo Showcase */}
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
-            gap: '4rem', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+            gap: '2rem', 
             alignItems: 'center',
             marginBottom: '6rem'
           }}>
             <div className="glass-panel" style={{ 
-              padding: '4rem 3rem', 
+              padding: '2rem', 
               textAlign: 'center',
               background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15))',
               border: '1px solid rgba(139, 92, 246, 0.3)',
-              minHeight: '450px',
+              minHeight: '300px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center'
