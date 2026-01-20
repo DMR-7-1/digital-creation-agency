@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo_new.png';
@@ -24,13 +24,7 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   // Close menu on route change
-  const prevPath = useRef(location.pathname);
-  useEffect(() => {
-    if (prevPath.current !== location.pathname) {
-      setIsMenuOpen(false);
-      prevPath.current = location.pathname;
-    }
-  }, [location.pathname]);
+  useEffect(() => setIsMenuOpen(false), [location]);
 
   const navLinks = [
     { name: 'الرئيسية', href: '/' },
@@ -141,7 +135,7 @@ const Navbar = () => {
               alt="Digital Creation" 
               style={{ 
                 height: isScrolled ? '120px' : '160px',
-                maxHeight: '110px', // Bigger mobile logo as requested
+                maxHeight: '80px', // Smaller mobile logo
                 width: 'auto',
                 transition: 'all 0.4s ease',
                 filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',
