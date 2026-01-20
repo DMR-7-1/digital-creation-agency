@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo_new.png';
@@ -24,7 +24,13 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   // Close menu on route change
-  useEffect(() => setIsMenuOpen(false), [location]);
+  const prevPath = useRef(location.pathname);
+  useEffect(() => {
+    if (prevPath.current !== location.pathname) {
+      setIsMenuOpen(false);
+      prevPath.current = location.pathname;
+    }
+  }, [location.pathname]);
 
   const navLinks = [
     { name: 'الرئيسية', href: '/' },
