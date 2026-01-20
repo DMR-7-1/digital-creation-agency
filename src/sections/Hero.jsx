@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroBg from '../assets/hero_bg.png';
+import logoNew from '../assets/logo_new.png';
 
 const Hero = () => {
   return (
@@ -43,7 +44,7 @@ const Hero = () => {
         <div style={{ maxWidth: '650px', zIndex: 1, position: 'relative' }}>
           {/* Mobile Logo - Hidden on Desktop */}
           <img 
-            src={heroBg} 
+            src={logoNew} 
             alt="Digital Creation Logo" 
             className="mobile-hero-logo"
             style={{ 
