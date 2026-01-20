@@ -353,7 +353,7 @@
 
   /* HOME PAGE: Prevent big empty space, but keep logo safe */
   #hero {
-    padding-top: 1.5rem !important; /* Reduced from 8rem */
+    padding-top: 0.5rem !important; /* Extremely tight spacing (was 1.5rem) */
   }
   
   /* OTHER PAGES (About, Blog, Portfolio): Remove big empty space */
