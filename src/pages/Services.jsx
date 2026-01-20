@@ -38,7 +38,7 @@ const ServicesPage = () => {
         </div>
 
         {/* Technical Capabilities Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '6rem' }}>
+        <div className="services-grid-system">
           <FeatureCard 
             icon={<Zap size={32} color="#FBBF24" />}
             title="أداء عالي (High Performance)"
@@ -58,7 +58,7 @@ const ServicesPage = () => {
 
         {/* Pricing/Packages */}
         <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>باقات الخدمات</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+        <div className="pricing-grid-system">
           {plans.map((plan, idx) => (
             <div key={idx} className="glass-panel" style={{ 
               padding: '2.5rem', 
@@ -101,9 +101,9 @@ const ServicesPage = () => {
             خبرة في العمل مع السوق الجزائري 🇩🇿
           </h2>
           
-          <div className="sectors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div className="sectors-grid services-grid-system">
             {/* Companies */}
-            <div className="glass-panel" style={{ padding: '3rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+            <div className="glass-panel sector-card">
               <div>
                 <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>🏢 الشركات والمؤسسات</h3>
                 <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
@@ -121,7 +121,7 @@ const ServicesPage = () => {
             </div>
 
             {/* Stores */}
-            <div className="glass-panel" style={{ padding: '3rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+            <div className="glass-panel sector-card">
               <div>
                 <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>🛒 المحلات والتجار</h3>
                 <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
@@ -139,7 +139,7 @@ const ServicesPage = () => {
             </div>
 
             {/* Startups */}
-            <div className="glass-panel" style={{ padding: '3rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+            <div className="glass-panel sector-card">
               <div>
                 <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>🚀 ستارتاب / مشاريع ناشئة</h3>
                 <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>

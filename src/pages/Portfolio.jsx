@@ -70,13 +70,7 @@ const Portfolio = () => {
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
-              gap: "2.5rem",
-            }}
-          >
+          <div className="portfolio-grid-system">
             {projects.map((project, index) => (
               <div
                 key={index}

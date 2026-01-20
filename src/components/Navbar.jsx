@@ -128,6 +128,7 @@ const Navbar = () => {
             <img 
               src={logoImg} 
               alt="Digital Creation" 
+              className="nav-logo-mobile"
               style={{ 
                 height: isScrolled ? '120px' : '160px', 
                 width: 'auto',

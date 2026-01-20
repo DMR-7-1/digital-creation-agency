@@ -271,9 +271,9 @@ a {
   }
 
   /* Force grids to single column on mobile for perfect vertical stacking */
-  /* This overrides specific component grids to prevent "squashed" columns */
   .mobile-stack-grid {
     grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
   }
 }
 
@@ -281,4 +281,67 @@ a {
 select option {
   background-color: #1f2937;
   color: white;
+}
+
+/* =========================================
+   SAFE MODE: Mobile Optimization Classes
+   These classes preserve Desktop Exactness while fixing Mobile.
+   ========================================= */
+
+/* Navbar Logo Mobile Override */
+@media (max-width: 768px) {
+  .nav-logo-mobile {
+    height: auto !important;
+    max-height: 45px !important; /* Perfect phone size */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    width: auto !important;
+  }
+}
+
+/* Services Grid Control */
+.services-grid-system {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Desktop Default */
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+/* Pricing Grid Control */
+.pricing-grid-system {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Desktop Default */
+  gap: 2rem;
+}
+
+/* Portfolio Grid Control */
+.portfolio-grid-system {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Desktop Default */
+  gap: 2.5rem;
+}
+
+/* Mobile Overrides for Grids */
+@media (max-width: 768px) {
+  .services-grid-system,
+  .pricing-grid-system,
+  .portfolio-grid-system {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* Force single column stack */
+    gap: 1.5rem !important; /* Tighter gap for mobile */
+    padding: 0 0.5rem; /* Tiny buffer */
+  }
+}
+
+/* Specific Sector Card Polish */
+.sector-card {
+  padding: 3rem !important;
+  display: flex !important;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .sector-card {
+    padding: 1.5rem !important;
+    display: block !important;
+  }
 }
