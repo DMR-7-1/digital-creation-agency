@@ -351,8 +351,15 @@
     padding-top: 60px !important;
   }
 
+  /* HOME PAGE: Prevent big empty space, but keep logo safe */
   #hero {
-    padding-top: 2rem !important;
+    padding-top: 1.5rem !important; /* Reduced from 8rem */
+  }
+  
+  /* OTHER PAGES (About, Blog, Portfolio): Remove big empty space */
+  /* We added 'page-wrapper' class to these pages to override inline style */
+  .page-wrapper {
+    padding-top: 1rem !important; /* Reduced from 120px */
   }
 
   /* 4. HERO LOGO: Visible & Professional */

@@ -28,7 +28,7 @@ const Blog = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '120px', minHeight: '100vh' }}>
+    <div className="page-wrapper" style={{ paddingTop: '120px', minHeight: '100vh' }}>
       <section className="section">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>

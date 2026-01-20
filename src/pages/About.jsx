@@ -4,7 +4,7 @@ import logoFull from '../assets/logo_full.png';
 
 const About = () => {
   return (
-    <div style={{ paddingTop: '120px' }}>
+    <div className="page-wrapper" style={{ paddingTop: '120px' }}>
       {/* Hero Section */}
       <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
