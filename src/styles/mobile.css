@@ -353,7 +353,7 @@
 
   /* HOME PAGE: Prevent big empty space, but keep logo safe */
   #hero {
-    padding-top: 1rem !important; /* 16px gap ("Close but not too close") */
+    padding-top: 0 !important; /* Start immediately */
     margin-top: 0 !important;
     min-height: auto !important; /* Kill 100vh */
     height: auto !important; /* Kill any fixed height */
@@ -372,6 +372,7 @@
     max-width: 220px !important; /* Much bigger (was 140px) */
     width: 60% !important;
     margin: 0 auto 1rem !important;
+    margin-top: -3rem !important; /* Pull up to hide empty image space */
     animation: fadeIn 1s ease-out;
   }
   
