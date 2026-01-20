@@ -212,45 +212,51 @@ a {
 /* Responsive - Aggressive Overrides for Premium Mobile Feel */
 @media (max-width: 768px) {
   :root {
-    --spacing-section: 2.5rem; /* Tighter section spacing */
+    --spacing-section: 2rem; /* Even tighter for small screens */
     --spacing-container: 100%;
   }
   
   body {
-    font-size: 15px; /* Slightly smaller base font */
+    font-size: 14px; /* Smaller base font for "too big" fix */
   }
 
   h1 {
-    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Clamp for perfect fit */
-    letter-spacing: -0.02em;
+    font-size: clamp(1.8rem, 4vw, 2.2rem); /* Significantly smaller max */
+    letter-spacing: -0.01em;
   }
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   
   p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.5;
   }
   
   .container {
     padding: 0 1rem;
     width: 100%;
-    overflow-x: hidden; /* Double safety */
+    /* Removed overflow-x: hidden to prevent content cutting */
   }
   
   .section {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
   }
   
-  /* Make glass panels compact but readable */
+  /* Make glass panels compact */
   .glass-panel {
-    padding: 1.25rem !important;
-    backdrop-filter: blur(12px); /* Lighter blur for performance */
+    padding: 1rem !important;
+    backdrop-filter: blur(12px);
+  }
+
+  /* Critical: Ensure images/media never overflow */
+  img, video, svg {
+    max-width: 100%;
+    height: auto;
   }
 }
 
