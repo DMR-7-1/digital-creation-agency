@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle, Target, Users, Zap } from 'lucide-react';
+import logoFull from '../assets/logo_full.png';
 
 const About = () => {
   return (
@@ -47,7 +48,7 @@ const About = () => {
               
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <img 
-                  src="/src/assets/logo_full.png" 
+                  src={logoFull} 
                   alt="Digital Creation - We make your vision come true" 
                   style={{ 
                     maxWidth: '100%', 
