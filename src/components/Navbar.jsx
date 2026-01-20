@@ -89,6 +89,10 @@ const Navbar = () => {
           .desktop-cta { display: inline-flex !important; }
           .mobile-toggle { display: none !important; }
         }
+        @media (max-width: 1023px) {
+          .logo-link { order: 2; }
+          .nav-actions { order: 1; }
+        }
       `}</style>
 
       <nav style={{
@@ -117,26 +121,24 @@ const Navbar = () => {
           {/* LEFT CORNER - Logo */}
           <Link 
             to="/"
+            className="logo-link"
             style={{
               display: 'flex',
               alignItems: 'center',
               textDecoration: 'none',
               transition: 'transform 0.3s ease',
-              zIndex: 1001 // Ensure above mobile menu if needed, though menu covers all
+              zIndex: 1001
             }}
           >
             <img 
               src={logoImg} 
               alt="Digital Creation" 
               style={{ 
-                height: isScrolled ? '120px' : '160px', // Slightly smaller on mobile default? No, keep desktop logic but maybe clamp in CSS if needed. 
-                // Actually, let's keep the user's logic but ensure it doesn't break mobile layout.
-                // Mobile fix: max-height limit
-                maxHeight: '100px', // Force constraint on mobile
+                height: isScrolled ? '120px' : '160px',
+                maxHeight: '80px', // Smaller mobile logo
                 width: 'auto',
                 transition: 'all 0.4s ease',
                 filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',
-                // Desktop overrides via media query style injection below or keep logic
                 marginTop: '-40px',
                 marginBottom: '-40px'
               }} 
@@ -176,7 +178,7 @@ const Navbar = () => {
           </div>
 
           {/* RIGHT CORNER - CTA & Toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <Link 
               to="/contact" 
               className="btn cta-btn desktop-cta"
@@ -243,15 +245,15 @@ const Navbar = () => {
             alignItems: 'center',
             borderBottom: '1px solid rgba(255,255,255,0.05)'
           }}>
-             <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'white' }}>القائمة</span>
+             <span style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'white' }}>القائمة</span>
              <button 
                onClick={() => setIsMenuOpen(false)}
                style={{
                  background: 'rgba(255,255,255,0.1)',
                  border: 'none',
                  borderRadius: '50%',
-                 width: '40px',
-                 height: '40px',
+                 width: '36px',
+                 height: '36px',
                  display: 'flex',
                  alignItems: 'center',
                  justifyContent: 'center',
@@ -259,7 +261,7 @@ const Navbar = () => {
                  cursor: 'pointer'
                }}
              >
-               <X size={24} />
+               <X size={20} />
              </button>
           </div>
 
@@ -270,7 +272,7 @@ const Navbar = () => {
             flexDirection: 'column', 
             alignItems: 'center', 
             justifyContent: 'center',
-            gap: '2rem'
+            gap: '1.5rem' // Reduced gap
           }}>
             {navLinks.map((link, index) => (
               <Link 
@@ -278,13 +280,13 @@ const Navbar = () => {
                 to={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 style={{
-                  fontSize: '2rem', // Massive font for premium app feel
+                  fontSize: '1.6rem', // Smaller manageable font
                   fontWeight: '700',
                   color: location.pathname === link.href ? '#8b5cf6' : 'rgba(255,255,255,0.8)',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease',
                   animation: `slideIn 0.4s ease-out forwards ${index * 0.05}s`,
-                  opacity: 0 // Start hidden for animation
+                  opacity: 0
                 }}
               >
                 {link.name}
@@ -293,23 +295,23 @@ const Navbar = () => {
           </div>
 
           {/* Footer of Modal */}
-          <div style={{ padding: '2rem', width: '100%' }}>
+          <div style={{ padding: '1.5rem', width: '100%' }}>
             <Link 
               to="/contact" 
               onClick={() => setIsMenuOpen(false)}
               className="btn cta-btn"
               style={{ 
                 width: '100%', 
-                padding: '1.2rem', 
-                fontSize: '1.1rem',
-                borderRadius: '16px',
+                padding: '1rem', 
+                fontSize: '1rem',
+                borderRadius: '12px',
                 color: 'white',
                 display: 'flex',
                 justifyContent: 'center',
                 gap: '0.5rem'
               }}
             >
-              <Sparkles size={20} />
+              <Sparkles size={18} />
               ابدأ مشروعك
             </Link>
           </div>
