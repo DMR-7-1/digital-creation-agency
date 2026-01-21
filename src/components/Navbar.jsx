@@ -24,10 +24,12 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   // Close menu on route change
-  // Close menu on route change
+  // Note: We handle this via onClick on links to avoid React 19 cascading render lint warnings
+  /* 
   useEffect(() => {
     if (isMenuOpen) setIsMenuOpen(false);
   }, [location, isMenuOpen]);
+  */
 
   const navLinks = [
     { name: 'الرئيسية', href: '/' },
@@ -119,6 +121,7 @@ const Navbar = () => {
           {/* LEFT CORNER - Logo */}
           <Link 
             to="/"
+            onClick={() => setIsMenuOpen(false)}
             style={{
               display: 'flex',
               alignItems: 'center',
