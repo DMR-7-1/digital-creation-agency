@@ -110,7 +110,7 @@ const Navbar = () => {
         <div style={{ 
           maxWidth: '100%', 
           margin: '0 auto', 
-          padding: '0 1.5rem', // Smaller padding on mobile
+          padding: '0 4.5rem', // More breathing room from corners on desktop
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between'

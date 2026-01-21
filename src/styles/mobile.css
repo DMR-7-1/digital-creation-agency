@@ -397,12 +397,18 @@
   
   /* 3. Links Row - Full Width, Fixed (No Scroll) */
   .desktop-menu {
+  /* Override Navbar container padding for mobile */
+  nav > div {
+    padding: 0 1rem !important;
+  }
+
+  .desktop-menu {
     display: flex !important;
     width: 100% !important;
-    justify-content: space-between !important;
+    justify-content: center !important; /* Centered links */
     align-items: center !important;
-    gap: 0 !important;
-    padding: 0 0.5rem !important;
+    gap: 0.8rem !important; /* Closer but not too close */
+    padding: 0 !important;
     margin: 0 !important;
     border: none !important;
   }
