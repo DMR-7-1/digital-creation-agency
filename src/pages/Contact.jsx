@@ -6,7 +6,7 @@ import { Send, MessageCircle, MapPin, Phone, Mail, Loader, CheckCircle, Sparkles
 const WEB3FORMS_ACCESS_KEY = 'ac9c514d-d0d1-4746-90db-01538d0d2af5';
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '', type: 'website', message: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', type: 'website', message: '' });
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,7 +27,6 @@ const ContactPage = () => {
           subject: `طلب جديد من ${formData.name} - ${formData.type}`,
           from_name: 'Digital Creation Website',
           name: formData.name,
-          email: formData.email || 'لم يحدد',
           phone: formData.phone,
           service_type: formData.type,
           message: formData.message || 'لم يتم إضافة رسالة'
@@ -38,7 +37,7 @@ const ContactPage = () => {
 
       if (result.success) {
         setStatus('success');
-        setFormData({ name: '', phone: '', email: '', type: 'website', message: '' });
+        setFormData({ name: '', phone: '', type: 'website', message: '' });
       } else {
         setStatus('error');
       }

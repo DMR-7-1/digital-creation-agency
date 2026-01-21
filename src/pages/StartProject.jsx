@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const WEB3FORMS_ACCESS_KEY = 'ac9c514d-d0d1-4746-90db-01538d0d2af5';
 
 const StartProject = () => {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '', type: 'website', message: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', type: 'website', message: '' });
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,7 +27,6 @@ const StartProject = () => {
           subject: `طلب مشروع جديد من ${formData.name} - ${formData.type}`,
           from_name: 'Digital Creation Website',
           name: formData.name,
-          email: formData.email || 'لم يحدد',
           phone: formData.phone,
           service_type: formData.type,
           message: formData.message || 'لم يتم إضافة رسالة'
@@ -38,7 +37,7 @@ const StartProject = () => {
 
       if (result.success) {
         setStatus('success');
-        setFormData({ name: '', phone: '', email: '', type: 'website', message: '' });
+        setFormData({ name: '', phone: '', type: 'website', message: '' });
       } else {
         setStatus('error');
       }
@@ -117,27 +116,6 @@ const StartProject = () => {
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
-                <div style={{ display: 'grid', gap: '0.5rem' }}>
-                  <label style={{ fontSize: '0.9rem', fontWeight: '600' }}>البريد الإلكتروني</label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    style={{ 
-                      background: 'rgba(255,255,255,0.05)', 
-                      border: '1px solid var(--glass-border)', 
-                      padding: '1rem', 
-                      borderRadius: '0.5rem',
-                      color: 'white',
-                      fontFamily: 'inherit',
-                      direction: 'ltr',
-                      textAlign: 'right'
-                    }}
-                    placeholder="example@email.com"
-                  />
-                </div>
-                
                 <div style={{ display: 'grid', gap: '0.5rem' }}>
                   <label style={{ fontSize: '0.9rem', fontWeight: '600' }}>نوع المشروع</label>
                   <select 
