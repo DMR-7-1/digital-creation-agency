@@ -35,7 +35,7 @@ const Footer = () => {
           
           {/* Column 1: Brand */}
           <div>
-            <img src={logoFull} alt="Digital Creation" style={{ height: '40px', marginBottom: '1.5rem' }} />
+            <img src={logoFull} alt="Digital Creation" style={{ height: '80px', marginBottom: '1.5rem', width: 'auto' }} />
             <p style={{ fontSize: '0.95rem', opacity: 0.7, lineHeight: '1.8', marginBottom: '1.5rem' }}>
               نحول رؤيتك الرقمية إلى واقع ملموس. وكالة جزائرية رائدة في تطوير الويب والتصميم الإبداعي.
             </p>
