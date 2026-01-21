@@ -131,24 +131,62 @@ const Portfolio = () => {
                   <div
                     style={{
                       display: "flex",
-                      gap: "0.75rem",
+                      gap: "0.5rem",
                       flexWrap: "wrap",
+                      marginTop: "0.5rem" 
                     }}
                   >
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        style={{
-                          padding: "0.4rem 0.9rem",
-                          background: "rgba(139, 92, 246, 0.15)",
-                          borderRadius: "6px",
-                          fontSize: "0.85rem",
-                          border: "1px solid rgba(139, 92, 246, 0.3)",
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    {project.tech.map((tech, i) => {
+                      // Simple mapping for Devicons
+                      const iconMap = {
+                        'React': 'react/react-original',
+                        'Node.js': 'nodejs/nodejs-original',
+                        'Vue.js': 'vuejs/vuejs-original',
+                        'Next.js': 'nextjs/nextjs-original',
+                        'Python': 'python/python-original',
+                        'Express': 'express/express-original',
+                        'MongoDB': 'mongodb/mongodb-original',
+                        'PostgreSQL': 'postgresql/postgresql-original',
+                        'Firebase': 'firebase/firebase-plain',
+                        'Tailwind': 'tailwindcss/tailwindcss-original',
+                        'D3.js': 'd3js/d3js-original',
+                        // Map similar/aliases
+                        'React Native': 'react/react-original',
+                        'Stripe': 'stripe/stripe-original', 
+                        'Supabase': 'supabase/supabase-original',
+                        'Maps API': 'google/google-original'
+                      };
+
+                      // Handle specific known URLs if needed, or build devicon URL
+                      const iconPath = iconMap[tech];
+                      
+                      if (iconPath) {
+                        return (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }} title={tech}>
+                             <img 
+                               src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} 
+                               alt={tech}
+                               style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                               onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = tech; }} 
+                             />
+                          </div>
+                        );
+                      }
+                      
+                      // Fallback for unmapped items (Stripe/Maps if map fails or others)
+                      return (
+                         <span
+                          key={i}
+                          style={{
+                            fontSize: "0.7rem",
+                            color: "var(--color-primary)",
+                            fontWeight: "600"
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
