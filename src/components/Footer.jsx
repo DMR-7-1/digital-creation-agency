@@ -64,11 +64,11 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'flex-start', gap: '0.75rem', opacity: 0.8 }}>
                 <MapPin size={18} style={{ color: '#8b5cf6', marginTop: '4px' }} />
-                <span>الجزائر العاصمة، الجزائر</span>
+                <span>باتنة، الجزائر</span>
               </li>
               <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem', opacity: 0.8 }}>
                 <Phone size={18} style={{ color: '#8b5cf6' }} />
-                <span dir="ltr">+213 555 123 456</span>
+                <span dir="ltr">0770 78 44 04 / 0652 49 41 59</span>
               </li>
               <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem', opacity: 0.8 }}>
                 <Mail size={18} style={{ color: '#8b5cf6' }} />
