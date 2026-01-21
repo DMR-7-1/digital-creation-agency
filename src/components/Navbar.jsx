@@ -24,7 +24,10 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   // Close menu on route change
-  useEffect(() => setIsMenuOpen(false), [location]);
+  // Close menu on route change
+  useEffect(() => {
+    if (isMenuOpen) setIsMenuOpen(false);
+  }, [location, isMenuOpen]);
 
   const navLinks = [
     { name: 'الرئيسية', href: '/' },
