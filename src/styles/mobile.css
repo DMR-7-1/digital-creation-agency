@@ -294,6 +294,11 @@
     transform: translateX(50%) !important; /* Center the badge */
   }
 
+  /* Make the 3rd card (Business) full width since it's alone */
+  .pricing-grid-system > div:nth-child(3) {
+    grid-column: span 2 !important;
+  }
+
   /* ========================================
      8. SECTOR CARDS: Compact
      ======================================== */
