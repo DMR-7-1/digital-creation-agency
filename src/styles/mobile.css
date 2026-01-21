@@ -111,7 +111,6 @@
      ======================================== */
   .services-grid-system,
   .portfolio-grid-system,
-  .pricing-grid-system,
   .sectors-grid,
   div[style*="display: grid"]:not(.services-home-grid),
   div[style*="grid-template-columns"]:not(.services-home-grid) {
@@ -242,20 +241,57 @@
   /* ========================================
      7. PRICING: Compact Cards
      ======================================== */
+  /* ========================================
+     7. PRICING: Compact 2x2 Grid (User Request)
+     ======================================== */
+  .pricing-grid-system {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
   .pricing-grid-system > div {
-    padding: 1.25rem !important;
+    padding: 1rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    text-align: center !important;
   }
 
   .pricing-grid-system h3 {
-    font-size: 1.25rem !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
+  .pricing-grid-system div[style*="font-size: 1.5rem"] {
+    font-size: 1rem !important; /* Smaller price text */
+    margin-bottom: 1rem !important;
+  }
+
+  /* Hide features list on mobile 2x2 view to "short the scroll" - Smart Way? 
+     Or just make text smaller? User said "shot the scroll".
+     If I hide features, it fits nicely. I'll hide the list bullets. 
+     Or limits to 3 items?
+     I'll try keeping them but very small.
+  */
   .pricing-grid-system ul {
-    font-size: 0.85rem !important;
+    font-size: 0.75rem !important;
+    padding: 0 !important;
+    margin-bottom: 1rem !important;
   }
 
   .pricing-grid-system li {
-    margin-bottom: 0.4rem !important;
+    margin-bottom: 0.25rem !important;
+    justify-content: center !important; /* Center align items */
+  }
+
+  /* Recommended Badge - Smaller */
+  .pricing-grid-system div[style*="position: absolute"] {
+    font-size: 0.6rem !important;
+    padding: 0.2rem 0.6rem !important;
+    top: -10px !important;
+    right: 50% !important;
+    transform: translateX(50%) !important; /* Center the badge */
   }
 
   /* ========================================
