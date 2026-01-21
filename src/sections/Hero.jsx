@@ -78,7 +78,7 @@ const Hero = () => {
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
+            <Link to="/start-project" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
               ابدأ مشروعك الآن
               <ArrowLeft size={20} style={{ marginRight: '10px' }} />
             </Link>

@@ -5,8 +5,8 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import About from './pages/About';
-import Blog from './pages/Blog';
 import Portfolio from './pages/Portfolio';
+import StartProject from './pages/StartProject';
 
 import Footer from './components/Footer';
 
@@ -30,9 +30,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/start-project" element={<StartProject />} />
           </Routes>
         </main>
         <Footer />

@@ -93,7 +93,18 @@ const ContactPage = () => {
           </div>
 
           {/* Form Side */}
-          <div className="glass-panel" style={{ padding: '3rem' }}>
+          <div className="contact-form-container glass-panel" style={{ padding: '3rem' }}>
+            {/* Mobile CTA - Visible only on mobile via CSS */}
+            <div className="contact-mobile-cta" style={{ display: 'none', textAlign: 'center', padding: '2rem 0' }}>
+               <h3 style={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>جاهز لبدء مشروعك؟</h3>
+               <Link to="/start-project" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '1.1rem', padding: '1rem' }}>
+                 <Sparkles size={20} style={{ marginLeft: '10px' }} />
+                 املأ استمارة المشروع
+               </Link>
+            </div>
+
+            {/* Desktop Form Content - Hidden on mobile via CSS */}
+            <div className="contact-desktop-content">
             {status === 'success' ? (
               <div style={{ textAlign: 'center', padding: '2rem' }}>
                 <CheckCircle size={64} color="#34D399" style={{ marginBottom: '1.5rem' }} />
@@ -144,8 +155,9 @@ const ContactPage = () => {
                 </button>
               </form>
             )}
+            </div>
           </div>
-
+ 
         </div>
       </div>
 

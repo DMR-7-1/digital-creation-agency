@@ -30,7 +30,6 @@ const Navbar = () => {
     { name: 'الرئيسية', href: '/' },
     { name: 'خدماتنا', href: '/services' },
     { name: 'من نحن', href: '/about' },
-    { name: 'المدونة', href: '/blog' },
     { name: 'أعمالنا', href: '/portfolio' },
     { name: 'تواصل معنا', href: '/contact' }
   ];
@@ -175,7 +174,7 @@ const Navbar = () => {
           {/* RIGHT CORNER - CTA & Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <Link 
-              to="/contact" 
+              to="/start-project" 
               className="btn cta-btn desktop-cta"
               style={{ 
                 display: 'none',
@@ -292,7 +291,7 @@ const Navbar = () => {
           {/* Footer of Modal */}
           <div style={{ padding: '2rem', width: '100%' }}>
             <Link 
-              to="/contact" 
+              to="/start-project" 
               onClick={() => setIsMenuOpen(false)}
               className="btn cta-btn"
               style={{ 

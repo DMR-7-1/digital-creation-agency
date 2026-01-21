@@ -54,7 +54,6 @@ const Footer = () => {
               <FooterLink to="/services" text="خدماتنا" />
               <FooterLink to="/portfolio" text="أعمالنا" />
               <FooterLink to="/about" text="من نحن" />
-              <FooterLink to="/blog" text="المدونة" />
             </ul>
           </div>
 

@@ -14,6 +14,15 @@
     display: none !important;
   }
 
+  /* Contact Page Mobile Logic */
+  .contact-desktop-content {
+    display: none !important;
+  }
+  .contact-mobile-cta {
+    display: block !important;
+  }
+  /* Remove padding from form container on mobile to be cleaner? Or keep glass effect? Keep glass. */
+
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
