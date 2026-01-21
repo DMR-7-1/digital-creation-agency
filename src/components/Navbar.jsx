@@ -134,7 +134,9 @@ const Navbar = () => {
                 transition: 'all 0.4s ease',
                 filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',
                 marginTop: '-40px',
-                marginBottom: '-40px'
+                marginBottom: '-40px',
+                transform: 'scale(1.4)', // Make logo bigger without affecting layout frame
+                transformOrigin: 'center'
               }} 
             />
           </Link>
