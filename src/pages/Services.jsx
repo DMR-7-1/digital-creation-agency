@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Globe, Server, Shield, Zap, Check, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Services.css';
@@ -43,23 +43,23 @@ const Services = () => {
         
         {/* Header */}
         <div className="services-header">
-          <motion.div 
+          <Motion.div 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="services-tag"
           >
             حلولنا التقنية
-          </motion.div>
-          <motion.h1 
+          </Motion.div>
+          <Motion.h1 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="services-title"
           >
             نبتكر أدوات <span className="text-gradient">تصنع الفارق</span>
-          </motion.h1>
-          <motion.p 
+          </Motion.h1>
+          <Motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -67,11 +67,11 @@ const Services = () => {
             className="services-intro"
           >
             استثمر في تكنولوجيا تمنحك الأسبقية. من المواقع السريعة إلى الأنظمة المعقدة، نقدم لك بنية تحتية رقمية صلبة، آمنة، وقابلة للتوسع.
-          </motion.p>
+          </Motion.p>
         </div>
 
         {/* Tech Grid */}
-        <motion.div 
+        <Motion.div 
           className="features-grid"
           variants={containerVariants}
           initial="hidden"
@@ -93,20 +93,20 @@ const Services = () => {
             title="أنظمة قابلة للتوسع (Scalability)"
             desc="لا نعطيك حلاً مؤقتاً، بل نبني نظاماً ينمو معك. أضف ميزات جديدة وتوسع في أي وقت دون هدم القديم."
           />
-        </motion.div>
+        </Motion.div>
 
         {/* Pricing */}
         <div style={{ marginTop: '6rem' }}>
-           <motion.h2 
+           <Motion.h2 
              initial={{ opacity: 0 }}
              whileInView={{ opacity: 1 }}
              viewport={{ once: true }}
              className="pricing-section-title"
            >
              باقات تناسب طموحك
-           </motion.h2>
+           </Motion.h2>
            
-           <motion.div 
+           <Motion.div 
              className="pricing-grid"
              variants={containerVariants}
              initial="hidden"
@@ -114,7 +114,7 @@ const Services = () => {
              viewport={{ once: true }}
            >
              {plans.map((plan, idx) => (
-               <motion.div 
+               <Motion.div 
                  key={idx} 
                  variants={itemVariants}
                  className={`pricing-card ${plan.highlight ? 'highlight' : ''}`}
@@ -133,14 +133,14 @@ const Services = () => {
                  <Link to="/contact" className={`btn-base ${plan.highlight ? 'btn-primary' : 'btn-glass'}`} style={{ width: '100%' }}>
                    احجز استشارتك
                  </Link>
-               </motion.div>
+               </Motion.div>
              ))}
-           </motion.div>
+           </Motion.div>
         </div>
 
         {/* Sectors */}
         <div className="sectors-wrapper">
-          <motion.h2 
+          <Motion.h2 
             className="services-title" 
             style={{ textAlign: 'center', marginBottom: '3rem' }}
             initial={{ opacity: 0 }}
@@ -148,9 +148,9 @@ const Services = () => {
             viewport={{ once: true }}
           >
             خبرات ميدانية في السوق الجزائري 🇩🇿
-          </motion.h2>
+          </Motion.h2>
           
-          <motion.div 
+          <Motion.div 
             className="sectors-grid"
             variants={containerVariants}
             initial="hidden"
@@ -175,7 +175,7 @@ const Services = () => {
               desc="لديك فكرة SaaS أو منصة؟ نحن شريكك التقني لتطوير MVP (منتج أولي) قابل للاستثمار والمنافسة."
               features={['تطوير تطبيقات الويب', 'هندسة برمجيات', 'استشارات تقنية استراتيحية']}
             />
-          </motion.div>
+          </Motion.div>
         </div>
 
       </div>
@@ -184,17 +184,17 @@ const Services = () => {
 };
 
 const FeatureCard = ({ icon, title, desc }) => (
-  <motion.div className="feature-card" variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
+  <Motion.div className="feature-card" variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
     <div className="feature-icon-box">{icon}</div>
     <div className="feature-content">
       <h3>{title}</h3>
       <p>{desc}</p>
     </div>
-  </motion.div>
+  </Motion.div>
 );
 
 const SectorCard = ({ icon, title, desc, features }) => (
-  <motion.div className="sector-card-new" variants={{ hidden: { scale: 0.95, opacity: 0 }, visible: { scale: 1, opacity: 1 } }}>
+  <Motion.div className="sector-card-new" variants={{ hidden: { scale: 0.95, opacity: 0 }, visible: { scale: 1, opacity: 1 } }}>
     <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{icon}</div>
     <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{title}</h3>
     <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', lineHeight: '1.6' }}>{desc}</p>
@@ -206,7 +206,7 @@ const SectorCard = ({ icon, title, desc, features }) => (
         </li>
       ))}
     </ul>
-  </motion.div>
+  </Motion.div>
 );
 
 export default Services;

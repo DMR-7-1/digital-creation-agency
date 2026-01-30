@@ -20,23 +20,25 @@
 .mesh-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(60px); /* Reduced from 80px for performance */
   opacity: 0.4;
+  transform: translateZ(0); /* Force GPU */
+  will-change: transform;
 }
 
 .mesh-blob-1 {
   top: -10%;
   right: -5%;
-  width: 50vw;
-  height: 50vw;
+  width: 45vw; /* Slightly smaller */
+  height: 45vw;
   background: var(--primary-glow);
 }
 
 .mesh-blob-2 {
   bottom: -10%;
   left: -5%;
-  width: 60vw;
-  height: 60vw;
+  width: 55vw; /* Slightly smaller */
+  height: 55vw;
   background: var(--secondary-glow);
 }
 
@@ -141,6 +143,7 @@
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(var(--backdrop-blur));
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .hero-stats-card {
