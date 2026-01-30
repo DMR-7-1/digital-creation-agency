@@ -1,149 +1,199 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { ExternalLink } from "lucide-react";
 
 const Portfolio = () => {
   const projects = [
     {
       title: "متجر إلكتروني للأزياء",
       category: "E-Commerce",
-      description: "منصة بيع متكاملة مع نظام إدارة المخزون ودفع إلكتروني آمن.",
+      description: "منصة بيع متكاملة مع نظام إدارة المخزون ودفع آمن",
       tech: ["React", "Node.js", "Stripe"],
-      image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
     },
     {
       title: "نظام إدارة مطاعم",
       category: "Web App",
-      description: "تطبيق ويب لإدارة الطلبات، الموظفين، والمخزون في الوقت الفعلي.",
-      tech: ["Vue.js", "Firebase", "Realtime DB"],
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+      description: "تطبيق ويب لإدارة الطلبات والموظفين والمخزون",
+      tech: ["Vue.js", "Firebase", "Tailwind"],
+      image:
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
     },
     {
       title: "موقع شركة عقارية",
       category: "Website",
-      description: "موقع تعريفي احترافي مع نظام فلترة وعرض للعقارات.",
+      description: "موقع تعريفي احترافي مع نظام عرض العقارات",
       tech: ["Next.js", "Supabase", "Maps API"],
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
     },
     {
-      title: "منصة تعليمية (LMS)",
+      title: "منصة تعليمية",
       category: "Platform",
-      description: "منصة تعليم عن بعد وتدريب مع نظام الدروس والاختبارات.",
+      description: "منصة تعليم عن بعد مع نظام الدروس والاختبارات",
       tech: ["React", "Express", "MongoDB"],
-      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=600&fit=crop",
     },
     {
-      title: "تطبيق حجوزات طبية",
+      title: "تطبيق حجز مواعيد",
       category: "Booking System",
-      description: "نظام حجز مواعيد للعيادات الطبية مع تنبيهات SMS.",
+      description: "نظام حجز مواعيد للعيادات والصالونات",
       tech: ["React Native", "Node.js", "PostgreSQL"],
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&h=600&fit=crop",
     },
     {
-      title: "لوحة تحكم (Analytics)",
+      title: "لوحة تحكم تحليلات",
       category: "Dashboard",
-      description: "لوحة تحكم ذكية لتحليل البيانات وإنشاء تقارير مفصلة للمدراء.",
+      description: "لوحة تحكم لتحليل البيانات وإنشاء التقارير",
       tech: ["React", "D3.js", "Python"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
     },
   ];
 
   return (
-    <div className="section" style={{ paddingTop: 'calc(var(--header-height) + 4rem)' }}>
-      <div className="container">
-        
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-gradient"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", marginBottom: "1rem" }}
-          >
-            أعمالنا ومشاريعنا
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            style={{ fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto", color: "var(--text-muted)" }}
-          >
-            نفتخر بشراكتنا مع أكثر من 40 عميل لتحقيق نجاحات رقمية حقيقية.
-          </motion.p>
-        </div>
-
-        {/* Grid */}
-        <div className="portfolio-grid-system">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="glass-panel"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: index * 0.1 }}
-              style={{ padding: 0, overflow: "hidden", cursor: "pointer" }}
+    <div className="page-wrapper" style={{ paddingTop: "120px", minHeight: "100vh" }}>
+      <section className="section">
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>أعمالنا</h1>
+            <p
+              style={{
+                fontSize: "1.2rem",
+                maxWidth: "600px",
+                margin: "0 auto",
+              }}
             >
-              {/* Image Area */}
+              مشاريع ناجحة ساعدنا عملاءنا على تحقيقها
+            </p>
+          </div>
+
+          <div className="portfolio-grid-system">
+            {projects.map((project, index) => (
               <div
+                key={index}
+                className="glass-panel"
                 style={{
-                  height: "240px",
-                  background: `linear-gradient(to top, rgba(2,6,23,0.8), transparent), url(${project.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  position: "relative",
-                  transition: "transform 0.5s ease"
+                  padding: 0,
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
                 }}
-                className="project-image"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-10px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
               >
-                <div style={{
-                  position: "absolute",
-                  top: "1rem",
-                  right: "1rem",
-                  background: "rgba(6, 182, 212, 0.9)", // Primary
-                  color: "#000",
-                  padding: "0.25rem 0.75rem",
-                  borderRadius: "100px",
-                  fontSize: "0.75rem",
-                  fontWeight: "700"
-                }}>
-                  {project.category}
+                <div
+                  style={{
+                    height: "220px",
+                    background: `linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3)), url(${project.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    position: "relative",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "1rem",
+                      right: "1rem",
+                      background: "rgba(17, 24, 39, 0.9)",
+                      padding: "0.5rem 1rem",
+                      borderRadius: "20px",
+                      fontSize: "0.85rem",
+                      backdropFilter: "blur(10px)",
+                    }}
+                  >
+                    {project.category}
+                  </div>
+                </div>
+
+                <div style={{ padding: "2rem" }}>
+                  <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
+                    {project.title}
+                  </h3>
+
+                  <p
+                    style={{
+                      marginBottom: "1.5rem",
+                      lineHeight: "1.7",
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
+                    {project.description}
+                  </p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "0.5rem",
+                      flexWrap: "wrap",
+                      marginTop: "0.5rem" 
+                    }}
+                  >
+                    {project.tech.map((tech, i) => {
+                      // Simple mapping for Devicons
+                      const iconMap = {
+                        'React': 'react/react-original',
+                        'Node.js': 'nodejs/nodejs-original',
+                        'Vue.js': 'vuejs/vuejs-original',
+                        'Next.js': 'nextjs/nextjs-original',
+                        'Python': 'python/python-original',
+                        'Express': 'express/express-original',
+                        'MongoDB': 'mongodb/mongodb-original',
+                        'PostgreSQL': 'postgresql/postgresql-original',
+                        'Firebase': 'firebase/firebase-plain',
+                        'Tailwind': 'tailwindcss/tailwindcss-original',
+                        'D3.js': 'd3js/d3js-original',
+                        // Map similar/aliases
+                        'React Native': 'react/react-original',
+                        'Stripe': 'stripe/stripe-original', 
+                        'Supabase': 'supabase/supabase-original',
+                        'Maps API': 'google/google-original'
+                      };
+
+                      // Handle specific known URLs if needed, or build devicon URL
+                      const iconPath = iconMap[tech];
+                      
+                      if (iconPath) {
+                        return (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }} title={tech}>
+                             <img 
+                               src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} 
+                               alt={tech}
+                               style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                               onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = tech; }} 
+                             />
+                          </div>
+                        );
+                      }
+                      
+                      // Fallback for unmapped items (Stripe/Maps if map fails or others)
+                      return (
+                         <span
+                          key={i}
+                          style={{
+                            fontSize: "0.7rem",
+                            color: "var(--color-primary)",
+                            fontWeight: "600"
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div style={{ padding: "1.5rem 2rem 2rem" }}>
-                <h3 style={{ fontSize: "1.35rem", marginBottom: "0.75rem" }}>
-                  {project.title}
-                </h3>
-                <p style={{ marginBottom: "1.5rem", lineHeight: "1.6", fontSize: "0.95rem", color: "var(--text-muted)" }}>
-                  {project.description}
-                </p>
-
-                {/* Tech Tags */}
-                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                  {project.tech.map((tech, i) => (
-                     <span
-                      key={i}
-                      style={{
-                        fontSize: "0.75rem",
-                        background: "rgba(255,255,255,0.05)",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        padding: "0.25rem 0.75rem",
-                        borderRadius: "20px",
-                        color: "var(--text-dim)"
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

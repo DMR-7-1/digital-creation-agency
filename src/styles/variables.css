@@ -1,49 +1,32 @@
 /* Google Fonts: Cairo (Arabic) & Inter (English) */
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;600;700&display=swap");
 
 :root {
-  /* --- Core Palette: "Deep Space Cyberpunk" --- */
-  --bg-deep: #020617;     /* Darkest depth */
-  --bg-surface: #0f172a;  /* Card surface */
-  --bg-elevated: #1e293b; /* Hover states */
+  /* Brand Colors */
+  --color-bg: #030712; /* Rich dark background */
+  --color-surface: #111827;
+  --color-primary: #06b6d4; /* Cyan/Teal - Tech/Modern */
+  --color-secondary: #8b5cf6; /* Violet - Creative/'Vibe' */
+  --color-accent: #f59e0b; /* Amber - Alerts/Attention */
 
-  /* --- Brand Neon --- */
-  --primary: #06b6d4;      /* Cyan - Future/Tech */
-  --primary-glow: rgba(6, 182, 212, 0.5);
-  
-  --secondary: #8b5cf6;    /* Violet - Magic/Creative */
-  --secondary-glow: rgba(139, 92, 246, 0.5);
-  
-  --accent: #f59e0b;       /* Amber - Action */
-  
-  /* --- Gradients --- */
-  --grad-main: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  --grad-dark: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-surface) 100%);
-  --grad-glass: linear-gradient(120deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+  /* Text */
+  --color-text-main: #f9fafb;
+  --color-text-muted: #9ca3af;
+  --color-text-inverted: #111827;
 
-  /* --- Text --- */
-  --text-main: #f8fafc;        /* Almost white */
-  --text-muted: #94a3b8;       /* Blue-grey for readability */
-  --text-dim: #64748b;         /* Deeper metadata */
+  /* Glassmorphism */
+  --glass-bg: rgba(17, 24, 39, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --backdrop-blur: 12px;
 
-  /* --- Glassmorphism System --- */
-  --glass-bg: rgba(15, 23, 42, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08); /* Subtle crisp edge */
-  --glass-highlight: rgba(255, 255, 255, 0.15); /* Top lip highlight */
-  --backdrop-blur: 16px;
-  
-  /* --- Shadows & Glows --- */
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --shadow-neon: 0 0 20px -5px var(--primary-glow);
-  
-  /* --- Layout & Spacing --- */
-  --container-width: 1280px;
-  --header-height: 80px;
-  --radius-lg: 24px;
-  --radius-md: 12px;
-  
-  /* --- Typography --- */
-  --font-ar: "Cairo", sans-serif;
-  --font-en: "Inter", sans-serif;
+  /* Spacing */
+  --spacing-container: 1280px;
+  --spacing-section: 6rem;
+
+  /* Typography */
+  --font-arabic: "Cairo", sans-serif;
+  --font-english: "Inter", sans-serif;
 }
+
+/* Base resets handled in global.css, these are valid variables for usage */
