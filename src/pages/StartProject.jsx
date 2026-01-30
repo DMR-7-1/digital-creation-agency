@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Send, CheckCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -48,18 +49,31 @@ const StartProject = () => {
   };
 
   return (
-    <div className="section" style={{ paddingTop: '8rem', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+    <div className="section" style={{ paddingTop: 'calc(var(--header-height) + 4rem)', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div className="container" style={{ maxWidth: '800px' }}>
         
         <div style={{ marginBottom: '2rem' }}>
-          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', marginBottom: '2rem' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', textDecoration: 'none', marginBottom: '2rem', transition: 'color 0.2s' }}>
             <ArrowRight size={20} />
             عودة للرئيسية
           </Link>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center' }}>🚀 ابدأ مشروعك الآن</h1>
-          <p style={{ textAlign: 'center', opacity: 0.8, maxWidth: '500px', margin: '0 auto 3rem' }}>
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1rem', textAlign: 'center' }}
+          >
+            🚀 ابدأ مشروعك الآن
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            style={{ textAlign: 'center', opacity: 0.8, maxWidth: '500px', margin: '0 auto 3rem', color: 'var(--text-muted)' }}
+          >
             أملأ النموذج أدناه وسنقوم بدراسة طلبك والرد عليك بعرض مفصل في أقل من 24 ساعة.
-          </p>
+          </motion.p>
         </div>
 
         <div className="glass-panel" style={{ padding: '3rem', maxWidth: '700px', margin: '0 auto' }}>

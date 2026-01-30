@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Send, MessageCircle, MapPin, Phone, Mail, Loader, CheckCircle, Sparkles } from 'lucide-react';
 
@@ -48,14 +49,27 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="section" style={{ paddingTop: '8rem' }}>
+    <div className="section" style={{ paddingTop: 'calc(var(--header-height) + 4rem)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>📩 تواصل معنا الآن</h1>
-          <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ fontSize: '3rem', marginBottom: '1rem' }}
+          >
+            📩 تواصل معنا الآن
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto', color: 'var(--text-muted)' }}
+          >
             احصل على <strong style={{ color: 'var(--color-primary)' }}>استشارة مجانية + اقتراح تقني مناسب لمشروعك</strong>
             <br/>نرد عليك في أقل من 5 دقائق ⚡
-          </p>
+          </motion.p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem' }}>

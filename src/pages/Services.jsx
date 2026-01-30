@@ -1,161 +1,181 @@
 import React from 'react';
-import { Globe, ShoppingBag, Terminal, Database, Check, Server, Shield, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Globe, Server, Shield, Zap, Check, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import './Services.css';
 
-const ServicesPage = () => {
+const Services = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
   const plans = [
     {
       name: 'Start',
       price: 'تواصل معنا',
-      features: ['موقع تعريفي (Landing Page)', 'دومين استضافة مجانية', 'تصميم متجاوب', 'SEO أساسي']
+      features: ['واجهة تعريفية (Landing Page)', 'استضافة + اسم نطاق (Domain)', 'تصميم عصري متجاوب', 'تهيئة لمحركات البحث (SEO)']
     },
     {
       name: 'Pro',
-      price: 'الأكثر طلبًا',
-      features: ['موقع كامل (Multi-page)', 'لوحة تحكم (CMS)', 'نظام لغات (عربي/فرنسي)', 'سرعة فائقة', 'ربط مع Social Media'],
+      price: 'الأكثر طلباً',
+      features: ['موقع ديناميكي متكامل', 'لوحة تحكم سهلة (CMS)', 'ثنائي اللغة (عربي/فرنسي)', 'أداء فائق السرعة', 'ربط بمنصات التواصل'],
       highlight: true
     },
     {
       name: 'Business',
-      price: 'للشركات',
-      features: ['نظام مخصص (Custom System)', 'قاعدة بيانات متقدمة', 'API Integration', 'دعم فني 24/7', 'حماية عالية']
+      price: 'حلول الشركات',
+      features: ['أنظمة مخصصة (Custom Systems)', 'قواعد بيانات ضخمة', 'ربط برمجي (API Integration)', 'دعم فني عالي الأولوية', 'أمان سيبراني متقدم']
     }
   ];
 
   return (
-    <div className="section" style={{ paddingTop: '8rem' }}>
+    <div className="section" style={{ paddingTop: 'calc(var(--header-height) + 4rem)' }}>
       <div className="container">
         
-        {/* Page Header */}
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <span style={{ color: 'var(--color-primary)', fontWeight: '700', letterSpacing: '2px' }}>خدماتنا</span>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1.5rem' }}>
-            حوّل فكرتك إلى واقع رقمي مُبهر ✨
-          </h1>
-          <p style={{ maxWidth: '700px', margin: '0 auto', fontSize: '1.2rem', color: 'var(--color-text-muted)' }}>
-            نصمم لك حلولاً رقمية تنقل عملك إلى المستوى التالي.<br/>
-            <strong style={{ color: 'var(--color-primary)' }}>مواقع سريعة • أنظمة ذكية • تجربة مستخدم استثنائية</strong>
-          </p>
+        {/* Header */}
+        <div className="services-header">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="services-tag"
+          >
+            حلولنا التقنية
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="services-title"
+          >
+            نبتكر أدوات <span className="text-gradient">تصنع الفارق</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="services-intro"
+          >
+            استثمر في تكنولوجيا تمنحك الأسبقية. من المواقع السريعة إلى الأنظمة المعقدة، نقدم لك بنية تحتية رقمية صلبة، آمنة، وقابلة للتوسع.
+          </motion.p>
         </div>
 
-        {/* Technical Capabilities Grid */}
-        <div className="services-grid-system">
+        {/* Tech Grid */}
+        <motion.div 
+          className="features-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <FeatureCard 
             icon={<Zap size={32} color="#FBBF24" />}
-            title="أداء عالي (High Performance)"
-            desc="مواقعنا تحميلها أسرع بنسبة 90% من المواقع التقليدية بفضل تقنيات Single Page Application."
+            title="سرعة قياسية (High Performance)"
+            desc="نستخدم أحدث تقنيات React & Vite لضمان تحميل صفحاتك في أجزاء من الثانية، مما يرفع من تصدرك في Google."
           />
           <FeatureCard 
             icon={<Shield size={32} color="#34D399" />}
-            title="حماية وأمان"
-            desc="تشفير SSL، حماية من هجمات DDoS، ونسخ احتياطي يومي لبياناتك."
+            title="أمان وحماية بيانات"
+            desc="بروتوكولات حماية متقدمة، تشفير SSL، ونسخ احتياطي تلقائي لضمان استمرارية عملك دون قلق."
           />
           <FeatureCard 
             icon={<Server size={32} color="#60A5FA" />}
-            title="قابلة للتطوير (Scalable)"
-            desc="نظامك ينمو مع نمو شركتك. نستطيع إضافة ميزات جديدة في أي وقت بدون إعادة بناء النظام."
+            title="أنظمة قابلة للتوسع (Scalability)"
+            desc="لا نعطيك حلاً مؤقتاً، بل نبني نظاماً ينمو معك. أضف ميزات جديدة وتوسع في أي وقت دون هدم القديم."
           />
+        </motion.div>
+
+        {/* Pricing */}
+        <div style={{ marginTop: '6rem' }}>
+           <motion.h2 
+             initial={{ opacity: 0 }}
+             whileInView={{ opacity: 1 }}
+             viewport={{ once: true }}
+             className="pricing-section-title"
+           >
+             باقات تناسب طموحك
+           </motion.h2>
+           
+           <motion.div 
+             className="pricing-grid"
+             variants={containerVariants}
+             initial="hidden"
+             whileInView="visible"
+             viewport={{ once: true }}
+           >
+             {plans.map((plan, idx) => (
+               <motion.div 
+                 key={idx} 
+                 variants={itemVariants}
+                 className={`pricing-card ${plan.highlight ? 'highlight' : ''}`}
+               >
+                 {plan.highlight && <div className="pricing-badge">خيار الخبراء</div>}
+                 <h3 className="price-title">{plan.name}</h3>
+                 <div className="price-tag">{plan.price}</div>
+                 <ul className="features-list">
+                   {plan.features.map((f, i) => (
+                     <li key={i} className="feature-item">
+                       <Check size={18} color={plan.highlight ? 'var(--primary)' : 'var(--text-muted)'} />
+                       {f}
+                     </li>
+                   ))}
+                 </ul>
+                 <Link to="/contact" className={`btn-base ${plan.highlight ? 'btn-primary' : 'btn-glass'}`} style={{ width: '100%' }}>
+                   احجز استشارتك
+                 </Link>
+               </motion.div>
+             ))}
+           </motion.div>
         </div>
 
-        {/* Pricing/Packages */}
-        <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>باقات الخدمات</h2>
-        <div className="pricing-grid-system">
-          {plans.map((plan, idx) => (
-            <div key={idx} className="glass-panel" style={{ 
-              padding: '2.5rem', 
-              border: plan.highlight ? '1px solid var(--color-primary)' : '1px solid var(--glass-border)',
-              position: 'relative',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              {plan.highlight && (
-                <div style={{ 
-                  position: 'absolute', top: -12, right: 20, 
-                  background: 'var(--color-primary)', color: 'black', 
-                  padding: '0.25rem 1rem', borderRadius: '20px', fontWeight: 'bold', fontSize: '0.8rem' 
-                }}>
-                  RECOMMENDED
-                </div>
-              )}
-              <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{plan.name}</h3>
-              <div style={{ fontSize: '1.5rem', color: plan.highlight ? 'var(--color-primary)' : 'var(--color-text-muted)', marginBottom: '2rem' }}>
-                {plan.price}
-              </div>
-              <ul style={{ listStyle: 'none', marginBottom: '2rem', flex: 1 }}>
-                {plan.features.map((f, i) => (
-                  <li key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem', alignItems: 'center' }}>
-                    <Check size={18} color={plan.highlight ? 'var(--color-primary)' : 'gray'} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="/contact" className={`btn ${plan.highlight ? 'btn-primary' : 'btn-outline'}`} style={{ textAlign: 'center', justifyContent: 'center' }}>
-                طلب عرض سعر
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Sector-Specific Sections (from Ad Campaign) */}
-        <div style={{ marginTop: '8rem' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '4rem', fontSize: '2.5rem' }}>
-            خبرة في العمل مع السوق الجزائري 🇩🇿
-          </h2>
+        {/* Sectors */}
+        <div className="sectors-wrapper">
+          <motion.h2 
+            className="services-title" 
+            style={{ textAlign: 'center', marginBottom: '3rem' }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            خبرات ميدانية في السوق الجزائري 🇩🇿
+          </motion.h2>
           
-          <div className="sectors-grid services-grid-system">
-            {/* Companies */}
-            <div className="glass-panel sector-card">
-              <div>
-                <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>🏢 الشركات والمؤسسات</h3>
-                <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
-                  هل شركتك تحتاج موقع أو نظام يسهّل التسيير؟
-                </p>
-                <ul style={{ listStyle: 'none', display: 'grid', gap: '0.75rem' }}>
-                  <li>✔️ مواقع رسمية احترافية</li>
-                  <li>✔️ أنظمة داخلية (إدارة، موظفين، زبائن)</li>
-                  <li>✔️ حلول Web حسب الطلب</li>
-                </ul>
-                <p style={{ marginTop: '1.5rem', color: 'var(--color-primary)', fontWeight: 'bold' }}>
-                  🚀 تنظيم أفضل – صورة أقوى – وقت أقل ضائع
-                </p>
-              </div>
-            </div>
-
-            {/* Stores */}
-            <div className="glass-panel sector-card">
-              <div>
-                <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>🛒 المحلات والتجار</h3>
-                <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
-                  محلك جاهز… لكن هل هو حاضر رقميًا؟
-                </p>
-                <ul style={{ listStyle: 'none', display: 'grid', gap: '0.75rem' }}>
-                  <li>✔️ متاجر إلكترونية</li>
-                  <li>✔️ مواقع بيع احترافية</li>
-                  <li>✔️ أنظمة طلبات وتسيير</li>
-                </ul>
-                <p style={{ marginTop: '1.5rem', color: 'var(--color-primary)', fontWeight: 'bold' }}>
-                  بيع أسهل • ثقة أكبر • توسّع خارج منطقتك
-                </p>
-              </div>
-            </div>
-
-            {/* Startups */}
-            <div className="glass-panel sector-card">
-              <div>
-                <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>🚀 ستارتاب / مشاريع ناشئة</h3>
-                <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
-                  عندك فكرة؟ نحن نحوّلها إلى Web App حقيقي.
-                </p>
-                <ul style={{ listStyle: 'none', display: 'grid', gap: '0.75rem' }}>
-                  <li>💡 حلول تقنية ذكية</li>
-                  <li>⚙️ أنظمة قابلة للتطوير</li>
-                  <li>🎁 جلسة استشارة مجانية</li>
-                </ul>
-                <p style={{ marginTop: '1.5rem', color: 'var(--color-primary)', fontWeight: 'bold' }}>
-                  نرافقك من الفكرة → التصميم → التطوير → الإطلاق
-                </p>
-              </div>
-            </div>
-          </div>
+          <motion.div 
+            className="sectors-grid"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <SectorCard 
+              icon="🏢"
+              title="الشركات والمؤسسات"
+              desc="التحول الرقمي ليس رفاهية، بل ضرورة. نظم إدارتك، راقب موظفيك، وسهّل عملياتك بأنظمة ERP و CRM مخصصة."
+              features={['بوابات رقمية', 'أنظمة موارد بشرية', 'لوحات تحكم إدارية']}
+            />
+            <SectorCard 
+              icon="🛒"
+              title="التجارة الإلكترونية (E-com)"
+              desc="ضاعف مبيعاتك بمتجر إلكتروني احترافي مصمم للجزائريين. تجربة شراء سلسة، ودعم للدفع عند الاستلام."
+              features={['تصميم يرفع المبيعات', 'إدارة مخزون ذكية', 'ربط مع شركات التوصيل']}
+            />
+            <SectorCard 
+              icon="🚀"
+              title="رواد الأعمال (Startups)"
+              desc="لديك فكرة SaaS أو منصة؟ نحن شريكك التقني لتطوير MVP (منتج أولي) قابل للاستثمار والمنافسة."
+              features={['تطوير تطبيقات الويب', 'هندسة برمجيات', 'استشارات تقنية استراتيحية']}
+            />
+          </motion.div>
         </div>
 
       </div>
@@ -164,13 +184,29 @@ const ServicesPage = () => {
 };
 
 const FeatureCard = ({ icon, title, desc }) => (
-  <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-    <div className="glass-panel" style={{ padding: '1rem', borderRadius: '12px' }}>{icon}</div>
-    <div>
-      <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{title}</h3>
-      <p style={{ fontSize: '0.95rem' }}>{desc}</p>
+  <motion.div className="feature-card" variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
+    <div className="feature-icon-box">{icon}</div>
+    <div className="feature-content">
+      <h3>{title}</h3>
+      <p>{desc}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
-export default ServicesPage;
+const SectorCard = ({ icon, title, desc, features }) => (
+  <motion.div className="sector-card-new" variants={{ hidden: { scale: 0.95, opacity: 0 }, visible: { scale: 1, opacity: 1 } }}>
+    <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{icon}</div>
+    <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{title}</h3>
+    <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', lineHeight: '1.6' }}>{desc}</p>
+    <ul style={{ listStyle: 'none' }}>
+      {features.map((f, i) => (
+        <li key={i} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-dim)' }}>
+          <ArrowUpRight size={16} color="var(--primary)" />
+          {f}
+        </li>
+      ))}
+    </ul>
+  </motion.div>
+);
+
+export default Services;

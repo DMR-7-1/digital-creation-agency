@@ -1,148 +1,168 @@
-import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { ArrowLeft, Sparkles, Activity, Layers, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroBg from '../assets/hero_bg.png';
-import logoNew from '../assets/logo_new.png';
+import './Hero.css';
 
 const Hero = () => {
+  const ref = useRef(null);
+  
+  // Mouse Parallax Logic
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const moveX = clientX - window.innerWidth / 2;
+    const moveY = clientY - window.innerHeight / 2;
+    const offsetFactor = 15;
+    
+    if (ref.current) {
+        ref.current.style.transform = `translate(${moveX / offsetFactor}px, ${moveY / offsetFactor}px)`;
+    }
+  };
+
   return (
-    <section id="hero" className="section">
-      {/* Background Ambience - Hidden on mobile via CSS to prevent clutter */}
-      <div className="hero-blob" style={{
-        position: 'absolute',
-        top: '-10%',
-        right: '-10%',
-        width: '50vw',
-        height: '50vw',
-        background: 'radial-gradient(circle, var(--color-primary) 0%, transparent 70%)',
-        opacity: 0.15,
-        filter: 'blur(80px)',
-        zIndex: -1
-      }} />
-      <div className="hero-blob" style={{
-        position: 'absolute',
-        bottom: '-10%',
-        left: '-10%',
-        width: '50vw',
-        height: '50vw',
-        background: 'radial-gradient(circle, var(--color-secondary) 0%, transparent 70%)',
-        opacity: 0.15,
-        filter: 'blur(80px)',
-        zIndex: -1
-      }} />
+    <section className="hero-section" onMouseMove={handleMouseMove}>
+      {/* Animated Background Mesh */}
+      <div className="hero-bg-mesh">
+        <motion.div 
+          className="mesh-blob mesh-blob-1"
+          animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="mesh-blob mesh-blob-2"
+          animate={{ scale: [1, 1.3, 1], x: [0, -30, 0], y: [0, 50, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+      </div>
 
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+      <div className="container hero-content">
         
-        {/* Text Content */}
-        <div style={{ maxWidth: '650px', zIndex: 1, position: 'relative' }}>
-          {/* Mobile Logo - Visible only on mobile via CSS */}
-          <img 
-            src={logoNew} 
-            alt="Digital Creation Logo" 
-            className="mobile-hero-logo"
-            style={{ 
-              display: 'none', 
-              maxWidth: '140px',
-              margin: '0 auto 1.5rem',
-              filter: 'drop-shadow(0 4px 15px rgba(139, 92, 246, 0.3))'
-            }}
-          />
-          
-          <div className="glass-panel hero-badge" style={{ 
-            display: 'inline-block', 
-            padding: '0.5rem 1rem', 
-            marginBottom: '1.5rem', 
-            borderRadius: '2rem',
-            border: '1px solid rgba(6, 182, 212, 0.3)',
-            background: 'rgba(6, 182, 212, 0.1)'
-          }}>
-            <span style={{ color: 'var(--color-primary)', fontWeight: '700', fontSize: '0.9rem' }}>
-              وكالة جزائرية 100% 🇩🇿
-            </span>
-          </div>
+        {/* --- Text Content Side --- */}
+        <motion.div 
+          className="hero-text-side"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {/* Badge */}
+          <motion.div 
+            className="hero-badge"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Sparkles size={16} className="text-secondary" />
+            <span>وكالة التحول الرقمي الأولى 🇩🇿</span>
+          </motion.div>
 
-          <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.3', fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
-            هل لديك مشروع أو شركة في الجزائر <br />
-            <span style={{ 
-              background: 'linear-gradient(to left, var(--color-primary), var(--color-secondary))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: '800'
-            }}>
-              وتريد نظامًا أو موقعًا يليق بمستوى عملك؟
-            </span>
+          {/* Heading */}
+          <h1 className="hero-heading">
+            حوّل طموحك إلى <br />
+            <span className="text-gradient">هيمنة رقمية مطلقة</span>
           </h1>
 
-          <p style={{ fontSize: '1.2rem', marginBottom: '2.5rem', maxWidth: '550px' }}>
-            نحن وكالة متخصصة في بناء المواقع الإلكترونية، المتاجر الرقمية، تطبيقات الويب، والأنظمة المخصصة للشركات باحترافية عالية وتصميم عصري.
+          {/* Description */}
+          <p className="hero-desc">
+            في Digital Creation، نحن لا نبني مواقع إلكترونية فقط؛ نحن نصمم هويات رقمية تفرض حضورك في السوق. معايير عالمية، أداء خارق، ولمسة إبداعية تأسر عملائك من النظرة الأولى.
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link to="/start-project" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
-              ابدأ مشروعك الآن
-              <ArrowLeft size={20} style={{ marginRight: '10px' }} />
+          {/* Buttons */}
+          <div className="hero-actions">
+            <Link to="/start-project">
+              <motion.button 
+                className="btn-base btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ابدأ رحلة التغيير
+                <ArrowLeft size={20} />
+              </motion.button>
+            </Link>
+            
+            <Link to="/portfolio">
+              <motion.button 
+                className="btn-base btn-glass"
+                whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                whileTap={{ scale: 0.95 }}
+              >
+                شاهد أعمالنا
+              </motion.button>
             </Link>
           </div>
-          
-          <div style={{ marginTop: '3rem', display: 'flex', gap: '2rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
-             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-               <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#34d399' }}></span>
-               دعم فني مستمر
-             </div>
-             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-               <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#34d399' }}></span>
-               تصميم عصري
-             </div>
-          </div>
-        </div>
 
-        {/* Visual Content - Hidden on mobile to focus on copy */}
-        <div className="hero-visual" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-           <img 
-             src={heroBg} 
-             alt="Digital Creation Dashboard" 
-             className="animate-float"
-             style={{ 
-               width: '100%', 
-               maxWidth: '550px',
-               borderRadius: '20px',
-               boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
-               border: '1px solid rgba(255,255,255,0.1)'
-             }} 
-           />
-           
-           {/* Floating Badge */}
-           <div className="glass-panel" style={{
-             position: 'absolute',
-             bottom: '10%',
-             left: '-5%',
-             padding: '1rem 1.5rem',
-             zIndex: 2,
-             background: 'rgba(17, 24, 39, 0.9)',
-             borderLeft: '4px solid var(--color-primary)',
-             display: 'flex',
-             alignItems: 'center',
-             gap: '1rem'
-           }}>
-             <div>
-               <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Active Projects</div>
-               <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'white' }}>+24 System</div>
-             </div>
+          {/* Social Proof / Trust Indicators */}
+          <div style={{ marginTop: '2.5rem', display: 'flex', gap: '2rem', opacity: 0.9 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+               <div style={{ background: 'rgba(6,182,212,0.1)', padding: '8px', borderRadius: '8px' }}>
+                 <Rocket size={20} color="var(--primary)" />
+               </div>
+               <div>
+                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>الأداء</div>
+                 <div style={{ fontWeight: '700', fontSize: '0.95rem' }}>فائق السرعة</div>
+               </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+               <div style={{ background: 'rgba(139,92,246,0.1)', padding: '8px', borderRadius: '8px' }}>
+                 <Layers size={20} color="var(--secondary)" />
+               </div>
+               <div>
+                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>التصميم</div>
+                 <div style={{ fontWeight: '700', fontSize: '0.95rem' }}>إبداعي وحصري</div>
+               </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* --- Visual Side (Desktop) --- */}
+        <motion.div 
+          className="hero-visual-side"
+          initial={{ opacity: 0, scale: 0.9, rotateY: 30 }}
+          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+          style={{ perspective: '1000px' }} 
+        >
+           {/* Main Glass Card with Mouse Parallax */}
+           <div ref={ref} style={{ transition: 'transform 0.1s ease-out' }}>
+             <motion.div 
+               className="hero-card-glass"
+               animate={{ y: [0, -15, 0] }}
+               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+               style={{ transformStyle: 'preserve-3d', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }}
+             >
+               <img 
+                 src={heroBg} 
+                 alt="Digital Dashboard Interface" 
+                 style={{ width: '100%', borderRadius: '12px', display: 'block', border: '1px solid rgba(255,255,255,0.05)' }}
+               />
+               
+               {/* Floating Badge 1 */}
+               <motion.div 
+                 className="hero-floating-badge"
+                 style={{ top: '10%', right: '-30px' }}
+                 animate={{ y: [0, 10, 0] }}
+                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+               >
+                 <Activity size={20} color="#10B981" />
+                 <span>Growth +120%</span>
+               </motion.div>
+
+               {/* Floating Badge 2 */}
+               <motion.div 
+                 className="hero-floating-badge"
+                 style={{ bottom: '15%', left: '-30px' }}
+                 animate={{ y: [0, -10, 0] }}
+                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+               >
+                 <Sparkles size={20} color="#F59E0B" />
+                 <span>Premium UI</span>
+               </motion.div>
+
+             </motion.div>
            </div>
-        </div>
+        </motion.div>
+
       </div>
-      
-      {/* CSS for responsiveness */}
-      <style>{`
-        @media (min-width: 1024px) {
-          .container { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 1023px) {
-          .hero-visual { display: none !important; }
-          .hero-blob { opacity: 0.05 !important; width: 80vw !important; height: 80vw !important; } /* Reduce visual noise on mobile */
-          #hero { padding-top: 6rem !important; min-height: auto !important; padding-bottom: 4rem !important; } /* Compact hero on mobile */
-        }
-      `}</style>
     </section>
   );
 };
