@@ -103,99 +103,138 @@ const Navbar = () => {
 /* ══════════════════════════════════════
    MOBILE — Fixed bottom tab bar
    ══════════════════════════════════════ */
-const MobileNavbar = ({ navLinks, location }) => (
-  <>
-    <style>{`
-      /* ── Top logo bar ── */
-      .mobile-top-bar {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 1000;
-        height: 56px;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .mobile-top-bar::after {
-        content: '';
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
-      }
-      .mobile-top-logo {
-        height: 85px;
-        width: auto;
-        margin-top: -15px;
-        margin-bottom: -15px;
-        filter: drop-shadow(0 0 2px rgba(255,255,255,0.7)) drop-shadow(0 0 6px rgba(139,92,246,0.4));
-        transition: all 0.3s ease;
-      }
+const MobileNavbar = ({ navLinks, location }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-      /* ── Bottom tab bar ── */
-      .mobile-tab-bar {
-        position: fixed;
-        bottom: 0; left: 0; right: 0;
-        z-index: 1000;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 0.3rem 0.25rem 0.4rem;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
       }
-      .mobile-tab {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.15rem;
-        text-decoration: none;
-        padding: 0.2rem 0;
-        min-width: 48px;
-        transition: all 0.2s ease;
-      }
-      .mobile-tab-label {
-        font-size: 0.55rem;
-        font-weight: 600;
-        white-space: nowrap;
-      }
-    `}</style>
+      setLastScrollY(currentScrollY);
+    };
 
-    {/* Top bar with centered logo */}
-    <div className="mobile-top-bar">
-      <Link to="/">
-        <img src={logoImg} alt="Digital Creation" className="mobile-top-logo" />
-      </Link>
-    </div>
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
-    {/* Bottom tab bar */}
-    <nav className="mobile-tab-bar">
-      {navLinks.map((link) => {
-        const isActive = location.pathname === link.href;
-        return (
-          <Link
-            key={link.name}
-            to={link.href}
-            className="mobile-tab"
-            style={{ color: isActive ? '#8b5cf6' : 'rgba(255,255,255,0.45)' }}
-          >
-            {React.cloneElement(link.icon, {
-              size: 20,
-              color: isActive ? '#8b5cf6' : 'rgba(255,255,255,0.45)',
-              strokeWidth: isActive ? 2.5 : 1.8
-            })}
-            <span className="mobile-tab-label">{link.name}</span>
+  return (
+    <>
+      <style>{`
+        /* ── Floating Top Pill Header ── */
+        .mobile-top-container {
+          position: fixed;
+          top: 1rem;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1000;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          opacity: ${isVisible ? 1 : 0};
+          pointer-events: ${isVisible ? 'all' : 'none'};
+          margin-top: ${isVisible ? '0' : '-20px'};
+        }
+        .mobile-top-pill {
+          background: rgba(15, 23, 42, 0.85);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          padding: 0.4rem 1.25rem;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .mobile-top-pill::before {
+          content: '';
+          position: absolute;
+          inset: -1px;
+          border-radius: 999px;
+          padding: 1px;
+          background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(6, 182, 212, 0.5));
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+        }
+        .mobile-top-logo {
+          height: 70px;
+          width: auto;
+          margin-top: -12px;
+          margin-bottom: -12px;
+          filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)) drop-shadow(0 0 8px rgba(139,92,246,0.3));
+        }
+
+        /* ── Bottom tab bar ── */
+        .mobile-tab-bar {
+          position: fixed;
+          bottom: 0; left: 0; right: 0;
+          z-index: 1000;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 0.3rem 0.25rem 0.4rem;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        }
+        .mobile-tab {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.15rem;
+          text-decoration: none;
+          padding: 0.2rem 0;
+          min-width: 48px;
+          transition: all 0.2s ease;
+        }
+        .mobile-tab-label {
+          font-size: 0.55rem;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+      `}</style>
+
+      {/* Floating Top Pill */}
+      <div className="mobile-top-container">
+        <div className="mobile-top-pill">
+          <Link to="/">
+            <img src={logoImg} alt="Digital Creation" className="mobile-top-logo" />
           </Link>
-        );
-      })}
-    </nav>
-  </>
-);
+        </div>
+      </div>
+
+      {/* Bottom tab bar */}
+      <nav className="mobile-tab-bar">
+        {navLinks.map((link) => {
+          const isActive = location.pathname === link.href;
+          return (
+            <Link
+              key={link.name}
+              to={link.href}
+              className="mobile-tab"
+              style={{ color: isActive ? '#8b5cf6' : 'rgba(255,255,255,0.45)' }}
+            >
+              {React.cloneElement(link.icon, {
+                size: 20,
+                color: isActive ? '#8b5cf6' : 'rgba(255,255,255,0.45)',
+                strokeWidth: isActive ? 2.5 : 1.8
+              })}
+              <span className="mobile-tab-label">{link.name}</span>
+            </Link>
+          );
+        })}
+      </nav>
+    </>
+  );
+};
 
 export default Navbar;
