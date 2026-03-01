@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import logoFull from '../assets/logo_full.png';
 
 const Footer = () => {
@@ -37,7 +37,7 @@ const Footer = () => {
           <div>
             <img src={logoFull} alt="Digital Creation" style={{ height: '80px', marginBottom: '1.5rem', width: 'auto' }} />
             <p style={{ fontSize: '0.95rem', opacity: 0.7, lineHeight: '1.8', marginBottom: '1.5rem' }}>
-              نحول رؤيتك الرقمية إلى واقع ملموس. وكالة جزائرية رائدة في تطوير الويب والتصميم الإبداعي.
+              فريق جزائري يحوّل أفكارك الرقمية لواقع. مواقع، متاجر، وأنظمة ويب — بتصميم يبهر ونتيجة تبان.
             </p>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <SocialIcon icon={<Facebook size={18} />} href="#" />

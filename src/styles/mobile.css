@@ -5,7 +5,6 @@
    ========================================= */
 
 @media (max-width: 768px) {
-
   /* ========================================
      1. NUCLEAR OVERFLOW KILL
      ======================================== */
@@ -23,7 +22,8 @@
   }
   /* Remove padding from form container on mobile to be cleaner? Or keep glass effect? Keep glass. */
 
-  html, body {
+  html,
+  body {
     overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100vw !important;
@@ -59,14 +59,6 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-  }
-
-  /* Show the logo in Hero section on mobile */
-  .mobile-hero-logo {
-    display: block !important;
-    max-width: 100px !important;
-    height: auto !important;
-    margin: 0 auto 1rem !important;
   }
 
   #hero h1 {
@@ -381,7 +373,7 @@
      MOBILE NAVBAR: Compact Single Row (Links Only)
      Slim, Sleek, App-Like Tab Bar
      ======================================== */
-  
+
   /* 1. Navbar Container - Horizontal Row */
   nav > div {
     flex-direction: row !important;
@@ -395,7 +387,7 @@
   nav > div > a:first-child {
     display: none !important;
   }
-  
+
   /* 3. Links Row - Full Width, Fixed (No Scroll) */
   /* Override Navbar container padding for mobile */
   nav > div {
@@ -446,28 +438,11 @@
     height: auto !important; /* Kill any fixed height */
     display: block !important; /* Kill flex centering from parent */
   }
-  
+
   /* OTHER PAGES (About, Blog, Portfolio): Remove big empty space */
   /* We added 'page-wrapper' class to these pages to override inline style */
   .page-wrapper {
     padding-top: 1rem !important; /* Reduced from 120px */
-  }
-
-  /* 4. HERO LOGO: Visible & Professional */
-  .mobile-hero-logo {
-    display: block !important;
-    max-width: 220px !important; /* Base layout width */
-    width: 60% !important;
-    margin: 0 auto 1rem !important;
-    margin-top: -3.5rem !important; /* Keep the safe positioning */
-    transform: scale(1.4) !important; /* Make logo 40% bigger visually */
-    transform-origin: center top !important; /* Anchor top so it grows DOWN (safe from navbar) */
-    animation: fadeIn 1s ease-out;
-  }
-  
-  /* Ensure Hero text doesn't overlap logo */
-  #hero h1 {
-    margin-top: 0.5rem !important;
   }
 
   /* ========================================
@@ -489,7 +464,9 @@
   /* ========================================
      13. FORMS: Prevent iOS Zoom
      ======================================== */
-  input, select, textarea {
+  input,
+  select,
+  textarea {
     font-size: 16px !important;
     padding: 0.75rem !important;
   }
@@ -520,8 +497,6 @@
      16. HERO PAGE: Hide Big Image
      ======================================== */
   /* The hero visual container with the hero_bg image */
-  /* EXCLUDE the new mobile logo from this hiding rule */
-  #hero img[alt*="Digital Creation"]:not(.mobile-hero-logo),
   #hero img[alt*="Dashboard"],
   .hero-visual {
     display: none !important;

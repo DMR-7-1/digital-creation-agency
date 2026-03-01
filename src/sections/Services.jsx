@@ -1,67 +1,71 @@
 import React from 'react';
 import { Globe, ShoppingBag, Terminal, Database } from 'lucide-react';
+import { StaggerContainer, StaggerItem } from '../components/AnimatedSection';
 
 const Services = () => {
   const services = [
     {
       icon: <Globe size={40} color="var(--color-primary)" />,
       title: 'تصميم المواقع',
-      desc: 'مواقع تعريفية احترافية تعكس هوية شركتك وتجذب العملاء.'
+      desc: 'موقع يعبّر عنك ويخلّي الزبون يثق فيك من أول زيارة.'
     },
     {
       icon: <ShoppingBag size={40} color="#F472B6" />,
       title: 'المتاجر الإلكترونية',
-      desc: 'منصات بيع متكاملة مع بوابات دفع وأنظمة تسيير مخزون.'
+      desc: 'بيع أونلاين بنظام متكامل — من الطلب للتوصيل وكلشي بين يديك.'
     },
     {
       icon: <Terminal size={40} color="#A78BFA" />,
-      title: 'Web Apps',
-      desc: 'تطبيقات ويب متطورة تعمل على المتصفح بكفاءة التطبيقات الأصلية.'
+      title: 'تطبيقات الويب',
+      desc: 'أنظمة ذكية تخدم على المتصفح بنفس قوة التطبيقات — بلا تحميل.'
     },
     {
       icon: <Database size={40} color="#34D399" />,
       title: 'أنظمة الشركات',
-      desc: 'لوحات تحكم وأنظمة داخلية لتسهيل الإدارة ورفع الإنتاجية.'
+      desc: 'لوحات تحكم تخلّيك تسيّر شركتك من مكان واحد بلا صداع.'
     }
   ];
 
   return (
     <section id="services" className="section" style={{ position: 'relative' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }} className="fade-in-up">
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
           <h2 style={{ fontSize: '2.8rem', marginBottom: '1rem' }}>خدماتنا</h2>
           <p style={{ maxWidth: '650px', margin: '0 auto', fontSize: '1.15rem' }}>
-            نقدّم حلولاً برمجية شاملة تبدأ من الفكرة وتنتهي بمنتج رقمي متكامل قابل للتطوير.
+            كل مشروع عندنا يبدا بفكرة ويولّي منتج رقمي كامل — جاهز ينافس.
           </p>
         </div>
 
-        <div className="services-home-grid" style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-          gap: '2.5rem' 
-        }}>
+        <StaggerContainer 
+          className="services-home-grid" 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+            gap: '2.5rem' 
+          }}
+          staggerDelay={0.12}
+        >
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <StaggerItem key={index}>
+              <ServiceCard service={service} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
 };
 
-const ServiceCard = ({ service, index }) => {
+const ServiceCard = ({ service }) => {
   const [isHovered, setIsHovered] = React.useState(false);
   
   return (
     <div 
-      className="glass-panel fade-in-up" 
+      className="glass-panel" 
       style={{ 
         padding: '2.5rem 2rem', 
         textAlign: 'center',
-        cursor: 'pointer',
-        animationDelay: `${index * 0.1}s`,
-        opacity: 0,
-        animationFillMode: 'forwards'
+        cursor: 'pointer'
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

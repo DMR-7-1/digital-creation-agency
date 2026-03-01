@@ -135,14 +135,10 @@ const Navbar = () => {
               alt="Digital Creation" 
               className="nav-logo-mobile"
               style={{ 
-                height: isScrolled ? '120px' : '160px', 
+                height: isScrolled ? '65px' : '85px', 
                 width: 'auto',
                 transition: 'all 0.4s ease',
-                filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',
-                marginTop: '-40px',
-                marginBottom: '-40px',
-                transform: 'scale(1.4)', // Make logo bigger without affecting layout frame
-                transformOrigin: 'center'
+                filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))'
               }} 
             />
           </Link>

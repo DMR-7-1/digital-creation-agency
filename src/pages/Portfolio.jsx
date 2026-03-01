@@ -1,5 +1,6 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
+import { PageTransition, AnimatedSection, StaggerContainer, StaggerItem } from '../components/AnimatedSection';
 
 const Portfolio = () => {
   const projects = [
@@ -54,147 +55,146 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="page-wrapper" style={{ paddingTop: "120px", minHeight: "100vh" }}>
-      <section className="section">
-        <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>أعمالنا</h1>
-            <p
-              style={{
-                fontSize: "1.2rem",
-                maxWidth: "600px",
-                margin: "0 auto",
-              }}
-            >
-              مشاريع ناجحة ساعدنا عملاءنا على تحقيقها
-            </p>
-          </div>
-
-          <div className="portfolio-grid-system">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="glass-panel"
+    <PageTransition>
+      <div className="page-wrapper" style={{ paddingTop: "120px", minHeight: "100vh" }}>
+        <section className="section">
+          <div className="container">
+            <AnimatedSection style={{ textAlign: "center", marginBottom: "4rem" }}>
+              <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>أعمالنا</h1>
+              <p
                 style={{
-                  padding: 0,
-                  overflow: "hidden",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-10px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
+                  fontSize: "1.2rem",
+                  maxWidth: "600px",
+                  margin: "0 auto",
                 }}
               >
-                <div
-                  style={{
-                    height: "220px",
-                    background: `linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3)), url(${project.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    position: "relative",
-                  }}
-                >
+                مشاريع حقيقية ساعدنا أصحابها يحوّلو أفكارهم لواقع رقمي
+              </p>
+            </AnimatedSection>
+
+            <StaggerContainer className="portfolio-grid-system" staggerDelay={0.1}>
+              {projects.map((project, index) => (
+                <StaggerItem key={index}>
                   <div
+                    className="glass-panel"
                     style={{
-                      position: "absolute",
-                      top: "1rem",
-                      right: "1rem",
-                      background: "rgba(17, 24, 39, 0.9)",
-                      padding: "0.5rem 1rem",
-                      borderRadius: "20px",
-                      fontSize: "0.85rem",
-                      backdropFilter: "blur(10px)",
+                      padding: 0,
+                      overflow: "hidden",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-10px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
                     }}
                   >
-                    {project.category}
+                    <div
+                      style={{
+                        height: "220px",
+                        background: `linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3)), url(${project.image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        position: "relative",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "1rem",
+                          right: "1rem",
+                          background: "rgba(17, 24, 39, 0.9)",
+                          padding: "0.5rem 1rem",
+                          borderRadius: "20px",
+                          fontSize: "0.85rem",
+                          backdropFilter: "blur(10px)",
+                        }}
+                      >
+                        {project.category}
+                      </div>
+                    </div>
+
+                    <div style={{ padding: "2rem" }}>
+                      <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
+                        {project.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          marginBottom: "1.5rem",
+                          lineHeight: "1.7",
+                          color: "var(--color-text-muted)",
+                        }}
+                      >
+                        {project.description}
+                      </p>
+
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "0.5rem",
+                          flexWrap: "wrap",
+                          marginTop: "0.5rem" 
+                        }}
+                      >
+                        {project.tech.map((tech, i) => {
+                          const iconMap = {
+                            'React': 'react/react-original',
+                            'Node.js': 'nodejs/nodejs-original',
+                            'Vue.js': 'vuejs/vuejs-original',
+                            'Next.js': 'nextjs/nextjs-original',
+                            'Python': 'python/python-original',
+                            'Express': 'express/express-original',
+                            'MongoDB': 'mongodb/mongodb-original',
+                            'PostgreSQL': 'postgresql/postgresql-original',
+                            'Firebase': 'firebase/firebase-plain',
+                            'Tailwind': 'tailwindcss/tailwindcss-original',
+                            'D3.js': 'd3js/d3js-original',
+                            'React Native': 'react/react-original',
+                            'Stripe': 'stripe/stripe-original', 
+                            'Supabase': 'supabase/supabase-original',
+                            'Maps API': 'google/google-original'
+                          };
+
+                          const iconPath = iconMap[tech];
+                          
+                          if (iconPath) {
+                            return (
+                              <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }} title={tech}>
+                                 <img 
+                                   src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} 
+                                   alt={tech}
+                                   style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                   onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = tech; }} 
+                                 />
+                              </div>
+                            );
+                          }
+                          
+                          return (
+                             <span
+                              key={i}
+                              style={{
+                                fontSize: "0.7rem",
+                                color: "var(--color-primary)",
+                                fontWeight: "600"
+                              }}
+                            >
+                              {tech}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div style={{ padding: "2rem" }}>
-                  <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
-                    {project.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      marginBottom: "1.5rem",
-                      lineHeight: "1.7",
-                      color: "var(--color-text-muted)",
-                    }}
-                  >
-                    {project.description}
-                  </p>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "0.5rem",
-                      flexWrap: "wrap",
-                      marginTop: "0.5rem" 
-                    }}
-                  >
-                    {project.tech.map((tech, i) => {
-                      // Simple mapping for Devicons
-                      const iconMap = {
-                        'React': 'react/react-original',
-                        'Node.js': 'nodejs/nodejs-original',
-                        'Vue.js': 'vuejs/vuejs-original',
-                        'Next.js': 'nextjs/nextjs-original',
-                        'Python': 'python/python-original',
-                        'Express': 'express/express-original',
-                        'MongoDB': 'mongodb/mongodb-original',
-                        'PostgreSQL': 'postgresql/postgresql-original',
-                        'Firebase': 'firebase/firebase-plain',
-                        'Tailwind': 'tailwindcss/tailwindcss-original',
-                        'D3.js': 'd3js/d3js-original',
-                        // Map similar/aliases
-                        'React Native': 'react/react-original',
-                        'Stripe': 'stripe/stripe-original', 
-                        'Supabase': 'supabase/supabase-original',
-                        'Maps API': 'google/google-original'
-                      };
-
-                      // Handle specific known URLs if needed, or build devicon URL
-                      const iconPath = iconMap[tech];
-                      
-                      if (iconPath) {
-                        return (
-                          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }} title={tech}>
-                             <img 
-                               src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} 
-                               alt={tech}
-                               style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                               onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = tech; }} 
-                             />
-                          </div>
-                        );
-                      }
-                      
-                      // Fallback for unmapped items (Stripe/Maps if map fails or others)
-                      return (
-                         <span
-                          key={i}
-                          style={{
-                            fontSize: "0.7rem",
-                            color: "var(--color-primary)",
-                            fontWeight: "600"
-                          }}
-                        >
-                          {tech}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            ))}
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </PageTransition>
   );
 };
 
