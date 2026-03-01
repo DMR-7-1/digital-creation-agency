@@ -138,8 +138,8 @@ const MobileNavbar = ({ navLinks, location }) => {
           opacity: ${isVisible ? 1 : 0};
           pointer-events: ${isVisible ? 'all' : 'none'};
           margin-top: ${isVisible ? '0' : '-35px'};
-          width: 70%;
-          max-width: 320px;
+          width: 55%;
+          max-width: 280px;
         }
         .mobile-top-pill {
           background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%);
