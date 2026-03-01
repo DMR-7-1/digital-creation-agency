@@ -1,14 +1,12 @@
 /* =========================================
-   MOBILE: Premium Responsive Experience
+   MOBILE: Enterprise-Grade Responsive
    Target: Phones (< 768px)
-   Strategy: Clean, readable, user-friendly
+   Strategy: Compact, clean, fast-scroll
    ========================================= */
 
 @media (max-width: 768px) {
 
-  /* ========================================
-     1. BASE: Overflow Prevention
-     ======================================== */
+  /* ── BASE ── */
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
@@ -17,44 +15,28 @@
   }
 
   body {
-    padding-top: 60px !important;
-    font-size: 15px !important;
+    padding-top: 56px !important;
+    font-size: 14px !important;
   }
 
-  * {
-    max-width: 100vw;
-    box-sizing: border-box;
-  }
+  * { max-width: 100vw; box-sizing: border-box; }
 
   .container {
-    padding: 0 1.25rem !important;
+    padding: 0 1rem !important;
     max-width: 100% !important;
     overflow: hidden !important;
   }
 
-  /* Hide About and Contact sections on Home page mobile */
-  .mobile-home-hidden {
-    display: none !important;
-  }
+  /* Hide home-only sections */
+  .mobile-home-hidden { display: none !important; }
 
-  /* Contact Page Mobile Logic */
-  .contact-desktop-content {
-    display: none !important;
-  }
-  .contact-mobile-cta {
-    display: block !important;
-  }
+  /* Contact mobile toggle */
+  .contact-desktop-content { display: none !important; }
+  .contact-mobile-cta { display: block !important; }
 
-  /* ========================================
-     2. NAVBAR: Logo + Hamburger
-     Handled via Navbar.jsx inline styles & <style> block
-     ======================================== */
-
-  /* ========================================
-     3. HERO: Centered & Clean
-     ======================================== */
+  /* ── HERO ── */
   #hero {
-    padding: 2rem 0 2.5rem !important;
+    padding: 1.25rem 0 1.5rem !important;
     min-height: auto !important;
     text-align: center !important;
   }
@@ -66,232 +48,188 @@
   }
 
   #hero h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.4 !important;
-    margin-bottom: 1rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.6rem !important;
   }
 
   #hero p {
-    font-size: 0.95rem !important;
-    margin-bottom: 1.5rem !important;
-    line-height: 1.6 !important;
+    font-size: 0.82rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.5 !important;
   }
 
-  /* Hero Badge */
   #hero .hero-badge {
-    padding: 0.35rem 0.8rem !important;
-    margin-bottom: 1rem !important;
+    padding: 0.25rem 0.6rem !important;
+    margin-bottom: 0.6rem !important;
   }
   #hero .hero-badge span {
-    font-size: 0.8rem !important;
+    font-size: 0.72rem !important;
   }
 
-  /* Hero Button */
   #hero .btn {
     margin: 0 auto !important;
-    padding: 0.75rem 1.8rem !important;
-    font-size: 1rem !important;
+    padding: 0.6rem 1.4rem !important;
+    font-size: 0.88rem !important;
   }
 
-  /* Hide Hero Visual & Blobs on mobile */
-  .hero-visual,
-  .hero-blob {
-    display: none !important;
-  }
+  .hero-visual, .hero-blob { display: none !important; }
 
-  /* Hero Stats Row */
   #hero > div > div:last-child {
     justify-content: center !important;
     flex-wrap: wrap !important;
-    gap: 1.25rem !important;
-    font-size: 0.85rem !important;
-    margin-top: 2rem !important;
+    gap: 0.8rem !important;
+    font-size: 0.72rem !important;
+    margin-top: 1rem !important;
   }
 
-  /* ========================================
-     4. TYPOGRAPHY: Clean & Readable
-     ======================================== */
-  h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.35 !important;
-  }
+  /* ── TYPOGRAPHY ── */
+  h1 { font-size: 1.35rem !important; line-height: 1.3 !important; }
+  h2 { font-size: 1.15rem !important; text-align: center !important; margin-bottom: 0.8rem !important; }
+  h3 { font-size: 0.95rem !important; }
+  p { font-size: 0.82rem !important; line-height: 1.5 !important; }
 
-  h2 {
-    font-size: 1.4rem !important;
-    text-align: center !important;
-    margin-bottom: 1.25rem !important;
-  }
-
-  h3 {
-    font-size: 1.1rem !important;
-  }
-
-  p {
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-  }
-
-  /* ========================================
-     5. GRIDS: Smart Stacking
-     ======================================== */
+  /* ── GRIDS → Stack ── */
   .services-grid-system,
   .sectors-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.25rem !important;
+    gap: 0.6rem !important;
     width: 100% !important;
   }
 
-  /* Fix inline grid styles to stack on mobile */
   div[style*="minmax(300px"],
   div[style*="minmax(350px"],
   div[style*="minmax(400px"] {
     display: flex !important;
     flex-direction: column !important;
-    gap: 2rem !important;
+    gap: 1.25rem !important;
   }
 
-  /* ========================================
-     6. GLASS PANELS: Comfortable Padding
-     ======================================== */
+  /* ── GLASS PANELS: Compact ── */
   .glass-panel {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 1.25rem !important;
+    padding: 0.8rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
-  /* Don't apply hover lift on mobile (causes jumpy scroll) */
   .glass-panel:hover {
     transform: none !important;
+    box-shadow: none !important;
   }
 
-  /* ========================================
-     7. HOMEPAGE SERVICES: 2x2 Grid
-     ======================================== */
+  /* ── HOMEPAGE SERVICES: 2×2 Grid ── */
   .services-home-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
+    gap: 0.5rem !important;
   }
 
   .services-home-grid > div {
-    padding: 1rem !important;
+    padding: 0.6rem !important;
     text-align: center !important;
   }
 
   .services-home-grid > div > div:first-child {
-    width: 50px !important;
-    height: 50px !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .services-home-grid svg {
-    width: 24px !important;
-    height: 24px !important;
-  }
-
-  .services-home-grid h3 {
-    font-size: 0.9rem !important;
+    width: 40px !important;
+    height: 40px !important;
     margin-bottom: 0.3rem !important;
   }
 
-  .services-home-grid p {
-    font-size: 0.78rem !important;
-    line-height: 1.4 !important;
-    margin: 0 !important;
-  }
+  .services-home-grid svg { width: 20px !important; height: 20px !important; }
+  .services-home-grid h3 { font-size: 0.78rem !important; margin-bottom: 0.15rem !important; }
+  .services-home-grid p { font-size: 0.68rem !important; line-height: 1.3 !important; margin: 0 !important; }
 
-  /* ========================================
-     8. SERVICES PAGE: Feature Cards
-     ======================================== */
+  /* ── SERVICES PAGE: Feature Cards ── */
   .services-grid-system > div {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    padding: 1.25rem !important;
-    gap: 0.75rem !important;
+    padding: 0.8rem !important;
+    gap: 0.4rem !important;
   }
 
-  .services-grid-system .glass-panel {
-    padding: 0.75rem !important;
-  }
+  .services-grid-system .glass-panel { padding: 0.5rem !important; }
+  .services-grid-system h3 { font-size: 0.92rem !important; }
+  .services-grid-system p { font-size: 0.78rem !important; margin: 0 !important; }
 
-  .services-grid-system h3 {
-    font-size: 1.05rem !important;
-  }
-
-  .services-grid-system p {
-    font-size: 0.85rem !important;
-    margin: 0 !important;
-  }
-
-  /* ========================================
-     9. PRICING: Single Column Stack
-     ======================================== */
+  /* ── PRICING: Compact 2×2 ── */
   .pricing-grid-system {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1.25rem !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
   }
 
   .pricing-grid-system > div {
-    padding: 1.5rem !important;
+    padding: 0.75rem !important;
     text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
   }
 
-  .pricing-grid-system h3 {
-    font-size: 1.3rem !important;
-    margin-bottom: 0.5rem !important;
+  .pricing-grid-system h3 { font-size: 1rem !important; margin-bottom: 0.25rem !important; }
+  
+  .pricing-grid-system div[style*="font-size: 1.5rem"] {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.6rem !important;
   }
 
   .pricing-grid-system ul {
-    font-size: 0.88rem !important;
+    font-size: 0.7rem !important;
     padding: 0 !important;
-    margin-bottom: 1.25rem !important;
+    margin-bottom: 0.6rem !important;
     text-align: right !important;
   }
 
-  .pricing-grid-system li {
-    margin-bottom: 0.5rem !important;
+  .pricing-grid-system li { margin-bottom: 0.2rem !important; }
+
+  /* Badge */
+  .pricing-grid-system div[style*="position: absolute"] {
+    font-size: 0.55rem !important;
+    padding: 0.15rem 0.5rem !important;
+    top: -8px !important;
+    right: 50% !important;
+    transform: translateX(50%) !important;
   }
 
-  /* ========================================
-     10. PORTFOLIO: 2-Column Grid
-     ======================================== */
+  /* 3rd card full width */
+  .pricing-grid-system > div:nth-child(3) { grid-column: span 2 !important; }
+
+  .pricing-grid-system .btn { 
+    padding: 0.5rem 0.6rem !important; 
+    font-size: 0.75rem !important; 
+    min-height: 36px !important;
+  }
+
+  /* ── PORTFOLIO: 2-Column Grid ── */
   .portfolio-grid-system {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
+    gap: 0.6rem !important;
   }
 
   .portfolio-grid-system > div {
     padding: 0 !important;
     overflow: hidden !important;
-    border-radius: 12px !important;
+    border-radius: 10px !important;
   }
 
-  /* Image Container */
-  .portfolio-grid-system > div > div:first-child {
-    height: 120px !important;
-  }
-
-  /* Text Content */
-  .portfolio-grid-system > div > div:last-child {
-    padding: 0.75rem !important;
-  }
+  .portfolio-grid-system > div > div:first-child { height: 90px !important; }
+  .portfolio-grid-system > div > div:last-child { padding: 0.5rem !important; }
 
   .portfolio-grid-system h3 {
-    font-size: 0.9rem !important;
-    margin-bottom: 0.3rem !important;
-    line-height: 1.25 !important;
+    font-size: 0.8rem !important;
+    margin-bottom: 0.15rem !important;
+    line-height: 1.2 !important;
   }
 
   .portfolio-grid-system p {
-    font-size: 0.75rem !important;
-    margin-bottom: 0.5rem !important;
+    font-size: 0.68rem !important;
+    margin-bottom: 0.3rem !important;
     display: -webkit-box !important;
     -webkit-line-clamp: 2 !important;
     line-clamp: 2 !important;
@@ -299,121 +237,70 @@
     overflow: hidden !important;
   }
 
-  /* ========================================
-     11. SECTOR CARDS
-     ======================================== */
-  .sector-card {
-    padding: 1.25rem !important;
-  }
+  /* ── SECTOR CARDS ── */
+  .sector-card { padding: 0.8rem !important; }
+  .sector-card h3 { font-size: 1rem !important; }
+  .sector-card p, .sector-card li { font-size: 0.78rem !important; }
 
-  .sector-card h3 {
-    font-size: 1.15rem !important;
-  }
+  /* ── SECTIONS ── */
+  .section { padding: 1.25rem 0 !important; }
 
-  .sector-card p,
-  .sector-card li {
-    font-size: 0.88rem !important;
-  }
+  .page-wrapper { padding-top: 0.75rem !important; }
 
-  /* ========================================
-     12. SECTIONS: Comfortable Spacing
-     ======================================== */
-  .section {
-    padding: 2rem 0 !important;
-  }
+  /* Override inline paddingTop on service/contact pages */
+  div.section[style] { padding-top: 1.25rem !important; }
 
-  /* Pages with paddingTop inline styles */
-  .page-wrapper {
-    padding-top: 1.5rem !important;
-  }
-
-  /* Services/Contact pages — override inline paddingTop: 8rem */
-  div[class*="section"][style*="paddingTop: '8rem'"],
-  div[class*="section"][style*="padding-top: 8rem"] {
-    padding-top: 2rem !important;
-  }
-
-  /* ========================================
-     13. BUTTONS: Touch-Friendly
-     ======================================== */
+  /* ── BUTTONS ── */
   .btn {
-    padding: 0.7rem 1.2rem !important;
-    font-size: 0.9rem !important;
-    min-height: 44px !important;
-    border-radius: 10px !important;
-  }
-
-  /* ========================================
-     14. FORMS: iOS Zoom Prevention
-     ======================================== */
-  input, select, textarea {
-    font-size: 16px !important;
-    padding: 0.8rem !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.82rem !important;
+    min-height: 40px !important;
     border-radius: 8px !important;
   }
 
-  form {
-    gap: 1rem !important;
+  /* ── FORMS ── */
+  input, select, textarea {
+    font-size: 16px !important;
+    padding: 0.65rem !important;
+    border-radius: 8px !important;
   }
 
-  /* Fix form grid to single column on mobile */
+  form { gap: 0.6rem !important; }
+
   form div[style*="grid-template-columns: 1fr 1fr"],
   form div[style*="grid-template-columns: repeat"] {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1rem !important;
+    gap: 0.6rem !important;
   }
 
-  /* ========================================
-     15. ABOUT PAGE: Hide Big Logo Card
-     ======================================== */
+  /* ── ABOUT PAGE ── */
   div[style*="minmax(400px"] > .glass-panel:first-child,
   div[style*="minmax(400px"] > div:first-child > .glass-panel {
     display: none !important;
   }
 
-  /* Fix about text to fill width */
   div[style*="minmax(400px"] > div:last-child,
   div[style*="minmax(400px"] > div:nth-child(2) {
     max-width: 100% !important;
   }
 
-  /* ========================================
-     16. HERO: Hide Desktop Visuals
-     ======================================== */
+  /* ── HERO: Hide desktop visuals ── */
   #hero img[alt*="Dashboard"],
-  .hero-visual {
-    display: none !important;
-  }
+  .hero-visual { display: none !important; }
 
-  #hero .glass-panel[style*="position: absolute"] {
-    display: none !important;
-  }
+  #hero .glass-panel[style*="position: absolute"] { display: none !important; }
 
-  /* ========================================
-     17. FOOTER: Stack & Compact
-     ======================================== */
-  footer .container > div:first-child {
-    gap: 2rem !important;
-  }
+  /* ── FOOTER ── */
+  footer .container > div:first-child { gap: 1.5rem !important; }
+  footer img { height: 50px !important; }
+  footer p { font-size: 0.78rem !important; }
+  footer h3 { font-size: 0.95rem !important; }
+  footer li { font-size: 0.82rem !important; margin-bottom: 0.4rem !important; }
 
-  footer img {
-    height: 60px !important;
-  }
+  /* ── IMAGES ── */
+  img, video, svg { max-width: 100%; height: auto; }
 
-  /* ========================================
-     18. IMAGES: Prevent Overflow
-     ======================================== */
-  img, video, svg {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* ========================================
-     19. FIX: Select dropdown styling
-     ======================================== */
-  select option {
-    background-color: #1f2937;
-    color: white;
-  }
+  /* ── SELECT DROPDOWNS ── */
+  select option { background-color: #1f2937; color: white; }
 }
