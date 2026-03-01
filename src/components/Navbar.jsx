@@ -130,34 +130,41 @@ const MobileNavbar = ({ navLinks, location }) => {
         /* ── Floating Top Pill Header ── */
         .mobile-top-container {
           position: fixed;
-          top: 1rem;
+          top: 0.85rem;
           left: 50%;
           transform: translateX(-50%);
           z-index: 1000;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
           opacity: ${isVisible ? 1 : 0};
           pointer-events: ${isVisible ? 'all' : 'none'};
-          margin-top: ${isVisible ? '0' : '-20px'};
+          margin-top: ${isVisible ? '0' : '-30px'};
+          width: 90%;
+          max-width: 450px;
         }
         .mobile-top-pill {
-          background: rgba(15, 23, 42, 0.85);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          padding: 0.4rem 1.25rem;
+          background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          padding: 0.5rem 1.5rem;
           border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 
+            0 10px 40px -10px rgba(0, 0, 0, 0.7),
+            0 0 20px rgba(139, 92, 246, 0.1),
+            inset 0 1px 1px rgba(255, 255, 255, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
+          position: relative;
+          overflow: visible;
         }
         .mobile-top-pill::before {
           content: '';
           position: absolute;
-          inset: -1px;
+          inset: -1.5px;
           border-radius: 999px;
-          padding: 1px;
-          background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(6, 182, 212, 0.5));
+          padding: 1.5px;
+          background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(6, 182, 212, 0.6));
           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
@@ -165,11 +172,12 @@ const MobileNavbar = ({ navLinks, location }) => {
           pointer-events: none;
         }
         .mobile-top-logo {
-          height: 70px;
+          height: 110px;
           width: auto;
-          margin-top: -12px;
-          margin-bottom: -12px;
-          filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)) drop-shadow(0 0 8px rgba(139,92,246,0.3));
+          margin-top: -20px;
+          margin-bottom: -20px;
+          filter: drop-shadow(0 0 3px rgba(255,255,255,0.8)) drop-shadow(0 0 10px rgba(139,92,246,0.5));
+          transition: all 0.3s ease;
         }
 
         /* ── Bottom tab bar ── */

@@ -14,9 +14,9 @@
     max-width: 100vw !important;
   }
 
-  /* Bottom tab bar only — content starts at top since top nav is floating */
+  /* Floating pill spacing — restored top padding */
   body {
-    padding-top: 0 !important;
+    padding-top: 80px !important;
     padding-bottom: 60px !important;
   }
 
