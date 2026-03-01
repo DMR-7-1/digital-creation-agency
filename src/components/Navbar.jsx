@@ -106,6 +106,34 @@ const Navbar = () => {
 const MobileNavbar = ({ navLinks, location }) => (
   <>
     <style>{`
+      /* ── Top logo bar ── */
+      .mobile-top-bar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 1000;
+        height: 48px;
+        background: rgba(15, 23, 42, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .mobile-top-bar::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
+      }
+      .mobile-top-logo {
+        height: 34px;
+        width: auto;
+        filter: drop-shadow(0 0 2px rgba(255,255,255,0.5)) drop-shadow(0 0 4px rgba(139,92,246,0.3));
+      }
+
+      /* ── Bottom tab bar ── */
       .mobile-tab-bar {
         position: fixed;
         bottom: 0; left: 0; right: 0;
@@ -136,6 +164,14 @@ const MobileNavbar = ({ navLinks, location }) => (
       }
     `}</style>
 
+    {/* Top bar with centered logo */}
+    <div className="mobile-top-bar">
+      <Link to="/">
+        <img src={logoImg} alt="Digital Creation" className="mobile-top-logo" />
+      </Link>
+    </div>
+
+    {/* Bottom tab bar */}
     <nav className="mobile-tab-bar">
       {navLinks.map((link) => {
         const isActive = location.pathname === link.href;

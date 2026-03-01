@@ -59,9 +59,19 @@ const ContactPage = () => {
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
             background: '#25D366', color: 'white', fontWeight: 700,
             padding: '0.7rem', borderRadius: '12px', textDecoration: 'none',
-            fontSize: '0.88rem', marginBottom: '0.75rem'
+            fontSize: '0.88rem', marginBottom: '0.5rem'
           }}>
             <MessageCircle size={18} /> راسلنا على واتساب
+          </a>
+
+          {/* Call Us CTA */}
+          <a href="tel:+213770784404" style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
+            background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)', color: 'white', fontWeight: 700,
+            padding: '0.7rem', borderRadius: '12px', textDecoration: 'none',
+            fontSize: '0.88rem', marginBottom: '0.75rem'
+          }}>
+            <Phone size={18} /> اتصل بنا الآن
           </a>
 
           {/* Contact info chips */}

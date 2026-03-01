@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
@@ -56,10 +57,10 @@ const WhatsAppButton = () => {
         }
         @media (max-width: 768px) {
           .whatsapp-fab {
-            width: 52px;
-            height: 52px;
-            bottom: 1.2rem;
-            left: 1.2rem;
+            width: 48px;
+            height: 48px;
+            bottom: 4.5rem;
+            left: 1rem;
           }
           .whatsapp-tooltip {
             display: none;
