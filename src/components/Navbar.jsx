@@ -23,14 +23,6 @@ const Navbar = () => {
     }
   }, [isMenuOpen]);
 
-  // Close menu on route change
-  // Note: We handle this via onClick on links to avoid React 19 cascading render lint warnings
-  /* 
-  useEffect(() => {
-    if (isMenuOpen) setIsMenuOpen(false);
-  }, [location, isMenuOpen]);
-  */
-
   const navLinks = [
     { name: 'الرئيسية', href: '/' },
     { name: 'خدماتنا', href: '/services' },
@@ -88,10 +80,34 @@ const Navbar = () => {
         .cta-btn:hover::before {
           left: 100%;
         }
-        @media (min-width: 1024px) {
+        
+        /* ── DESKTOP ── */
+        @media (min-width: 769px) {
           .desktop-menu { display: flex !important; }
           .desktop-cta { display: inline-flex !important; }
           .mobile-toggle { display: none !important; }
+        }
+        
+        /* ── MOBILE NAVBAR ── */
+        @media (max-width: 768px) {
+          .navbar-inner {
+            padding: 0 1rem !important;
+            height: 60px;
+          }
+          .navbar-logo-link {
+            display: flex !important;
+          }
+          .navbar-logo {
+            height: 42px !important;
+            max-height: 42px !important;
+          }
+          .desktop-menu,
+          .desktop-cta {
+            display: none !important;
+          }
+          .mobile-toggle {
+            display: flex !important;
+          }
         }
       `}</style>
 
@@ -101,44 +117,51 @@ const Navbar = () => {
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: isScrolled ? '0.6rem 0' : '0.9rem 0',
+        padding: isScrolled ? '0.4rem 0' : '0.7rem 0',
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         background: isScrolled 
-          ? 'rgba(255, 255, 255, 0.08)' 
-          : 'rgba(255, 255, 255, 0.05)',
+          ? 'rgba(15, 23, 42, 0.85)' 
+          : 'rgba(15, 23, 42, 0.4)',
         backdropFilter: 'blur(16px)',
-        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : 'none'
       }}>
-        <div style={{ 
-          maxWidth: '100%', 
-          margin: '0 auto', 
-          padding: '0 4.5rem', // More breathing room from corners on desktop
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
+        <div 
+          className="navbar-inner"
+          style={{ 
+            maxWidth: '100%', 
+            margin: '0 auto', 
+            padding: '0 4.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
 
-          {/* LEFT CORNER - Logo */}
+          {/* Logo */}
           <Link 
             to="/"
             onClick={() => setIsMenuOpen(false)}
+            className="navbar-logo-link"
             style={{
               display: 'flex',
               alignItems: 'center',
               textDecoration: 'none',
               transition: 'transform 0.3s ease',
-              zIndex: 1001 // Ensure above mobile menu if needed, though menu covers all
+              zIndex: 1001
             }}
           >
             <img 
               src={logoImg} 
               alt="Digital Creation" 
-              className="nav-logo-mobile"
+              className="navbar-logo"
               style={{ 
-                height: isScrolled ? '65px' : '85px', 
+                height: isScrolled ? '100px' : '120px', 
                 width: 'auto',
                 transition: 'all 0.4s ease',
-                filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))'
+                filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.15))',
+                marginTop: '-30px',
+                marginBottom: '-30px'
               }} 
             />
           </Link>
@@ -175,7 +198,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* RIGHT CORNER - CTA & Toggle */}
+          {/* RIGHT - CTA & Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <Link 
               to="/start-project" 
@@ -208,7 +231,7 @@ const Navbar = () => {
                 borderRadius: '10px',
                 color: 'white',
                 cursor: 'pointer',
-                display: 'flex',
+                display: 'none',
                 alignItems: 'center',
                 justifyContent: 'center',
                 padding: '0.5rem',
@@ -223,27 +246,31 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* NEW PREMIUM FULL SCREEN MOBILE MENU */}
+      {/* FULL SCREEN MOBILE MENU */}
       {isMenuOpen && (
         <div style={{
           position: 'fixed',
-          inset: 0, // Top, right, bottom, left = 0
+          inset: 0,
           zIndex: 9999,
-          background: 'rgba(15, 23, 42, 0.98)', // Deep dark
+          background: 'rgba(15, 23, 42, 0.98)',
           backdropFilter: 'blur(20px)',
           display: 'flex',
           flexDirection: 'column',
           animation: 'fadeIn 0.2s ease-out'
         }}>
-          {/* Header of Modal */}
+          {/* Header */}
           <div style={{ 
-            padding: '1.5rem', 
+            padding: '1rem 1.5rem', 
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center',
             borderBottom: '1px solid rgba(255,255,255,0.05)'
           }}>
-             <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'white' }}>القائمة</span>
+            <img 
+              src={logoImg} 
+              alt="Digital Creation" 
+              style={{ height: '40px', width: 'auto' }} 
+            />
              <button 
                onClick={() => setIsMenuOpen(false)}
                style={{
@@ -263,7 +290,7 @@ const Navbar = () => {
              </button>
           </div>
 
-          {/* Links Container */}
+          {/* Links */}
           <div style={{ 
             flex: 1, 
             display: 'flex', 
@@ -278,13 +305,13 @@ const Navbar = () => {
                 to={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 style={{
-                  fontSize: '2rem', // Massive font for premium app feel
+                  fontSize: '1.8rem',
                   fontWeight: '700',
                   color: location.pathname === link.href ? '#8b5cf6' : 'rgba(255,255,255,0.8)',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease',
                   animation: `slideIn 0.4s ease-out forwards ${index * 0.05}s`,
-                  opacity: 0 // Start hidden for animation
+                  opacity: 0
                 }}
               >
                 {link.name}
@@ -292,7 +319,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Footer of Modal */}
+          {/* CTA Footer */}
           <div style={{ padding: '2rem', width: '100%' }}>
             <Link 
               to="/start-project" 
@@ -306,7 +333,8 @@ const Navbar = () => {
                 color: 'white',
                 display: 'flex',
                 justifyContent: 'center',
-                gap: '0.5rem'
+                gap: '0.5rem',
+                textDecoration: 'none'
               }}
             >
               <Sparkles size={20} />

@@ -1,14 +1,38 @@
 /* =========================================
-   MOBILE RECREATION: FINAL FIX
+   MOBILE: Premium Responsive Experience
    Target: Phones (< 768px)
-   Strategy: Kill Overflow, Shrink Everything
+   Strategy: Clean, readable, user-friendly
    ========================================= */
 
 @media (max-width: 768px) {
+
   /* ========================================
-     1. NUCLEAR OVERFLOW KILL
+     1. BASE: Overflow Prevention
      ======================================== */
-  /* Hide About and Contact sections on Home Mobile ONLY */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    background-color: #0f172a !important;
+  }
+
+  body {
+    padding-top: 60px !important;
+    font-size: 15px !important;
+  }
+
+  * {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .container {
+    padding: 0 1.25rem !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* Hide About and Contact sections on Home page mobile */
   .mobile-home-hidden {
     display: none !important;
   }
@@ -20,37 +44,17 @@
   .contact-mobile-cta {
     display: block !important;
   }
-  /* Remove padding from form container on mobile to be cleaner? Or keep glass effect? Keep glass. */
-
-  html,
-  body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    background-color: #0f172a !important; /* Fix overscroll white space */
-  }
-
-  body {
-    padding-top: 70px !important; /* Clear navbar */
-    font-size: 14px !important;
-  }
-
-  * {
-    max-width: 100vw !important;
-    box-sizing: border-box !important;
-  }
-
-  .container {
-    padding: 0 1rem !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-  }
 
   /* ========================================
-     2. HERO: Compact & Centered
+     2. NAVBAR: Logo + Hamburger
+     Handled via Navbar.jsx inline styles & <style> block
+     ======================================== */
+
+  /* ========================================
+     3. HERO: Centered & Clean
      ======================================== */
   #hero {
-    padding: 1.5rem 0 !important;
+    padding: 2rem 0 2.5rem !important;
     min-height: auto !important;
     text-align: center !important;
   }
@@ -62,29 +66,34 @@
   }
 
   #hero h1 {
-    font-size: 1.5rem !important;
-    line-height: 1.3 !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  #hero p {
-    font-size: 0.9rem !important;
+    font-size: 1.6rem !important;
+    line-height: 1.4 !important;
     margin-bottom: 1rem !important;
   }
 
-  /* Hero Badge - Much Smaller */
-  #hero .glass-panel {
-    padding: 0.3rem 0.6rem !important;
-    margin-bottom: 0.75rem !important;
-    font-size: 0.75rem !important;
+  #hero p {
+    font-size: 0.95rem !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.6 !important;
   }
 
-  /* Hero Button - Center it */
+  /* Hero Badge */
+  #hero .hero-badge {
+    padding: 0.35rem 0.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+  #hero .hero-badge span {
+    font-size: 0.8rem !important;
+  }
+
+  /* Hero Button */
   #hero .btn {
     margin: 0 auto !important;
+    padding: 0.75rem 1.8rem !important;
+    font-size: 1rem !important;
   }
 
-  /* Hide Hero Visual & Blobs */
+  /* Hide Hero Visual & Blobs on mobile */
   .hero-visual,
   .hero-blob {
     display: none !important;
@@ -94,125 +103,81 @@
   #hero > div > div:last-child {
     justify-content: center !important;
     flex-wrap: wrap !important;
-    gap: 1rem !important;
-    font-size: 0.8rem !important;
+    gap: 1.25rem !important;
+    font-size: 0.85rem !important;
+    margin-top: 2rem !important;
   }
 
   /* ========================================
-     3. ALL GRIDS: Force Single Column Stack
-     EXCEPT .services-home-grid which should be 2x2
+     4. TYPOGRAPHY: Clean & Readable
+     ======================================== */
+  h1 {
+    font-size: 1.6rem !important;
+    line-height: 1.35 !important;
+  }
+
+  h2 {
+    font-size: 1.4rem !important;
+    text-align: center !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  p {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ========================================
+     5. GRIDS: Smart Stacking
      ======================================== */
   .services-grid-system,
-  .sectors-grid,
-  div[style*="display: grid"]:not(.services-home-grid),
-  div[style*="grid-template-columns"]:not(.services-home-grid) {
+  .sectors-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1rem !important;
+    gap: 1.25rem !important;
     width: 100% !important;
-    max-width: 100% !important;
+  }
+
+  /* Fix inline grid styles to stack on mobile */
+  div[style*="minmax(300px"],
+  div[style*="minmax(350px"],
+  div[style*="minmax(400px"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
   }
 
   /* ========================================
-     4. ALL CARDS: Compact & Full Width
+     6. GLASS PANELS: Comfortable Padding
      ======================================== */
-  .glass-panel,
-  .services-grid-system > *,
-  .portfolio-grid-system > *,
-  .pricing-grid-system > *,
-  .sector-card {
+  .glass-panel {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 1rem !important;
-    margin: 0 !important;
+    padding: 1.25rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Don't apply hover lift on mobile (causes jumpy scroll) */
+  .glass-panel:hover {
+    transform: none !important;
   }
 
   /* ========================================
-     5. PORTFOLIO: Compact Cards
+     7. HOMEPAGE SERVICES: 2x2 Grid
      ======================================== */
-  /* ========================================
-     5. PORTFOLIO: Compact 2x2 Grid (User Request)
-     ======================================== */
-  .portfolio-grid-system {
+  .services-home-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.75rem !important;
   }
 
-  .portfolio-grid-system > div {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    border-radius: 12px !important;
-    height: 100% !important;
-  }
-
-  /* Image Container (Background Div) */
-  .portfolio-grid-system > div > div:first-child {
-    height: 110px !important; /* Smaller height for mobile */
-  }
-
-  /* Text Content Container */
-  .portfolio-grid-system > div > div:last-child {
-    padding: 0.75rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    flex: 1 !important;
-  }
-
-  /* Title */
-  .portfolio-grid-system h3 {
-    font-size: 0.95rem !important;
-    margin-bottom: 0.25rem !important;
-    line-height: 1.2 !important;
-  }
-
-  /* Description & Tech Tags */
-  .portfolio-grid-system p {
-    font-size: 0.75rem !important;
-    margin-bottom: 0.5rem !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important; /* Limit description lines */
-    line-clamp: 2 !important; /* Standard property for compatibility */
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-
-  /* Category Badge - Overlay Top Right */
-  .portfolio-grid-system span[style*="position: absolute"] {
-    position: absolute !important;
-    top: 0.5rem !important;
-    right: 0.5rem !important;
-    bottom: auto !important;
-    font-size: 0.65rem !important;
-    padding: 0.2rem 0.5rem !important;
-    z-index: 10 !important;
-    border-radius: 4px !important;
-  }
-
-  /* ========================================
-     6. SERVICES: Icon on Top Layout
-     ======================================== */
-  .services-grid-system > div {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 1rem !important;
-    gap: 0.5rem !important;
-  }
-
-  /* HOMEPAGE SERVICES: 2x2 Grid (User Request) */
-  .services-home-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns */
-    gap: 0.75rem !important;
-  }
-
   .services-home-grid > div {
-    padding: 0.75rem !important;
+    padding: 1rem !important;
     text-align: center !important;
   }
 
@@ -229,281 +194,226 @@
 
   .services-home-grid h3 {
     font-size: 0.9rem !important;
-    margin-bottom: 0.25rem !important;
+    margin-bottom: 0.3rem !important;
   }
 
   .services-home-grid p {
-    font-size: 0.75rem !important;
-    line-height: 1.3 !important;
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
     margin: 0 !important;
+  }
+
+  /* ========================================
+     8. SERVICES PAGE: Feature Cards
+     ======================================== */
+  .services-grid-system > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 1.25rem !important;
+    gap: 0.75rem !important;
   }
 
   .services-grid-system .glass-panel {
-    padding: 0.5rem !important;
-  }
-
-  .services-grid-system svg {
-    width: 24px !important;
-    height: 24px !important;
+    padding: 0.75rem !important;
   }
 
   .services-grid-system h3 {
-    font-size: 1rem !important;
-    margin-bottom: 0.25rem !important;
+    font-size: 1.05rem !important;
   }
 
   .services-grid-system p {
-    font-size: 0.8rem !important;
+    font-size: 0.85rem !important;
     margin: 0 !important;
   }
 
   /* ========================================
-     7. PRICING: Compact Cards
-     ======================================== */
-  /* ========================================
-     7. PRICING: Compact 2x2 Grid (User Request)
+     9. PRICING: Single Column Stack
      ======================================== */
   .pricing-grid-system {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+  }
+
+  .pricing-grid-system > div {
+    padding: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  .pricing-grid-system h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .pricing-grid-system ul {
+    font-size: 0.88rem !important;
+    padding: 0 !important;
+    margin-bottom: 1.25rem !important;
+    text-align: right !important;
+  }
+
+  .pricing-grid-system li {
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* ========================================
+     10. PORTFOLIO: 2-Column Grid
+     ======================================== */
+  .portfolio-grid-system {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.75rem !important;
   }
 
-  .pricing-grid-system > div {
-    padding: 1rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    text-align: center !important;
-  }
-
-  .pricing-grid-system h3 {
-    font-size: 1.1rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .pricing-grid-system div[style*="font-size: 1.5rem"] {
-    font-size: 1rem !important; /* Smaller price text */
-    margin-bottom: 1rem !important;
-  }
-
-  /* Hide features list on mobile 2x2 view to "short the scroll" - Smart Way? 
-     Or just make text smaller? User said "shot the scroll".
-     If I hide features, it fits nicely. I'll hide the list bullets. 
-     Or limits to 3 items?
-     I'll try keeping them but very small.
-  */
-  .pricing-grid-system ul {
-    font-size: 0.75rem !important;
+  .portfolio-grid-system > div {
     padding: 0 !important;
-    margin-bottom: 1rem !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
   }
 
-  .pricing-grid-system li {
-    margin-bottom: 0.25rem !important;
-    justify-content: center !important; /* Center align items */
+  /* Image Container */
+  .portfolio-grid-system > div > div:first-child {
+    height: 120px !important;
   }
 
-  /* Recommended Badge - Smaller */
-  .pricing-grid-system div[style*="position: absolute"] {
-    font-size: 0.6rem !important;
-    padding: 0.2rem 0.6rem !important;
-    top: -10px !important;
-    right: 50% !important;
-    transform: translateX(50%) !important; /* Center the badge */
+  /* Text Content */
+  .portfolio-grid-system > div > div:last-child {
+    padding: 0.75rem !important;
   }
 
-  /* Make the 3rd card (Business) full width since it's alone */
-  .pricing-grid-system > div:nth-child(3) {
-    grid-column: span 2 !important;
+  .portfolio-grid-system h3 {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.3rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .portfolio-grid-system p {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
   }
 
   /* ========================================
-     8. SECTOR CARDS: Compact
+     11. SECTOR CARDS
      ======================================== */
   .sector-card {
-    padding: 1rem !important;
+    padding: 1.25rem !important;
   }
 
   .sector-card h3 {
-    font-size: 1.1rem !important;
+    font-size: 1.15rem !important;
   }
 
   .sector-card p,
   .sector-card li {
-    font-size: 0.85rem !important;
+    font-size: 0.88rem !important;
   }
 
   /* ========================================
-     9. TYPOGRAPHY: Phone Sized
-     ======================================== */
-  h1 {
-    font-size: 1.5rem !important;
-    line-height: 1.3 !important;
-  }
-
-  h2 {
-    font-size: 1.25rem !important;
-    text-align: center !important;
-    margin-bottom: 1rem !important;
-  }
-
-  h3 {
-    font-size: 1rem !important;
-  }
-
-  p {
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-  }
-
-  /* ========================================
-     10. NAVBAR: Compact Logo
-     ======================================== */
-  .nav-logo-mobile {
-    max-height: 35px !important;
-    margin: 0 !important;
-  }
-
-  nav {
-    padding: 0 !important; /* STRICT 50px Height */
-  }
-
-  /* ========================================
-     MOBILE NAVBAR: Compact Single Row (Links Only)
-     Slim, Sleek, App-Like Tab Bar
-     ======================================== */
-
-  /* 1. Navbar Container - Horizontal Row */
-  nav > div {
-    flex-direction: row !important;
-    align-items: center !important;
-    padding: 0 !important;
-    height: 50px !important; /* Fixed compact height */
-  }
-
-  /* 2. Hide Navbar Logo completely */
-  .nav-logo-mobile,
-  nav > div > a:first-child {
-    display: none !important;
-  }
-
-  /* 3. Links Row - Full Width, Fixed (No Scroll) */
-  /* Override Navbar container padding for mobile */
-  nav > div {
-    padding: 0 1rem !important;
-  }
-
-  .desktop-menu {
-    display: flex !important;
-    width: 100% !important;
-    justify-content: center !important; /* Centered links */
-    align-items: center !important;
-    gap: 0.8rem !important; /* Closer but not too close */
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-  }
-
-  .desktop-menu .nav-link {
-    font-size: 0.65rem !important; /* Small enough to fit 6 items */
-    padding: 0.5rem 0.2rem !important;
-    white-space: nowrap !important;
-    line-height: 1 !important;
-    opacity: 0.8 !important;
-  }
-
-  .desktop-menu .nav-link.active {
-    opacity: 1 !important;
-    color: #8b5cf6 !important;
-    font-weight: 700 !important;
-    border-bottom: 2px solid #8b5cf6;
-  }
-
-  .mobile-toggle,
-  .desktop-cta {
-    display: none !important;
-  }
-
-  /* Reset Body Padding for Slim Navbar */
-  body {
-    padding-top: 50px !important; /* Matches strict Navbar height */
-  }
-
-  /* HOME PAGE: Prevent big empty space, but keep logo safe */
-  #hero {
-    padding-top: 0 !important; /* Start immediately */
-    margin-top: 0 !important;
-    min-height: auto !important; /* Kill 100vh */
-    height: auto !important; /* Kill any fixed height */
-    display: block !important; /* Kill flex centering from parent */
-  }
-
-  /* OTHER PAGES (About, Blog, Portfolio): Remove big empty space */
-  /* We added 'page-wrapper' class to these pages to override inline style */
-  .page-wrapper {
-    padding-top: 1rem !important; /* Reduced from 120px */
-  }
-
-  /* ========================================
-     11. SECTIONS: Tighter Spacing
+     12. SECTIONS: Comfortable Spacing
      ======================================== */
   .section {
-    padding: 1.5rem 0 !important;
+    padding: 2rem 0 !important;
+  }
+
+  /* Pages with paddingTop inline styles */
+  .page-wrapper {
+    padding-top: 1.5rem !important;
+  }
+
+  /* Services/Contact pages — override inline paddingTop: 8rem */
+  div[class*="section"][style*="paddingTop: '8rem'"],
+  div[class*="section"][style*="padding-top: 8rem"] {
+    padding-top: 2rem !important;
   }
 
   /* ========================================
-     12. BUTTONS: Touch Friendly
+     13. BUTTONS: Touch-Friendly
      ======================================== */
   .btn {
-    padding: 0.6rem 1rem !important;
-    font-size: 0.85rem !important;
+    padding: 0.7rem 1.2rem !important;
+    font-size: 0.9rem !important;
     min-height: 44px !important;
+    border-radius: 10px !important;
   }
 
   /* ========================================
-     13. FORMS: Prevent iOS Zoom
+     14. FORMS: iOS Zoom Prevention
      ======================================== */
-  input,
-  select,
-  textarea {
+  input, select, textarea {
     font-size: 16px !important;
-    padding: 0.75rem !important;
+    padding: 0.8rem !important;
+    border-radius: 8px !important;
   }
 
-  /* ========================================
-     14. CONTACT PAGE
-     ======================================== */
   form {
-    gap: 0.75rem !important;
+    gap: 1rem !important;
   }
 
-  /* ========================================
-     15. ABOUT PAGE FIXES
-     ======================================== */
-  div[style*="minmax(300px"],
-  div[style*="minmax(400px"] {
+  /* Fix form grid to single column on mobile */
+  form div[style*="grid-template-columns: 1fr 1fr"],
+  form div[style*="grid-template-columns: repeat"] {
     display: flex !important;
     flex-direction: column !important;
+    gap: 1rem !important;
   }
 
-  /* HIDE the big branded logo showcase on About page */
-  /* Target the glass-panel containing the logo_full image */
-  div[style*="minmax(400px"] > .glass-panel:first-child {
+  /* ========================================
+     15. ABOUT PAGE: Hide Big Logo Card
+     ======================================== */
+  div[style*="minmax(400px"] > .glass-panel:first-child,
+  div[style*="minmax(400px"] > div:first-child > .glass-panel {
     display: none !important;
   }
 
+  /* Fix about text to fill width */
+  div[style*="minmax(400px"] > div:last-child,
+  div[style*="minmax(400px"] > div:nth-child(2) {
+    max-width: 100% !important;
+  }
+
   /* ========================================
-     16. HERO PAGE: Hide Big Image
+     16. HERO: Hide Desktop Visuals
      ======================================== */
-  /* The hero visual container with the hero_bg image */
   #hero img[alt*="Dashboard"],
   .hero-visual {
     display: none !important;
   }
 
-  /* The floating badge overlay */
   #hero .glass-panel[style*="position: absolute"] {
     display: none !important;
+  }
+
+  /* ========================================
+     17. FOOTER: Stack & Compact
+     ======================================== */
+  footer .container > div:first-child {
+    gap: 2rem !important;
+  }
+
+  footer img {
+    height: 60px !important;
+  }
+
+  /* ========================================
+     18. IMAGES: Prevent Overflow
+     ======================================== */
+  img, video, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ========================================
+     19. FIX: Select dropdown styling
+     ======================================== */
+  select option {
+    background-color: #1f2937;
+    color: white;
   }
 }
