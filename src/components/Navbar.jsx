@@ -15,11 +15,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
   }, [isMenuOpen]);
 
   const navLinks = [
@@ -69,38 +65,29 @@ const Navbar = () => {
         .cta-btn::before {
           content: '';
           position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
+          top: 0; left: -100%; width: 100%; height: 100%;
           background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
           transition: left 0.5s ease;
         }
-        .cta-btn:hover::before {
-          left: 100%;
-        }
+        .cta-btn:hover::before { left: 100%; }
         
-        /* ── DESKTOP ── */
+        /* DESKTOP */
         @media (min-width: 769px) {
           .desktop-menu { display: flex !important; }
           .desktop-cta { display: inline-flex !important; }
           .mobile-toggle { display: none !important; }
         }
         
-        /* ── MOBILE ── */
+        /* MOBILE */
         @media (max-width: 768px) {
           .navbar-inner {
             padding: 0 0.75rem !important;
-            height: 56px;
           }
           .navbar-logo {
-            height: 50px !important;
-            max-height: 50px !important;
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
+            height: 36px !important;
+            margin: 0 !important;
           }
-          .desktop-menu,
-          .desktop-cta {
+          .desktop-menu, .desktop-cta {
             display: none !important;
           }
           .mobile-toggle {
@@ -111,15 +98,13 @@ const Navbar = () => {
 
       <nav style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 0, left: 0, right: 0,
         zIndex: 1000,
-        padding: isScrolled ? '0.3rem 0' : '0.5rem 0',
+        padding: isScrolled ? '0.4rem 0' : '0.6rem 0',
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         background: isScrolled 
-          ? 'rgba(15, 23, 42, 0.9)' 
-          : 'rgba(15, 23, 42, 0.4)',
+          ? 'rgba(15, 23, 42, 0.92)' 
+          : 'rgba(15, 23, 42, 0.5)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : 'none'
@@ -136,31 +121,26 @@ const Navbar = () => {
           }}
         >
 
-          {/* Logo — pushed to corner with glow */}
+          {/* Logo — white glow makes dark text visible */}
           <Link 
             to="/"
             onClick={() => setIsMenuOpen(false)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              textDecoration: 'none',
-              transition: 'transform 0.3s ease',
-              zIndex: 1001
-            }}
+            style={{ textDecoration: 'none', zIndex: 1001, display: 'flex', alignItems: 'center' }}
           >
-            <img 
-              src={logoImg} 
-              alt="Digital Creation" 
-              className="navbar-logo"
-              style={{ 
-                height: isScrolled ? '100px' : '130px', 
-                width: 'auto',
-                transition: 'all 0.4s ease',
-                filter: `drop-shadow(0 0 20px rgba(139, 92, 246, 0.5)) drop-shadow(0 0 40px rgba(6, 182, 212, 0.25))`,
-                marginTop: '-35px',
-                marginBottom: '-35px'
-              }} 
-            />
+              <img 
+                src={logoImg} 
+                alt="Digital Creation" 
+                className="navbar-logo"
+                style={{ 
+                  height: isScrolled ? '55px' : '65px', 
+                  width: 'auto',
+                  transition: 'all 0.4s ease',
+                  display: 'block',
+                  filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.9)) drop-shadow(0 0 3px rgba(255,255,255,0.7)) drop-shadow(0 0 8px rgba(139,92,246,0.5))',
+                  marginTop: '-10px',
+                  marginBottom: '-10px'
+                }} 
+              />
           </Link>
 
           {/* CENTER - Desktop Links */}
@@ -210,8 +190,7 @@ const Navbar = () => {
                 fontWeight: '600',
                 fontSize: '0.95rem',
                 textDecoration: 'none',
-                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.35)',
-                transition: 'all 0.3s ease'
+                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.35)'
               }}
             >
               <Sparkles size={16} />
@@ -230,45 +209,37 @@ const Navbar = () => {
                 display: 'none',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '0.5rem',
-                width: '40px',
-                height: '40px',
-                transition: 'all 0.3s ease'
+                width: '38px',
+                height: '38px'
               }}
             >
-              <Menu size={22} />
+              <Menu size={20} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* MOBILE FULL-SCREEN MENU — compact & premium */}
+      {/* MOBILE FULL-SCREEN MENU */}
       {isMenuOpen && (
         <div style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 9999,
+          position: 'fixed', inset: 0, zIndex: 9999,
           background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.99) 0%, rgba(30, 41, 59, 0.99) 100%)',
           backdropFilter: 'blur(20px)',
-          display: 'flex',
-          flexDirection: 'column',
+          display: 'flex', flexDirection: 'column',
           animation: 'fadeIn 0.15s ease-out'
         }}>
           {/* Header */}
           <div style={{ 
-            padding: '0.75rem 1rem', 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            alignItems: 'center',
+            padding: '0.6rem 1rem', 
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
             borderBottom: '1px solid rgba(255,255,255,0.06)'
           }}>
             <img 
               src={logoImg} 
               alt="Digital Creation" 
               style={{ 
-                height: '45px', 
-                width: 'auto',
-                filter: 'drop-shadow(0 0 15px rgba(139, 92, 246, 0.4))'
+                height: '32px', width: 'auto', display: 'block',
+                filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.9)) drop-shadow(0 0 3px rgba(255,255,255,0.7))'
               }} 
             />
             <button 
@@ -276,71 +247,50 @@ const Navbar = () => {
               style={{
                 background: 'rgba(255,255,255,0.08)',
                 border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '12px',
-                width: '38px',
-                height: '38px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                cursor: 'pointer'
+                borderRadius: '10px',
+                width: '36px', height: '36px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'white', cursor: 'pointer'
               }}
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
 
-          {/* Links — compact layout */}
+          {/* Links */}
           <div style={{ 
-            flex: 1, 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            gap: '1.5rem',
-            padding: '0 2rem'
+            flex: 1, display: 'flex', flexDirection: 'column', 
+            alignItems: 'center', justifyContent: 'center',
+            gap: '1.5rem'
           }}>
             {navLinks.map((link, index) => (
               <Link 
-                key={link.name} 
-                to={link.href}
+                key={link.name} to={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 style={{
-                  fontSize: '1.5rem',
-                  fontWeight: '700',
+                  fontSize: '1.4rem', fontWeight: '700',
                   color: location.pathname === link.href ? '#8b5cf6' : 'rgba(255,255,255,0.75)',
                   textDecoration: 'none',
-                  transition: 'color 0.3s ease',
                   animation: `slideIn 0.3s ease-out forwards ${index * 0.04}s`,
-                  opacity: 0,
-                  letterSpacing: '0.01em'
+                  opacity: 0
                 }}
-              >
-                {link.name}
-              </Link>
+              >{link.name}</Link>
             ))}
           </div>
 
-          {/* CTA Footer — compact */}
-          <div style={{ padding: '1.25rem 1.5rem' }}>
+          {/* CTA */}
+          <div style={{ padding: '1rem 1.25rem' }}>
             <Link 
-              to="/start-project" 
-              onClick={() => setIsMenuOpen(false)}
+              to="/start-project" onClick={() => setIsMenuOpen(false)}
               className="btn cta-btn"
               style={{ 
-                width: '100%', 
-                padding: '0.9rem', 
-                fontSize: '1rem',
-                borderRadius: '14px',
-                color: 'white',
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '0.5rem',
+                width: '100%', padding: '0.85rem', fontSize: '0.95rem',
+                borderRadius: '12px', color: 'white',
+                display: 'flex', justifyContent: 'center', gap: '0.5rem',
                 textDecoration: 'none'
               }}
             >
-              <Sparkles size={18} />
-              ابدأ مشروعك
+              <Sparkles size={16} /> ابدأ مشروعك
             </Link>
           </div>
         </div>

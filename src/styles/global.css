@@ -215,142 +215,39 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Responsive - Aggressive Overrides for Premium Mobile Feel */
-@media (max-width: 768px) {
-  :root {
-    --spacing-section: 2.5rem; /* Tighter section spacing */
-    --spacing-container: 100%;
-  }
-  
-  body {
-    font-size: 14px; /* Optimal reading size for mobile */
-    overflow-x: hidden !important;
-    width: 100vw;
-  }
-
-  h1 {
-    font-size: clamp(1.75rem, 5vw, 2.25rem); /* Compact headings */
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-  }
-  h2 {
-    font-size: 1.4rem;
-    line-height: 1.3;
-  }
-  h3 {
-    font-size: 1.2rem;
-  }
-  
-  p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  
-  .container {
-    padding: 0 1.25rem; /* Comfortable side padding */
-    width: 100%;
-    overflow: hidden; /* Ensure container never spills */
-  }
-  
-  .section {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-  }
-  
-  /* Make glass panels compact/sleek */
-  .glass-panel {
-    padding: 1.25rem !important;
-    backdrop-filter: blur(12px);
-    width: 100%; /* Force width fit */
-  }
-
-  /* Critical: Ensure images/media never overflow */
-  img, video, svg {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
-
-  /* Force grids to single column on mobile for perfect vertical stacking */
-  .mobile-stack-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-}
-
 /* Fix select dropdowns */
 select option {
   background-color: #1f2937;
   color: white;
 }
 
-/* =========================================
-   SAFE MODE: Mobile Optimization Classes
-   These classes preserve Desktop Exactness while fixing Mobile.
-   ========================================= */
-
-/* Navbar Logo Mobile Override */
-@media (max-width: 768px) {
-  .nav-logo-mobile {
-    height: auto !important;
-    max-height: 45px !important; /* Perfect phone size */
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    width: auto !important;
-  }
-}
-
-/* Services Grid Control */
+/* ── Grid Systems (Desktop Defaults) ── */
 .services-grid-system {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Desktop Default */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 6rem;
 }
 
-/* Pricing Grid Control */
 .pricing-grid-system {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Desktop Default */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
-/* Portfolio Grid Control */
 .portfolio-grid-system {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Desktop Default */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2.5rem;
 }
 
-/* Mobile Overrides for Grids */
-@media (max-width: 768px) {
-  .services-grid-system,
-  .pricing-grid-system,
-  .portfolio-grid-system {
-    display: grid !important;
-    grid-template-columns: 1fr !important; /* Force single column stack */
-    gap: 1.5rem !important; /* Tighter gap for mobile */
-    padding: 0 0.5rem; /* Tiny buffer */
-  }
-}
-
-/* Specific Sector Card Polish */
 .sector-card {
   padding: 3rem !important;
   display: flex !important;
   align-items: center;
 }
-@media (max-width: 768px) {
-  .sector-card {
-    padding: 1.5rem !important;
-    display: block !important;
-  }
-}
 
-/* ========================================
-   HERO SECTION (Desktop Defaults)
-   Moved from inline styles to allow mobile overrides
-   ======================================== */
+/* ── Hero Section (Desktop) ── */
 #hero {
   position: relative;
   min-height: 100vh;
