@@ -1,383 +1,42 @@
 /* =========================================
-   MOBILE: Premium App-Like Experience
-   Single source of truth — no other file 
-   should have @media (max-width: 768px)
+   MOBILE: Foundation-Only Global Overrides
+   Components handle their own mobile layouts
+   via useIsMobile hook — this file only sets
+   global foundations.
    ========================================= */
 
 @media (max-width: 768px) {
 
-  /* ══════════════════════════════════════
-     FOUNDATION
-     ══════════════════════════════════════ */
+  /* ── Foundation ── */
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100vw !important;
-    background-color: #0f172a !important;
   }
 
   body {
     padding-top: 52px !important;
-    font-size: 14px !important;
   }
 
   * { max-width: 100vw; box-sizing: border-box; }
-  img, video, svg { max-width: 100%; height: auto; }
 
   .container {
-    padding: 0 0.9rem !important;
+    padding: 0 1rem !important;
     max-width: 100% !important;
     overflow: hidden !important;
   }
 
-  /* Conditionally hidden sections */
-  .mobile-home-hidden { display: none !important; }
-  .contact-desktop-content { display: none !important; }
-  .contact-mobile-cta { display: block !important; }
-
-  /* ══════════════════════════════════════
-     TYPOGRAPHY — Tight but readable
-     ══════════════════════════════════════ */
-  h1 { font-size: 1.3rem !important; line-height: 1.3 !important; margin-bottom: 0.5rem !important; }
-  h2 { font-size: 1.1rem !important; text-align: center !important; margin-bottom: 0.6rem !important; }
-  h3 { font-size: 0.88rem !important; margin-bottom: 0.3rem !important; }
-  p  { font-size: 0.8rem !important; line-height: 1.5 !important; margin-bottom: 0.5rem !important; }
-
-  /* ══════════════════════════════════════
-     SECTIONS — Minimal vertical space
-     ══════════════════════════════════════ */
-  .section { padding: 1rem 0 !important; }
-  .page-wrapper { padding-top: 0.5rem !important; }
-
-  /* Override any inline paddingTop: '8rem' on pages */
-  div[class="section"] { padding-top: 0.75rem !important; }
-
-  /* ══════════════════════════════════════
-     HERO — Compact centered header
-     ══════════════════════════════════════ */
-  #hero {
-    padding: 0.75rem 0 1.25rem !important;
-    min-height: auto !important;
-    text-align: center !important;
-    height: auto !important;
-    display: block !important;
-  }
-
-  #hero .container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-
-  #hero h1 { font-size: 1.25rem !important; margin-bottom: 0.4rem !important; }
-  #hero p { font-size: 0.78rem !important; margin-bottom: 0.75rem !important; }
-
-  /* Badge */
-  #hero .hero-badge { 
-    padding: 0.2rem 0.5rem !important; 
-    margin-bottom: 0.5rem !important; 
-  }
-  #hero .hero-badge span { font-size: 0.68rem !important; }
-
-  /* CTA */
-  #hero .btn { 
-    margin: 0 auto !important; 
-    padding: 0.5rem 1.2rem !important; 
-    font-size: 0.82rem !important; 
-  }
-
-  /* Hide desktop visuals */
-  .hero-visual, .hero-blob { display: none !important; }
-  #hero img[alt*="Dashboard"] { display: none !important; }
-  #hero .glass-panel[style*="position: absolute"] { display: none !important; }
-
-  /* Mini stats row */
-  #hero > div > div:last-child {
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 0.6rem !important;
-    font-size: 0.68rem !important;
-    margin-top: 0.75rem !important;
-  }
-
-  /* ══════════════════════════════════════
-     GLASS PANELS — Slim cards
-     ══════════════════════════════════════ */
-  .glass-panel {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0.7rem !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    border-radius: 10px !important;
-  }
-
-  /* Kill hover effects on touch */
+  /* ── Kill desktop hover effects on touch ── */
   .glass-panel:hover {
     transform: none !important;
     box-shadow: none !important;
   }
 
-  /* ══════════════════════════════════════
-     GRIDS — Intelligent stacking
-     ══════════════════════════════════════ */
-  div[style*="minmax(300px"],
-  div[style*="minmax(350px"],
-  div[style*="minmax(400px"],
-  div[style*="minmax(250px"],
-  div[style*="minmax(280px"] {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.6rem !important;
-  }
-
-  .services-grid-system,
-  .sectors-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-    margin-bottom: 1rem !important;
-  }
-
-  /* ══════════════════════════════════════
-     HOME SERVICES — Tight 2×2 grid
-     ══════════════════════════════════════ */
-  .services-home-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.4rem !important;
-  }
-
-  .services-home-grid > div {
-    padding: 0.5rem !important;
-    text-align: center !important;
-  }
-
-  .services-home-grid > div > div:first-child {
-    width: 36px !important;
-    height: 36px !important;
-    margin-bottom: 0.2rem !important;
-  }
-
-  .services-home-grid svg { width: 18px !important; height: 18px !important; }
-  .services-home-grid h3 { font-size: 0.72rem !important; margin-bottom: 0.1rem !important; }
-  .services-home-grid p { font-size: 0.62rem !important; line-height: 1.25 !important; margin: 0 !important; }
-
-  /* ══════════════════════════════════════
-     SERVICES PAGE — Feature cards
-     ══════════════════════════════════════ */
-  .services-grid-system > div {
-    display: flex !important;
-    align-items: center !important;
-    text-align: right !important;
-    padding: 0.6rem !important;
-    gap: 0.5rem !important;
-    flex-direction: row !important;
-  }
-
-  .services-grid-system .glass-panel { padding: 0.5rem !important; }
-  .services-grid-system h3 { font-size: 0.85rem !important; margin-bottom: 0.1rem !important; }
-  .services-grid-system p { font-size: 0.72rem !important; margin: 0 !important; }
-  .services-grid-system svg { width: 24px !important; height: 24px !important; min-width: 24px !important; }
-
-  /* ══════════════════════════════════════
-     PRICING — Compact 2×2 with 3rd full
-     ══════════════════════════════════════ */
-  .pricing-grid-system {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem !important;
-  }
-
-  .pricing-grid-system > div {
-    padding: 0.6rem !important;
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-  }
-
-  .pricing-grid-system h3 { font-size: 0.88rem !important; margin-bottom: 0.2rem !important; }
-
-  .pricing-grid-system div[style*="font-size: 1.5rem"] {
-    font-size: 0.72rem !important;
-    margin-bottom: 0.4rem !important;
-  }
-
-  .pricing-grid-system ul {
-    font-size: 0.62rem !important;
-    padding: 0 !important;
-    margin-bottom: 0.4rem !important;
-    text-align: right !important;
-  }
-
-  .pricing-grid-system li { margin-bottom: 0.15rem !important; gap: 0.3rem !important; }
-  .pricing-grid-system li svg { width: 12px !important; height: 12px !important; min-width: 12px !important; }
-
-  /* 3rd card spans full */
-  .pricing-grid-system > div:nth-child(3) { grid-column: span 2 !important; }
-
-  /* Recommended badge */
-  .pricing-grid-system div[style*="position: absolute"] {
-    font-size: 0.5rem !important;
-    padding: 0.12rem 0.4rem !important;
-    top: -7px !important;
-    right: 50% !important;
-    transform: translateX(50%) !important;
-  }
-
-  .pricing-grid-system .btn {
-    padding: 0.35rem 0.5rem !important;
-    font-size: 0.68rem !important;
-    min-height: 30px !important;
-  }
-
-  /* ══════════════════════════════════════
-     PORTFOLIO — Tight 2-col
-     ══════════════════════════════════════ */
-  .portfolio-grid-system {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.4rem !important;
-  }
-
-  .portfolio-grid-system > div {
-    padding: 0 !important;
-    overflow: hidden !important;
-    border-radius: 8px !important;
-  }
-
-  .portfolio-grid-system > div > div:first-child { height: 80px !important; }
-  .portfolio-grid-system > div > div:last-child { padding: 0.4rem !important; }
-
-  .portfolio-grid-system h3 {
-    font-size: 0.72rem !important;
-    margin-bottom: 0.1rem !important;
-    line-height: 1.2 !important;
-  }
-
-  .portfolio-grid-system p {
-    font-size: 0.6rem !important;
-    margin-bottom: 0.2rem !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 1 !important;
-    line-clamp: 1 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-
-  /* Category badge */
-  .portfolio-grid-system div[style*="position: absolute"] {
-    font-size: 0.55rem !important;
-    padding: 0.15rem 0.35rem !important;
-    top: 0.3rem !important;
-    right: 0.3rem !important;
-    border-radius: 4px !important;
-  }
-
-  /* Tech icons tiny */
-  .portfolio-grid-system div[style*="display: flex"][style*="gap: 0.5rem"] {
-    gap: 0.25rem !important;
-  }
-  .portfolio-grid-system div[style*="width: 24px"] {
-    width: 14px !important;
-    height: 14px !important;
-  }
-
-  /* ══════════════════════════════════════
-     SECTOR CARDS
-     ══════════════════════════════════════ */
-  .sector-card {
-    padding: 0.6rem !important;
-    display: block !important;
-  }
-  .sector-card h3 { font-size: 0.88rem !important; margin-bottom: 0.3rem !important; }
-  .sector-card p, .sector-card li { font-size: 0.72rem !important; }
-  .sector-card ul { gap: 0.2rem !important; }
-
-  /* ══════════════════════════════════════
-     BUTTONS — Touch-friendly but compact
-     ══════════════════════════════════════ */
-  .btn {
-    padding: 0.5rem 0.9rem !important;
-    font-size: 0.78rem !important;
-    min-height: 36px !important;
-    border-radius: 8px !important;
-  }
-
   .btn:hover { transform: none !important; }
 
-  /* ══════════════════════════════════════
-     FORMS — iOS safe + compact
-     ══════════════════════════════════════ */
-  input, select, textarea {
-    font-size: 16px !important; /* Prevents iOS zoom */
-    padding: 0.55rem !important;
-    border-radius: 6px !important;
+  /* ── Select styling ── */
+  select option {
+    background-color: #1f2937;
+    color: white;
   }
-
-  form { gap: 0.5rem !important; }
-
-  form div[style*="grid-template-columns: 1fr 1fr"],
-  form div[style*="grid-template-columns: repeat"] {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-  }
-
-  label { font-size: 0.75rem !important; }
-
-  /* ══════════════════════════════════════
-     ABOUT PAGE — Hide big logo card
-     ══════════════════════════════════════ */
-  div[style*="minmax(400px"] > div:first-child {
-    display: none !important;
-  }
-  
-  div[style*="minmax(400px"] > div:last-child,
-  div[style*="minmax(400px"] > div:nth-child(2) {
-    max-width: 100% !important;
-  }
-
-  /* About checklist compact */
-  div[style*="display: flex"][style*="gap: 1rem"][style*="alignItems: center"] {
-    gap: 0.4rem !important;
-  }
-
-  /* ══════════════════════════════════════
-     FOOTER — Compact
-     ══════════════════════════════════════ */
-  footer { padding-top: 1.5rem !important; }
-  footer .container > div:first-child { gap: 1rem !important; }
-  footer img { height: 45px !important; }
-  footer p { font-size: 0.72rem !important; }
-  footer h3 { font-size: 0.85rem !important; margin-bottom: 0.5rem !important; }
-  footer li { font-size: 0.75rem !important; margin-bottom: 0.3rem !important; }
-  footer span { font-size: 0.7rem !important; }
-
-  /* Footer bottom bar */
-  footer > div > div:last-child {
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: 0.5rem !important;
-    font-size: 0.7rem !important;
-  }
-
-  /* Social icons */
-  footer a[style*="borderRadius: '50%'"],
-  footer a[style*="border-radius: 50%"] {
-    width: 30px !important;
-    height: 30px !important;
-  }
-
-  /* ══════════════════════════════════════
-     SELECT DROPDOWNS
-     ══════════════════════════════════════ */
-  select option { background-color: #1f2937; color: white; }
-
-  /* ══════════════════════════════════════
-     CONTACT PAGE — Compact info cards
-     ══════════════════════════════════════ */
-  .contact-form-container { padding: 0.75rem !important; }
 }

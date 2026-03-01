@@ -132,13 +132,13 @@ const Navbar = () => {
                 alt="Digital Creation" 
                 className="navbar-logo"
                 style={{ 
-                  height: isScrolled ? '55px' : '65px', 
+                  height: isScrolled ? '110px' : '150px', 
                   width: 'auto',
                   transition: 'all 0.4s ease',
                   display: 'block',
-                  filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.9)) drop-shadow(0 0 3px rgba(255,255,255,0.7)) drop-shadow(0 0 8px rgba(139,92,246,0.5))',
-                  marginTop: '-10px',
-                  marginBottom: '-10px'
+                  filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5)) drop-shadow(0 0 2px rgba(255,255,255,0.3)) drop-shadow(0 0 6px rgba(139,92,246,0.3))',
+                  marginTop: '-45px',
+                  marginBottom: '-45px'
                 }} 
               />
           </Link>
