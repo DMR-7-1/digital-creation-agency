@@ -171,10 +171,10 @@ const MobileNavbar = ({ navLinks, location }) => {
           pointer-events: none;
         }
         .mobile-top-logo {
-          height: 125px;
+          height: 135px;
           width: auto;
-          margin-top: -32px;
-          margin-bottom: -32px;
+          margin-top: -38px;
+          margin-bottom: -38px;
           filter: drop-shadow(0 0 4px rgba(255,255,255,0.85)) drop-shadow(0 0 12px rgba(139,92,246,0.6));
           transition: all 0.3s ease;
         }
