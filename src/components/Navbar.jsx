@@ -111,26 +111,29 @@ const MobileNavbar = ({ navLinks, location }) => (
         position: fixed;
         top: 0; left: 0; right: 0;
         z-index: 1000;
-        height: 48px;
-        background: rgba(15, 23, 42, 0.92);
+        height: 56px;
+        background: rgba(15, 23, 42, 0.95);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
       .mobile-top-bar::after {
         content: '';
         position: absolute;
         bottom: 0; left: 0; right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
+        background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
       }
       .mobile-top-logo {
-        height: 34px;
+        height: 85px;
         width: auto;
-        filter: drop-shadow(0 0 2px rgba(255,255,255,0.5)) drop-shadow(0 0 4px rgba(139,92,246,0.3));
+        margin-top: -15px;
+        margin-bottom: -15px;
+        filter: drop-shadow(0 0 2px rgba(255,255,255,0.7)) drop-shadow(0 0 6px rgba(139,92,246,0.4));
+        transition: all 0.3s ease;
       }
 
       /* ── Bottom tab bar ── */
