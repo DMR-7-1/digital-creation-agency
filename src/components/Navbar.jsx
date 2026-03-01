@@ -145,7 +145,7 @@ const MobileNavbar = ({ navLinks, location }) => {
           background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%);
           backdrop-filter: blur(25px);
           -webkit-backdrop-filter: blur(25px);
-          padding: 0.3rem 1.25rem;
+          padding: 0.25rem 1.25rem 0.1rem;
           border-radius: 999px;
           border: 1px solid rgba(255, 255, 255, 0.2);
           box-shadow: 
@@ -175,7 +175,7 @@ const MobileNavbar = ({ navLinks, location }) => {
           width: auto;
           margin-top: -38px;
           margin-bottom: -38px;
-          filter: drop-shadow(0 0 4px rgba(255,255,255,0.85)) drop-shadow(0 0 12px rgba(139,92,246,0.6));
+          filter: drop-shadow(0 0 12px rgba(139,92,246,0.6));
           transition: all 0.3s ease;
         }
 
