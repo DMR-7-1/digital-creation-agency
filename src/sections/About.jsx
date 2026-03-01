@@ -30,19 +30,17 @@ const MobileAbout = () => (
       <strong style={{ color: '#06b6d4' }}>Digital Creation</strong> شريكك اللي يفهم شنو تحتاج، يبنيلك حل يناسب مشروعك، ويبقى معاك حتى بعد التسليم.
     </p>
 
-    {/* Checklist — compact horizontal scroll */}
+    {/* Checklist — 2×2 grid */}
     <div style={{
-      display: 'flex', gap: '0.5rem', overflowX: 'auto',
-      padding: '0 0 0.75rem', marginBottom: '1rem',
-      scrollbarWidth: 'none', msOverflowStyle: 'none'
+      display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '0.4rem', marginBottom: '1rem'
     }}>
       {['فريق شغوف', 'تقنيات حديثة', 'نعرفو السوق', 'دعم مستمر'].map((item, i) => (
         <div key={i} style={{
-          flexShrink: 0,
           display: 'flex', alignItems: 'center', gap: '0.3rem',
           background: 'rgba(255,255,255,0.04)',
           border: '1px solid rgba(255,255,255,0.08)',
-          borderRadius: '20px', padding: '0.3rem 0.65rem',
+          borderRadius: '8px', padding: '0.35rem 0.5rem',
           fontSize: '0.68rem', color: 'rgba(255,255,255,0.7)'
         }}>
           <CheckCircle size={12} color="#06b6d4" />

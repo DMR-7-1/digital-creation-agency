@@ -56,19 +56,14 @@ const MobileServicesPage = () => (
         </p>
       </div>
 
-      {/* Features — horizontal scroll */}
-      <div style={{
-        display: 'flex', gap: '0.5rem', overflowX: 'auto',
-        padding: '0 0 0.6rem', marginBottom: '1.25rem',
-        scrollbarWidth: 'none', msOverflowStyle: 'none'
-      }}>
+      {/* Features — stacked cards */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.25rem' }}>
         {features.map((f, i) => (
           <div key={i} style={{
-            minWidth: '200px', flexShrink: 0,
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: '12px', padding: '0.75rem',
-            display: 'flex', gap: '0.6rem', alignItems: 'flex-start'
+            display: 'flex', gap: '0.6rem', alignItems: 'center'
           }}>
             <div style={{
               width: '36px', height: '36px', borderRadius: '8px',
@@ -78,7 +73,7 @@ const MobileServicesPage = () => (
               {React.cloneElement(f.icon, { size: 18 })}
             </div>
             <div>
-              <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'white', marginBottom: '0.15rem' }}>{f.title}</div>
+              <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'white', marginBottom: '0.1rem' }}>{f.title}</div>
               <div style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{f.desc}</div>
             </div>
           </div>
@@ -131,19 +126,18 @@ const MobileServicesPage = () => (
         ))}
       </div>
 
-      {/* Sectors — horizontal scroll */}
+      {/* Sectors — 2×2 grid */}
       <h2 style={{ fontSize: '1.05rem', textAlign: 'center', marginBottom: '0.6rem' }}>خبرة مع السوق الجزائري 🇩🇿</h2>
       <div style={{
-        display: 'flex', gap: '0.5rem', overflowX: 'auto',
-        padding: '0 0 0.5rem',
-        scrollbarWidth: 'none', msOverflowStyle: 'none'
+        display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: '0.5rem'
       }}>
         {sectors.map((s, i) => (
           <div key={i} style={{
-            minWidth: '170px', flexShrink: 0,
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: '12px', padding: '0.75rem', textAlign: 'center'
+            borderRadius: '12px', padding: '0.75rem', textAlign: 'center',
+            ...(i === 2 ? { gridColumn: 'span 2' } : {})
           }}>
             <div style={{ fontSize: '1.5rem', marginBottom: '0.3rem' }}>{s.emoji}</div>
             <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'white', marginBottom: '0.2rem' }}>{s.title}</div>

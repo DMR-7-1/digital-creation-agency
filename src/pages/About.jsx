@@ -56,18 +56,17 @@ const MobileAboutPage = () => (
         </div>
       </div>
 
-      {/* Values — horizontal scroll */}
+      {/* Values — compact grid */}
       <div style={{
-        display: 'flex', gap: '0.5rem', overflowX: 'auto',
-        padding: '0 0 0.5rem', marginBottom: '1rem',
-        scrollbarWidth: 'none', msOverflowStyle: 'none'
+        display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: '0.5rem'
       }}>
         {values.map((v, i) => (
           <div key={i} style={{
-            minWidth: '160px', flexShrink: 0,
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: '12px', padding: '0.75rem', textAlign: 'center'
+            borderRadius: '12px', padding: '0.75rem', textAlign: 'center',
+            ...(i === 2 ? { gridColumn: 'span 2' } : {})
           }}>
             <div style={{ color: '#8b5cf6', marginBottom: '0.4rem', display: 'flex', justifyContent: 'center' }}>
               {React.cloneElement(v.icon, { size: 20 })}

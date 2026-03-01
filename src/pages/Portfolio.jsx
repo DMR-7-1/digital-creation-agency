@@ -21,7 +21,19 @@ const Portfolio = () => {
 /* ══════════════════════════════════════
    MOBILE PORTFOLIO — Vertical card list
    ══════════════════════════════════════ */
-const MobilePortfolio = () => (
+const MobilePortfolio = () => {
+  const iconMap = {
+    'React': 'react/react-original', 'Node.js': 'nodejs/nodejs-original',
+    'Vue.js': 'vuejs/vuejs-original', 'Next.js': 'nextjs/nextjs-original',
+    'Python': 'python/python-original', 'Express': 'express/express-original',
+    'MongoDB': 'mongodb/mongodb-original', 'PostgreSQL': 'postgresql/postgresql-original',
+    'Firebase': 'firebase/firebase-plain', 'Tailwind': 'tailwindcss/tailwindcss-original',
+    'D3.js': 'd3js/d3js-original', 'React Native': 'react/react-original',
+    'Stripe': 'stripe/stripe-original', 'Supabase': 'supabase/supabase-original',
+    'Maps API': 'google/google-original'
+  };
+
+  return (
   <PageTransition>
     <div style={{ padding: '1rem 1.25rem 2rem' }}>
       {/* Header */}
@@ -59,10 +71,20 @@ const MobilePortfolio = () => (
                 }}>{p.category}</span>
               </div>
               <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)', margin: '0 0 0.3rem', lineHeight: 1.4 }}>{p.description}</p>
-              <div style={{ display: 'flex', gap: '0.3rem' }}>
-                {p.tech.map((t, j) => (
-                  <span key={j} style={{ fontSize: '0.55rem', color: 'rgba(139,92,246,0.8)', fontWeight: 600 }}>{t}{j < p.tech.length - 1 ? ' •' : ''}</span>
-                ))}
+              <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                {p.tech.map((t, j) => {
+                  const iconPath = iconMap[t];
+                  if (iconPath) {
+                    return (
+                      <div key={j} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '18px', height: '18px' }} title={t}>
+                        <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} alt={t}
+                          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                          onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = t; }} />
+                      </div>
+                    );
+                  }
+                  return <span key={j} style={{ fontSize: '0.55rem', color: 'rgba(139,92,246,0.8)', fontWeight: 600 }}>{t}</span>;
+                })}
               </div>
             </div>
           </div>
@@ -70,7 +92,8 @@ const MobilePortfolio = () => (
       </div>
     </div>
   </PageTransition>
-);
+  );
+};
 
 /* ══════════════════════════════════════
    DESKTOP PORTFOLIO (unchanged)

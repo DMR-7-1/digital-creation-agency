@@ -29,43 +29,34 @@ const MobileServices = () => (
       </p>
     </div>
 
-    {/* Horizontal scroll */}
+    {/* 2×2 Grid */}
     <div style={{
-      display: 'flex',
-      gap: '0.6rem',
-      overflowX: 'auto',
-      padding: '0.5rem 1.25rem',
-      scrollSnapType: 'x mandatory',
-      WebkitOverflowScrolling: 'touch',
-      scrollbarWidth: 'none',
-      msOverflowStyle: 'none'
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '0.5rem',
+      padding: '0 1.25rem'
     }}>
-      <style>{`.mobile-scroll-services::-webkit-scrollbar { display: none; }`}</style>
       {services.map((s, i) => (
         <div
           key={i}
           style={{
-            minWidth: '140px',
-            maxWidth: '140px',
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: '12px',
-            padding: '0.85rem 0.7rem',
-            textAlign: 'center',
-            scrollSnapAlign: 'start',
-            flexShrink: 0
+            padding: '0.75rem',
+            textAlign: 'center'
           }}
         >
           <div style={{
-            width: '42px', height: '42px', borderRadius: '10px',
+            width: '38px', height: '38px', borderRadius: '10px',
             background: 'rgba(255,255,255,0.06)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto 0.5rem'
+            margin: '0 auto 0.4rem'
           }}>
-            {React.cloneElement(s.icon, { size: 20 })}
+            {React.cloneElement(s.icon, { size: 18 })}
           </div>
-          <h3 style={{ fontSize: '0.78rem', fontWeight: 700, marginBottom: '0.25rem', color: 'white' }}>{s.title}</h3>
-          <p style={{ fontSize: '0.62rem', lineHeight: 1.4, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{s.desc}</p>
+          <h3 style={{ fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem', color: 'white' }}>{s.title}</h3>
+          <p style={{ fontSize: '0.6rem', lineHeight: 1.4, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{s.desc}</p>
         </div>
       ))}
     </div>
