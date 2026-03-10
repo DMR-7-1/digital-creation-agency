@@ -57,9 +57,9 @@ const WhatsAppButton = () => {
         }
         @media (max-width: 768px) {
           .whatsapp-fab {
-            width: 48px;
-            height: 48px;
-            bottom: 4.5rem;
+            width: 50px;
+            height: 50px;
+            bottom: 5.5rem; /* Raised to avoid conflict with bottom bar */
             left: 1rem;
           }
           .whatsapp-tooltip {
