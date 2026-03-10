@@ -27,25 +27,27 @@ const MobileHero = () => (
     flexDirection: 'column',
     justifyContent: 'center'
   }}>
-    {/* Animated Background Orbs */}
+    {/* Animated Background Orbs - Optimized without CSS blur */}
     <motion.div
       style={{
         position: 'absolute', top: '-10%', left: '-20%',
-        width: '60vw', height: '60vw',
-        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)',
-        filter: 'blur(50px)', zIndex: -1, borderRadius: '50%'
+        width: '80vw', height: '80vw',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(139, 92, 246, 0.05) 40%, transparent 70%)',
+        zIndex: -1, borderRadius: '50%',
+        willChange: 'transform, opacity'
       }}
-      animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3], x: [0, 20, 0] }}
+      animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4], x: [0, 15, 0] }}
       transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
     />
     <motion.div
       style={{
-        position: 'absolute', bottom: '10%', right: '-20%',
-        width: '50vw', height: '50vw',
-        background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)',
-        filter: 'blur(40px)', zIndex: -1, borderRadius: '50%'
+        position: 'absolute', bottom: '5%', right: '-20%',
+        width: '65vw', height: '65vw',
+        background: 'radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(6, 182, 212, 0.05) 40%, transparent 70%)',
+        zIndex: -1, borderRadius: '50%',
+        willChange: 'transform, opacity'
       }}
-      animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.2, 0.5], y: [0, -20, 0] }}
+      animate={{ scale: [1.15, 1, 1.15], opacity: [0.5, 0.3, 0.5], y: [0, -15, 0] }}
       transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
     />
 

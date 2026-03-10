@@ -69,7 +69,7 @@ const Navbar = () => {
         }
 
         .brand-logo {
-          height: ${isScrolled ? '45px' : '55px'};
+          height: ${isScrolled ? '55px' : '75px'};
           width: auto;
           transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
@@ -77,7 +77,7 @@ const Navbar = () => {
 
         @media (max-width: 768px) {
           .brand-logo {
-            height: ${isScrolled ? '40px' : '48px'};
+            height: ${isScrolled ? '48px' : '65px'};
           }
         }
 
@@ -240,17 +240,16 @@ const Navbar = () => {
       {/* ── Global Header (Desktop & Mobile) ── */}
       <header className="premium-header">
         <div className="header-container">
-          <Link to="/" className="logo-wrap">
-            <div className="logo-glow" />
-            <img src={logoImg} alt="Digital Creation" className="brand-logo" />
-          </Link>
-
+          {/* Right/Start side in RTL: CTA & Nav */}
           {isMobile ? (
             <Link to="/start-project" className="cta-shimmer" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', borderRadius: '8px' }}>
               <Sparkles size={14} /> ابدأ
             </Link>
           ) : (
-            <>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+              <Link to="/start-project" className="cta-shimmer">
+                <Sparkles size={16} /> ابدأ مشروعك
+              </Link>
               <nav className="nav-links-desktop">
                 {navLinks.map((link) => (
                   <Link key={link.name} to={link.href} className={`desktop-link ${location.pathname === link.href ? 'active' : ''}`}>
@@ -258,11 +257,14 @@ const Navbar = () => {
                   </Link>
                 ))}
               </nav>
-              <Link to="/start-project" className="cta-shimmer">
-                <Sparkles size={16} /> ابدأ مشروعك
-              </Link>
-            </>
+            </div>
           )}
+
+          {/* Left/End side in RTL: Logo */}
+          <Link to="/" className="logo-wrap">
+            <div className="logo-glow" />
+            <img src={logoImg} alt="Digital Creation" className="brand-logo" />
+          </Link>
         </div>
       </header>
 
