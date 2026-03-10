@@ -29,20 +29,18 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
-  const [theme, setTheme] = React.useState('dark');
+  const [theme, setTheme] = React.useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
 
   useEffect(() => {
-    // Check local storage or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
   };
 
   return (
@@ -52,7 +50,7 @@ function App() {
         <main style={{ minHeight: '100vh' }}>
           <AnimatedRoutes />
         </main>
-        <Footer />
+        <Footer theme={theme} />
         <WhatsAppButton />
       </div>
     </Router>
