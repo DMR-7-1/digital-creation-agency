@@ -37,7 +37,7 @@ const Contact = () => {
       } else {
         setError('حدث خطأ. يرجى المحاولة مرة أخرى.');
       }
-    } catch (err) {
+    } catch {
       setError('حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.');
     } finally {
       setIsSubmitting(false);

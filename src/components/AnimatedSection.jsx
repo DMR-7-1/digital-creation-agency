@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  motion,
+  motion as Motion,
   useInView,
   useMotionValue,
   useTransform,
@@ -19,7 +19,7 @@ export const AnimatedSection = ({
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <motion.div
+    <Motion.div
       ref={ref}
       id={id}
       className={className}
@@ -29,7 +29,7 @@ export const AnimatedSection = ({
       transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       {children}
-    </motion.div>
+    </Motion.div>
   );
 };
 
@@ -44,7 +44,7 @@ export const StaggerContainer = ({
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <motion.div
+    <Motion.div
       ref={ref}
       className={className}
       style={style}
@@ -56,13 +56,13 @@ export const StaggerContainer = ({
       }}
     >
       {children}
-    </motion.div>
+    </Motion.div>
   );
 };
 
 // ─── Individual stagger item ───
 export const StaggerItem = ({ children, className, style, ...rest }) => (
-  <motion.div
+  <Motion.div
     className={className}
     style={style}
     variants={{
@@ -76,7 +76,7 @@ export const StaggerItem = ({ children, className, style, ...rest }) => (
     {...rest}
   >
     {children}
-  </motion.div>
+  </Motion.div>
 );
 
 // ─── Animated number counter ───
@@ -116,14 +116,14 @@ export const AnimatedCounter = ({
 
 // ─── Page transition wrapper ───
 export const PageTransition = ({ children }) => (
-  <motion.div
+  <Motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -20 }}
     transition={{ duration: 0.4, ease: "easeInOut" }}
   >
     {children}
-  </motion.div>
+  </Motion.div>
 );
 
 // ─── Simple fade in from any direction ───
@@ -145,7 +145,7 @@ export const FadeIn = ({
   };
 
   return (
-    <motion.div
+    <Motion.div
       ref={ref}
       className={className}
       style={style}
@@ -158,7 +158,7 @@ export const FadeIn = ({
       transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       {children}
-    </motion.div>
+    </Motion.div>
   );
 };
 
