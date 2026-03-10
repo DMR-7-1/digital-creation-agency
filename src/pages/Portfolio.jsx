@@ -60,12 +60,12 @@ const MobilePortfolio = () => {
               border: '1px solid var(--glass-border)',
               borderRadius: '16px',
               overflow: 'hidden',
-              boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+              boxShadow: 'var(--glass-shadow)',
             }}>
               {/* Large Thumbnail for Mobile */}
               <div style={{
                 width: '100%', height: '140px',
-                background: `linear-gradient(to bottom, rgba(15,23,42,0) 50%, rgba(15,23,42,0.9) 100%), url(${p.image})`,
+                background: `linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.4) 100%), url(${p.image})`,
                 backgroundSize: 'cover', backgroundPosition: 'center',
                 position: 'relative'
               }}>

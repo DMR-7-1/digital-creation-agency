@@ -33,14 +33,15 @@ const Navbar = ({ toggleTheme, theme }) => {
           z-index: 1000;
           padding: ${isScrolled ? '0.75rem 0' : '1.25rem 0'};
           background: ${theme === 'light'
-            ? (isScrolled ? 'rgba(248, 250, 252, 0.85)' : 'rgba(248, 250, 252, 0.5)')
-            : (isScrolled ? 'rgba(11, 15, 25, 0.75)' : 'transparent')};
+            ? (isScrolled ? 'rgba(252, 253, 254, 0.95)' : 'rgba(252, 253, 254, 0.8)')
+            : (isScrolled ? 'rgba(3, 7, 18, 0.85)' : 'transparent')};
           backdrop-filter: ${isScrolled ? 'blur(24px)' : 'none'};
           -webkit-backdrop-filter: ${isScrolled ? 'blur(24px)' : 'none'};
           border-bottom: 1px solid ${theme === 'light'
-            ? 'rgba(15, 23, 42, 0.08)'
+            ? (isScrolled ? 'rgba(15, 23, 42, 0.1)' : 'transparent')
             : (isScrolled ? 'rgba(255, 255, 255, 0.05)' : 'transparent')};
           transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: ${theme === 'light' && isScrolled ? '0 4px 20px rgba(0,0,0,0.03)' : 'none'};
         }
 
         .header-container {
@@ -73,18 +74,17 @@ const Navbar = ({ toggleTheme, theme }) => {
         }
 
         .brand-logo {
-          height: ${isScrolled ? '45px' : '55px'};
+          height: ${isScrolled ? '85px' : '105px'};
           width: auto;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-          transform: scale(${isScrolled ? 1.3 : 1.6});
-          transform-origin: right center;
+          filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+          position: relative;
+          z-index: 2;
         }
 
         @media (max-width: 768px) {
           .brand-logo {
-            height: ${isScrolled ? '38px' : '48px'};
-            transform: scale(${isScrolled ? 1.25 : 1.4});
+            height: ${isScrolled ? '65px' : '85px'};
           }
         }
 
@@ -249,37 +249,39 @@ const Navbar = ({ toggleTheme, theme }) => {
 
       {/* ── Global Header (Desktop & Mobile) ── */}
       <header className="premium-header">
-        <div className="header-container">
+        <div className="header-container" style={{ direction: 'rtl' }}>
           {/* Logo First = Right Side in RTL */}
-          <Link to="/" className="logo-wrap">
+          <Link to="/" className="logo-wrap" style={{ order: 3 }}>
             <div className="logo-glow" />
             <img src={logoImg} alt="Digital Creation" className="brand-logo" />
           </Link>
 
-          {/* Links/CTA Second = Left Side in RTL */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+          {/* Desktop Nav in Center */}
+          {!isMobile && (
+            <nav className="nav-links-desktop" style={{ order: 2, flex: 1, justifyContent: 'center' }}>
+              {navLinks.map((link) => (
+                <Link key={link.name} to={link.href} className={`desktop-link ${location.pathname === link.href ? 'active' : ''}`}>
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+          )}
 
+          {/* CTA & Theme Button = Left Side in RTL */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', order: 1 }}>
             {isMobile ? (
-              <Link to="/start-project" className="cta-shimmer" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', borderRadius: '8px' }}>
-                <Sparkles size={14} /> ابدأ
+              <Link to="/start-project" className="cta-shimmer" style={{ padding: '0.4rem 0.9rem', fontSize: '0.75rem', borderRadius: '8px' }}>
+                <Sparkles size={12} /> ابدأ
               </Link>
             ) : (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
-                <nav className="nav-links-desktop">
-                  {navLinks.map((link) => (
-                    <Link key={link.name} to={link.href} className={`desktop-link ${location.pathname === link.href ? 'active' : ''}`}>
-                      {link.name}
-                    </Link>
-                  ))}
-                </nav>
-                <Link to="/start-project" className="cta-shimmer">
-                  <Sparkles size={16} /> ابدأ مشروعك
-                </Link>
-              </div>
+              <Link to="/start-project" className="cta-shimmer" style={{ padding: '0.6rem 1.25rem' }}>
+                <Sparkles size={16} /> ابدأ مشروعك
+              </Link>
             )}
+            
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme" style={{ width: '34px', height: '34px' }}>
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
           </div>
         </div>
       </header>

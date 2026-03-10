@@ -4,16 +4,16 @@ import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react
 import logoFull from '../assets/logo_full.png';
 import useIsMobile from '../hooks/useIsMobile';
 
-const Footer = () => {
+const Footer = ({ theme }) => {
   const isMobile = useIsMobile();
-  if (isMobile) return <MobileFooter />;
-  return <DesktopFooter />;
+  if (isMobile) return <MobileFooter theme={theme} />;
+  return <DesktopFooter theme={theme} />;
 };
 
 /* ══════════════════════════════════════
    MOBILE FOOTER — Ultra compact
    ══════════════════════════════════════ */
-const MobileFooter = () => (
+const MobileFooter = ({ theme }) => (
   <footer style={{
     background: 'var(--card-bg)',
     borderTop: '1px solid var(--glass-border)',
@@ -22,8 +22,8 @@ const MobileFooter = () => (
     {/* Logo + Tagline */}
     <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
       <img src={logoFull} alt="Digital Creation" style={{
-        height: '45px', width: 'auto', marginBottom: '0.5rem',
-        filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.4))'
+        height: '55px', width: 'auto', marginBottom: '0.5rem',
+        filter: theme === 'light' ? 'none' : 'drop-shadow(0 0 1px rgba(255,255,255,0.4))'
       }} />
       <p style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.5 }}>
         فريق جزائري يحوّل أفكارك الرقمية لواقع
@@ -44,7 +44,7 @@ const MobileFooter = () => (
       ].map((link, i) => (
         <Link key={i} to={link.to} style={{
           color: 'var(--color-text-main)', textDecoration: 'none',
-          fontSize: '0.72rem', fontWeight: 500, opacity: 0.7
+          fontSize: '0.72rem', fontWeight: 600, opacity: 0.8
         }}>
           {link.text}
         </Link>
@@ -93,7 +93,7 @@ const MobileFooter = () => (
 /* ══════════════════════════════════════
    DESKTOP FOOTER (unchanged)
    ══════════════════════════════════════ */
-const DesktopFooter = () => (
+const DesktopFooter = ({ theme }) => (
   <footer style={{
     background: 'var(--card-bg)',
     borderTop: '1px solid var(--glass-border)',
@@ -109,9 +109,9 @@ const DesktopFooter = () => (
             فريق جزائري يحوّل أفكارك الرقمية لواقع. مواقع، متاجر، وأنظمة ويب — بتصميم يبهر ونتيجة تبان.
           </p>
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <SocialIcon icon={<Facebook size={18} />} href="#" />
-            <SocialIcon icon={<Instagram size={18} />} href="#" />
-            <SocialIcon icon={<Linkedin size={18} />} href="#" />
+            <SocialIcon icon={<Facebook size={18} />} href="#" theme={theme} />
+            <SocialIcon icon={<Instagram size={18} />} href="#" theme={theme} />
+            <SocialIcon icon={<Linkedin size={18} />} href="#" theme={theme} />
           </div>
         </div>
         <div>
@@ -147,9 +147,16 @@ const DesktopFooter = () => (
 );
 
 const SocialIcon = ({ icon, href }) => (
-  <a href={href} style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', transition: 'all 0.3s ease', border: '1px solid rgba(255,255,255,0.1)' }}
-    onMouseEnter={(e) => { e.currentTarget.style.background = '#8b5cf6'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-    onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+  <a href={href} style={{ 
+    width: '38px', height: '38px', borderRadius: '50%', 
+    background: 'var(--glass-bg)', 
+    display: 'flex', alignItems: 'center', justifyContent: 'center', 
+    color: 'var(--color-text-main)', 
+    transition: 'all 0.3s ease', 
+    border: '1px solid var(--glass-border)' 
+  }}
+    onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-primary)'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+    onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--glass-bg)'; e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.transform = 'translateY(0)'; }}
   >{icon}</a>
 );
 

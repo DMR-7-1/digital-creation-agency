@@ -19,10 +19,10 @@ const Hero = () => {
 const MobileHero = () => (
   <section style={{ 
     position: 'relative', 
-    padding: '4rem 1.25rem 2rem', 
+    padding: '2rem 1.25rem 2rem', 
     textAlign: 'center',
     overflow: 'hidden',
-    minHeight: '75vh',
+    minHeight: '80vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'
@@ -58,7 +58,7 @@ const MobileHero = () => (
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ delay: 0.2, type: 'spring', stiffness: 150, damping: 20 }}
-      style={{ fontSize: '1.8rem', lineHeight: 1.35, marginBottom: '1rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-main)' }}
+      style={{ fontSize: '2.1rem', lineHeight: 1.2, marginBottom: '1.25rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-main)' }}
     >
       مشروعك يستاهل يكون{' '}
       <br/>

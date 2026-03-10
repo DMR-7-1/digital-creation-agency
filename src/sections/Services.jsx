@@ -24,7 +24,7 @@ const MobileServices = () => (
   <section style={{ padding: '1rem 0 1.5rem', overflow: 'hidden' }}>
     <div style={{ padding: '0 1.25rem', marginBottom: '0.75rem' }}>
       <AnimatedSection direction="up" delay={0.1}>
-        <h2 style={{ fontSize: '1.25rem', textAlign: 'center', marginBottom: '0.3rem', background: 'linear-gradient(to right, #fff, #a5b4fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>خدماتنا</h2>
+        <h2 style={{ fontSize: '1.25rem', textAlign: 'center', marginBottom: '0.3rem', background: 'linear-gradient(to right, var(--color-primary), var(--color-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>خدماتنا</h2>
         <p style={{ fontSize: '0.8rem', textAlign: 'center', color: 'var(--color-text-muted)', margin: 0 }}>
           كل مشروع يبدا بفكرة ويولّي منتج رقمي كامل
         </p>
@@ -43,11 +43,11 @@ const MobileServices = () => (
           <div
             style={{
               background: 'var(--card-bg)',
-              border: '1px solid rgba(255,255,255,0.03)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '20px',
               padding: '1.25rem 0.85rem',
               textAlign: 'center',
-              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0,0,0,0.3)',
+              boxShadow: 'var(--glass-shadow)',
               position: 'relative',
               overflow: 'hidden',
               cursor: 'pointer'
@@ -57,7 +57,7 @@ const MobileServices = () => (
             {/* Inner top glow */}
             <div style={{
               position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)'
+              background: 'linear-gradient(90deg, transparent, var(--glass-border), transparent)'
             }} />
             
             {/* Subtle glow behind icon */}
@@ -69,8 +69,8 @@ const MobileServices = () => (
             
             <div style={{
               width: '46px', height: '46px', borderRadius: '14px',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
-              border: '1px solid rgba(255,255,255,0.08)',
+              background: 'var(--glass-bg)',
+              border: '1px solid var(--glass-border)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               margin: '0 auto 0.8rem',
               position: 'relative', zIndex: 1,
@@ -131,7 +131,7 @@ const ServiceCard = ({ service }) => {
       {/* Top light edge */}
       <div style={{
         position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)'
+        background: 'linear-gradient(90deg, transparent, var(--glass-border), transparent)'
       }} />
 
       {/* Background glow on hover */}
@@ -142,8 +142,8 @@ const ServiceCard = ({ service }) => {
       }} />
 
       <div style={{
-        background: isHovered ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        background: 'var(--glass-bg)',
+        border: '1px solid var(--glass-border)',
         width: '85px', height: '85px', borderRadius: '20px',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         margin: '0 auto 1.5rem', position: 'relative', zIndex: 1,

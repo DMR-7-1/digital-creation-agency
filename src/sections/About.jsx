@@ -87,12 +87,12 @@ const MobileAbout = () => (
    DESKTOP ABOUT (unchanged)
    ══════════════════════════════════════ */
 const DesktopAbout = () => (
-  <section id="about" className="section" style={{ background: 'var(--color-bg-secondary)' }}>
+  <section id="about" className="section" style={{ background: 'transparent' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center', marginBottom: '6rem' }}>
         <FadeIn direction="right">
-          <div className="glass-panel" style={{ padding: '4rem 3rem', textAlign: 'center', background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15))', border: '1px solid rgba(139, 92, 246, 0.3)', position: 'relative', overflow: 'hidden', minHeight: '450px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '350px', height: '350px', background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)', filter: 'blur(80px)', zIndex: 0 }} />
+          <div className="glass-panel" style={{ padding: '4rem 3rem', textAlign: 'center', background: 'var(--card-bg)', border: '1px solid var(--glass-border)', position: 'relative', overflow: 'hidden', minHeight: '450px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '350px', height: '350px', background: 'radial-gradient(circle, var(--color-primary) 0%, transparent 70%)', filter: 'blur(80px)', zIndex: 0, opacity: 0.1 }} />
             <div style={{ position: 'relative', zIndex: 1 }}>
               <img src={logoFull} alt="Digital Creation" style={{ maxWidth: '100%', height: 'auto', margin: '0 auto', filter: 'drop-shadow(0 15px 40px rgba(0, 0, 0, 0.4))' }} />
             </div>
