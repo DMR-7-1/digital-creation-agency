@@ -28,13 +28,17 @@
     overflow: hidden !important;
   }
 
-  /* ── Kill desktop hover effects on touch ── */
-  .glass-panel:hover {
-    transform: none !important;
-    box-shadow: none !important;
+  /* ── Tactile Touch Feedback instead of dead hovers ── */
+  .glass-panel:active {
+    transform: scale(0.98) !important;
+    background: rgba(17, 24, 39, 0.9) !important;
+    transition: all 0.1s ease !important;
   }
 
-  .btn:hover { transform: none !important; }
+  .btn:active { 
+    transform: scale(0.95) !important; 
+    transition: transform 0.1s ease !important;
+  }
 
   /* ── Select styling ── */
   select option {

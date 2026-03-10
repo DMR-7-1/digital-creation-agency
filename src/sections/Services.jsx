@@ -42,35 +42,44 @@ const MobileServices = () => (
         <StaggerItem key={i}>
           <div
             style={{
-              background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%)',
-              border: '1px solid rgba(255,255,255,0.05)',
-              borderRadius: '16px',
-              padding: '1rem 0.75rem',
+              background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%)',
+              border: '1px solid rgba(255,255,255,0.03)',
+              borderRadius: '20px',
+              padding: '1.25rem 0.85rem',
               textAlign: 'center',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0,0,0,0.3)',
               position: 'relative',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              cursor: 'pointer'
             }}
+            className="service-card-mobile"
           >
+            {/* Inner top glow */}
+            <div style={{
+              position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)'
+            }} />
+            
             {/* Subtle glow behind icon */}
             <div style={{
-              position: 'absolute', top: '10px', left: '50%', transform: 'translateX(-50%)',
-              width: '40px', height: '40px', background: s.icon.props.color || '#fff',
-              filter: 'blur(25px)', opacity: 0.15, zIndex: 0
+              position: 'absolute', top: '15px', left: '50%', transform: 'translateX(-50%)',
+              width: '45px', height: '45px', background: s.icon.props.color || '#fff',
+              filter: 'blur(30px)', opacity: 0.2, zIndex: 0
             }} />
             
             <div style={{
-              width: '42px', height: '42px', borderRadius: '12px',
-              background: 'rgba(255,255,255,0.04)',
+              width: '46px', height: '46px', borderRadius: '14px',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
               border: '1px solid rgba(255,255,255,0.08)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              margin: '0 auto 0.6rem',
-              position: 'relative', zIndex: 1
+              margin: '0 auto 0.8rem',
+              position: 'relative', zIndex: 1,
+              boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.1)'
             }}>
-              {React.cloneElement(s.icon, { size: 20 })}
+              {React.cloneElement(s.icon, { size: 22 })}
             </div>
-            <h3 style={{ fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem', color: 'white', position: 'relative', zIndex: 1 }}>{s.title}</h3>
-            <p style={{ fontSize: '0.65rem', lineHeight: 1.5, color: 'rgba(255,255,255,0.5)', margin: 0, position: 'relative', zIndex: 1 }}>{s.desc}</p>
+            <h3 style={{ fontSize: '0.85rem', fontWeight: 800, marginBottom: '0.35rem', color: 'white', position: 'relative', zIndex: 1 }}>{s.title}</h3>
+            <p style={{ fontSize: '0.7rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.5)', margin: 0, position: 'relative', zIndex: 1 }}>{s.desc}</p>
           </div>
         </StaggerItem>
       ))}
@@ -104,21 +113,48 @@ const DesktopServices = () => (
 const ServiceCard = ({ service }) => {
   const [isHovered, setIsHovered] = React.useState(false);
   return (
-    <div className="glass-panel" style={{ padding: '2.5rem 2rem', textAlign: 'center', cursor: 'pointer' }}
+    <div className="glass-panel" style={{ 
+      padding: '2.5rem 2rem', 
+      textAlign: 'center', 
+      cursor: 'pointer',
+      background: 'linear-gradient(160deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%)',
+      borderRadius: '24px',
+      border: '1px solid rgba(255,255,255,0.03)',
+      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.2)',
+      position: 'relative',
+      overflow: 'hidden',
+      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+      transform: isHovered ? 'translateY(-8px)' : 'translateY(0)'
+    }}
       onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Top light edge */}
       <div style={{
-        background: isHovered ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255,255,255,0.05)',
-        width: '80px', height: '80px', borderRadius: '50%',
+        position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
+        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)'
+      }} />
+
+      {/* Background glow on hover */}
+      <div style={{
+        position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)',
+        width: '100px', height: '100px', background: service.icon.props.color || '#fff',
+        filter: 'blur(50px)', opacity: isHovered ? 0.2 : 0, transition: 'opacity 0.4s ease', zIndex: 0
+      }} />
+
+      <div style={{
+        background: isHovered ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(255,255,255,0.08)',
+        width: '85px', height: '85px', borderRadius: '20px',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        margin: '0 auto 1.5rem',
-        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-        transform: isHovered ? 'scale(1.15) rotate(5deg)' : 'scale(1)'
+        margin: '0 auto 1.5rem', position: 'relative', zIndex: 1,
+        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+        transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1)',
+        boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.1)'
       }}>
-        {service.icon}
+        {React.cloneElement(service.icon, { size: 36 })}
       </div>
-      <h3 style={{ marginBottom: '1rem', fontSize: '1.4rem', color: isHovered ? 'var(--color-primary)' : 'white', transition: 'color 0.3s' }}>{service.title}</h3>
-      <p style={{ fontSize: '1rem', lineHeight: '1.7' }}>{service.desc}</p>
+      <h3 style={{ marginBottom: '1rem', fontSize: '1.4rem', color: isHovered ? 'white' : 'white', transition: 'color 0.3s', position: 'relative', zIndex: 1, fontWeight: 800 }}>{service.title}</h3>
+      <p style={{ fontSize: '1rem', lineHeight: '1.7', color: 'rgba(255,255,255,0.6)', position: 'relative', zIndex: 1 }}>{service.desc}</p>
     </div>
   );
 };

@@ -5,11 +5,11 @@ import logoImg from '../assets/logo_new.png';
 import useIsMobile from '../hooks/useIsMobile';
 
 const navLinks = [
-  { name: 'الرئيسية', href: '/', icon: <Home size={20} /> },
-  { name: 'خدماتنا', href: '/services', icon: <Briefcase size={20} /> },
-  { name: 'من نحن', href: '/about', icon: <Users size={20} /> },
-  { name: 'أعمالنا', href: '/portfolio', icon: <FolderOpen size={20} /> },
-  { name: 'تواصل', href: '/contact', icon: <MessageCircle size={20} /> }
+  { name: 'الرئيسية', href: '/', icon: <Home /> },
+  { name: 'خدماتنا', href: '/services', icon: <Briefcase /> },
+  { name: 'من نحن', href: '/about', icon: <Users /> },
+  { name: 'أعمالنا', href: '/portfolio', icon: <FolderOpen /> },
+  { name: 'تواصل', href: '/contact', icon: <MessageCircle /> }
 ];
 
 const Navbar = () => {
@@ -26,23 +26,20 @@ const Navbar = () => {
   return (
     <>
       <style>{`
-        /* ── Premium Glassy Navbar (Desktop & Mobile Header) ── */
-        .glass-navbar {
+        /* ── Premium Glassy Header (Desktop & Mobile) ── */
+        .premium-header {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1000;
-          padding: ${isScrolled ? '0.5rem 0' : '1rem 0'};
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background: ${isScrolled ? 'rgba(15, 23, 42, 0.75)' : 'rgba(15, 23, 42, 0.3)'};
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 255, 255, ${isScrolled ? '0.1' : '0.05'});
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          padding: ${isScrolled ? '0.75rem 0' : '1.25rem 0'};
+          background: ${isScrolled ? 'rgba(11, 15, 25, 0.65)' : 'transparent'};
+          backdrop-filter: ${isScrolled ? 'blur(24px)' : 'none'};
+          -webkit-backdrop-filter: ${isScrolled ? 'blur(24px)' : 'none'};
+          border-bottom: 1px solid ${isScrolled ? 'rgba(255, 255, 255, 0.03)' : 'transparent'};
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .nav-container {
+        .header-container {
           width: 100%;
           max-width: 1200px;
           margin: 0 auto;
@@ -52,153 +49,216 @@ const Navbar = () => {
           justify-content: space-between;
         }
 
-        .nav-logo-container {
+        /* Subtle glow block behind logo so it always pops */
+        .logo-wrap {
           position: relative;
           display: inline-flex;
           align-items: center;
           justify-content: center;
+          text-decoration: none;
         }
 
-        /* Subtle glow stage behind logo */
-        .nav-logo-stage {
+        .logo-glow {
           position: absolute;
-          width: 80%; height: 50%;
-          background: radial-gradient(ellipse, rgba(255,255,255,0.15) 0%, transparent 70%);
-          filter: blur(8px);
+          width: 100%; height: 50%;
+          background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15), transparent 70%);
+          filter: blur(12px);
           z-index: -1;
+          opacity: ${isScrolled ? 1 : 0.5};
+          transition: opacity 0.5s ease;
         }
 
-        .nav-logo {
-          height: ${isScrolled ? '50px' : '70px'};
+        .brand-logo {
+          height: ${isScrolled ? '45px' : '55px'};
           width: auto;
-          transition: all 0.4s ease;
-          object-fit: contain;
-          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+          transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
         @media (max-width: 768px) {
-          .nav-logo {
-            height: ${isScrolled ? '45px' : '55px'};
+          .brand-logo {
+            height: ${isScrolled ? '40px' : '48px'};
           }
         }
 
-        /* ── Desktop Links & CTA ── */
-        .desktop-links {
+        /* ── Desktop Links ── */
+        .nav-links-desktop {
           display: flex;
           align-items: center;
-          gap: 2rem;
+          gap: 2.5rem;
         }
 
-        .nav-link {
-          color: rgba(255,255,255,0.8);
+        .desktop-link {
+          color: rgba(255, 255, 255, 0.65);
           text-decoration: none;
-          font-weight: 600;
-          font-size: 1rem;
+          font-weight: 500;
+          font-size: 0.95rem;
           transition: color 0.3s ease;
           position: relative;
+          padding: 0.5rem 0;
         }
 
-        .nav-link:hover, .nav-link.active {
-          color: #fff;
+        .desktop-link:hover, .desktop-link.active {
+          color: rgba(255, 255, 255, 1);
         }
 
-        .nav-link::after {
+        .desktop-link::after {
           content: '';
           position: absolute;
-          bottom: -4px; left: 50%;
+          bottom: 0px; left: 50%;
           width: 0; height: 2px;
-          background: linear-gradient(90deg, #8b5cf6, #06b6d4);
-          transition: all 0.3s ease;
+          background: linear-gradient(90deg, #8b5cf6, #06b6d4, #8b5cf6);
+          background-size: 200% auto;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           transform: translateX(-50%);
           border-radius: 2px;
+          opacity: 0;
         }
 
-        .nav-link:hover::after, .nav-link.active::after {
+        .desktop-link:hover::after, .desktop-link.active::after {
           width: 100%;
+          opacity: 1;
         }
 
-        .cta-btn {
-          background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(6, 182, 212, 0.9));
+        /* Shimmering CTA Button */
+        .cta-shimmer {
+          background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+          border: 1px solid rgba(255,255,255,0.1);
           color: white;
           text-decoration: none;
-          padding: 0.6rem 1.4rem;
-          border-radius: 99px;
-          font-size: 0.95rem;
+          padding: 0.65rem 1.4rem;
+          border-radius: 12px;
+          font-size: 0.9rem;
           font-weight: 600;
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-          border: 1px solid rgba(255,255,255,0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
         }
 
-        .cta-btn:hover {
+        .cta-shimmer::before {
+          content: '';
+          position: absolute;
+          top: 0; left: -100%; width: 50%; height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transform: skewX(-20deg);
+          animation: shimmer 4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cta-shimmer:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
-        }
-
-        /* ── Mobile Floating Pill Bottom Bar ── */
-        .mobile-pill-bar {
-          position: fixed;
-          bottom: 1.25rem;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 1000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          background: rgba(15, 23, 42, 0.85);
-          backdrop-filter: blur(24px);
-          -webkit-backdrop-filter: blur(24px);
-          padding: 0.5rem 1rem;
-          border-radius: 99px;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .mobile-pill-item {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 3.2rem;
-          height: 3.2rem;
-          border-radius: 50%;
-          color: rgba(255,255,255,0.5);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          text-decoration: none;
-        }
-
-        .mobile-pill-item.active {
-          color: #fff;
           background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
-          box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+          border-color: rgba(139, 92, 246, 0.4);
+          box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+        }
+
+        @keyframes shimmer {
+          0% { left: -100%; }
+          20% { left: 200%; }
+          100% { left: 200%; }
+        }
+
+        /* ── Mobile Apple-Style Bottom Glass Shelf ── */
+        .mobile-glass-shelf {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 85px; /* Taller to accommodate safe area + icons */
+          padding-bottom: env(safe-area-inset-bottom);
+          z-index: 1000;
+          background: rgba(11, 15, 25, 0.75);
+          backdrop-filter: blur(24px) saturate(150%);
+          -webkit-backdrop-filter: blur(24px) saturate(150%);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          display: flex;
+          align-items: flex-start; /* Align to top of shelf */
+          justify-content: space-around;
+        }
+
+        /* A subtle highlight on the very top edge to catch "light" */
+        .mobile-glass-shelf::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0; height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        }
+
+        .shelf-item {
+          flex: 1;
+          height: 60px; /* Clickable area */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: rgba(255, 255, 255, 0.4);
+          text-decoration: none;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+          margin-top: 4px; /* Push down slightly from top edge */
+        }
+
+        .shelf-item.active {
+          color: rgba(255, 255, 255, 0.95);
+        }
+
+        .shelf-icon-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .shelf-item.active .shelf-icon-wrapper {
+          transform: translateY(-4px);
+        }
+
+        /* Active dot indicator */
+        .shelf-dot {
+          position: absolute;
+          bottom: -8px;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+          opacity: 0;
+          transform: scale(0);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 0 8px rgba(6, 182, 212, 0.8);
+        }
+
+        .shelf-item.active .shelf-dot {
+          opacity: 1;
+          transform: scale(1);
         }
       `}</style>
 
-      {/* Shared Glassy Header */}
-      <header className="glass-navbar">
-        <div className="nav-container">
-          <Link to="/" className="nav-logo-container">
-            <div className="nav-logo-stage" />
-            <img src={logoImg} alt="Digital Creation" className="nav-logo" />
+      {/* ── Global Header (Desktop & Mobile) ── */}
+      <header className="premium-header">
+        <div className="header-container">
+          <Link to="/" className="logo-wrap">
+            <div className="logo-glow" />
+            <img src={logoImg} alt="Digital Creation" className="brand-logo" />
           </Link>
 
           {isMobile ? (
-            <Link to="/start-project" className="cta-btn" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
-              <Sparkles size={14} /> ابدأ مشروعك
+            <Link to="/start-project" className="cta-shimmer" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', borderRadius: '8px' }}>
+              <Sparkles size={14} /> ابدأ
             </Link>
           ) : (
             <>
-              <div className="desktop-links">
+              <nav className="nav-links-desktop">
                 {navLinks.map((link) => (
-                  <Link key={link.name} to={link.href} className={`nav-link ${location.pathname === link.href ? 'active' : ''}`}>
+                  <Link key={link.name} to={link.href} className={`desktop-link ${location.pathname === link.href ? 'active' : ''}`}>
                     {link.name}
                   </Link>
                 ))}
-              </div>
-              <Link to="/start-project" className="cta-btn">
+              </nav>
+              <Link to="/start-project" className="cta-shimmer">
                 <Sparkles size={16} /> ابدأ مشروعك
               </Link>
             </>
@@ -206,25 +266,39 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Floating Bottom Pill for Mobile */}
+      {/* ── Mobile Apple-Style Bottom Shelf ── */}
       {isMobile && (
-        <nav className="mobile-pill-bar">
+        <nav className="mobile-glass-shelf">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.href;
             return (
               <Link
                 key={link.name}
                 to={link.href}
-                className={`mobile-pill-item ${isActive ? 'active' : ''}`}
+                className={`shelf-item ${isActive ? 'active' : ''}`}
                 aria-label={link.name}
               >
-                {React.cloneElement(link.icon, {
-                  size: isActive ? 24 : 22,
-                  color: isActive ? '#a855f7' : 'currentColor'
-                })}
+                <div className="shelf-icon-wrapper">
+                  {/* Fill icon if active, outline if inactive */}
+                  {React.cloneElement(link.icon, {
+                    size: isActive ? 24 : 22,
+                    strokeWidth: isActive ? 2.5 : 2,
+                    fill: isActive ? 'url(#gradientFill)' : 'none',
+                    color: isActive ? 'transparent' : 'currentColor'
+                  })}
+                  <div className="shelf-dot" />
+                </div>
               </Link>
             );
           })}
+
+          {/* SVG Gradient Def for Active Icons */}
+          <svg style={{ width: 0, height: 0, position: 'absolute' }}>
+            <linearGradient id="gradientFill" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#8b5cf6" />
+              <stop offset="100%" stopColor="#06b6d4" />
+            </linearGradient>
+          </svg>
         </nav>
       )}
     </>

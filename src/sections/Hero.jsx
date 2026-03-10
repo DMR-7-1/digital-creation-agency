@@ -14,41 +14,85 @@ const Hero = () => {
 };
 
 /* ══════════════════════════════════════════
-   MOBILE HERO — App-like, centered, punchy
+   MOBILE HERO — Immersive 2026 Apple-Style
    ══════════════════════════════════════════ */
 const MobileHero = () => (
-  <section style={{ padding: '1.5rem 1.25rem 2rem', textAlign: 'center' }}>
+  <section style={{ 
+    position: 'relative', 
+    padding: '3rem 1.25rem 2rem', 
+    textAlign: 'center',
+    overflow: 'hidden',
+    minHeight: '75vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  }}>
+    {/* Animated Background Orbs */}
+    <motion.div
+      style={{
+        position: 'absolute', top: '-10%', left: '-20%',
+        width: '60vw', height: '60vw',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)',
+        filter: 'blur(50px)', zIndex: -1, borderRadius: '50%'
+      }}
+      animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3], x: [0, 20, 0] }}
+      transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+    />
+    <motion.div
+      style={{
+        position: 'absolute', bottom: '10%', right: '-20%',
+        width: '50vw', height: '50vw',
+        background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)',
+        filter: 'blur(40px)', zIndex: -1, borderRadius: '50%'
+      }}
+      animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.2, 0.5], y: [0, -20, 0] }}
+      transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+    />
+
     {/* Badge */}
     <motion.div
-      initial={{ opacity: 0, y: -8 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 }}
+      transition={{ delay: 0.1, type: 'spring', stiffness: 200, damping: 20 }}
       style={{
-        display: 'inline-block',
-        background: 'rgba(6, 182, 212, 0.1)',
-        border: '1px solid rgba(6, 182, 212, 0.25)',
-        borderRadius: '20px',
-        padding: '0.3rem 0.8rem',
-        marginBottom: '1rem'
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.05))',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(10px)',
+        borderRadius: '99px',
+        padding: '0.4rem 1rem',
+        marginBottom: '1.5rem',
+        marginInline: 'auto',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
       }}
     >
-      <span style={{ color: '#06b6d4', fontWeight: 700, fontSize: '0.75rem' }}>
+      <span style={{ 
+        background: 'linear-gradient(90deg, #fff, #a5b4fc)', 
+        WebkitBackgroundClip: 'text', 
+        WebkitTextFillColor: 'transparent', 
+        fontWeight: 700, 
+        fontSize: '0.8rem' 
+      }}>
         وكالة جزائرية 100% 🇩🇿
       </span>
     </motion.div>
 
     {/* Headline */}
     <motion.h1
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 }}
-      style={{ fontSize: '1.5rem', lineHeight: 1.3, marginBottom: '0.75rem', fontWeight: 800 }}
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: 0.2, type: 'spring', stiffness: 150, damping: 20 }}
+      style={{ fontSize: '1.8rem', lineHeight: 1.35, marginBottom: '1rem', fontWeight: 800, letterSpacing: '-0.02em' }}
     >
       مشروعك يستاهل يكون{' '}
+      <br/>
       <span style={{
-        background: 'linear-gradient(to left, #06b6d4, #8b5cf6)',
+        background: 'linear-gradient(135deg, #06b6d4, #8b5cf6, #d946ef)',
         WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent'
+        WebkitTextFillColor: 'transparent',
+        display: 'inline-block'
       }}>
         على مستوى طموحك.
       </span>
@@ -56,24 +100,33 @@ const MobileHero = () => (
 
     {/* Subtitle */}
     <motion.p
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.35 }}
-      style={{ fontSize: '0.85rem', marginBottom: '1.5rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', maxWidth: '340px', margin: '0 auto 1.5rem' }}
+      transition={{ delay: 0.35, duration: 0.6 }}
+      style={{ fontSize: '0.95rem', marginBottom: '2rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', maxWidth: '340px', margin: '0 auto 2rem' }}
     >
       نصمّم لك مواقع، متاجر، وأنظمة ويب تخلّي الناس تثق فيك من أول نظرة.
     </motion.p>
 
     {/* CTA */}
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
+      transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
+      style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
     >
       <Link
         to="/start-project"
-        className="btn btn-primary"
-        style={{ padding: '0.7rem 2rem', fontSize: '0.95rem', borderRadius: '12px', width: '100%', maxWidth: '280px', justifyContent: 'center' }}
+        className="cta-shimmer"
+        style={{ 
+          padding: '0.9rem 2rem', 
+          fontSize: '1rem', 
+          borderRadius: '16px', 
+          width: '100%', 
+          maxWidth: '280px', 
+          justifyContent: 'center',
+          boxShadow: '0 10px 30px rgba(139, 92, 246, 0.4)'
+        }}
       >
         ابدأ مشروعك الآن
         <ArrowLeft size={18} style={{ marginRight: '8px' }} />
@@ -84,12 +137,12 @@ const MobileHero = () => (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 0.7 }}
-      style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.25rem' }}
+      transition={{ delay: 0.8, duration: 1 }}
+      style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '2rem' }}
     >
       {['دعم فني مستمر', 'تصميم عصري'].map((t, i) => (
-        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)' }}>
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#34d399' }} />
+        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg, #34d399, #10b981)', boxShadow: '0 0 10px rgba(52, 211, 153, 0.5)' }} />
           {t}
         </div>
       ))}

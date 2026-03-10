@@ -12,7 +12,7 @@ const WhatsAppButton = () => {
         .whatsapp-fab {
           position: fixed;
           bottom: 2rem;
-          left: 2rem;
+          right: 2rem;
           z-index: 999;
           width: 60px;
           height: 60px;
@@ -59,8 +59,8 @@ const WhatsAppButton = () => {
           .whatsapp-fab {
             width: 50px;
             height: 50px;
-            bottom: 5.5rem; /* Raised to avoid conflict with bottom bar */
-            left: 1rem;
+            bottom: calc(85px + 1.5rem); /* Clears the new 85px glass shelf */
+            right: 1.25rem;
           }
           .whatsapp-tooltip {
             display: none;
