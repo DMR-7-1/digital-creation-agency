@@ -19,7 +19,7 @@ const Hero = () => {
 const MobileHero = () => (
   <section style={{ 
     position: 'relative', 
-    padding: '3rem 1.25rem 2rem', 
+    padding: '4rem 1.25rem 2rem', 
     textAlign: 'center',
     overflow: 'hidden',
     minHeight: '75vh',
@@ -51,35 +51,7 @@ const MobileHero = () => (
       transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
     />
 
-    {/* Badge */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1, type: 'spring', stiffness: 200, damping: 20 }}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.05))',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: '99px',
-        padding: '0.4rem 1rem',
-        marginBottom: '1.5rem',
-        marginInline: 'auto',
-        boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
-      }}
-    >
-      <span style={{ 
-        background: 'linear-gradient(90deg, #fff, #a5b4fc)', 
-        WebkitBackgroundClip: 'text', 
-        WebkitTextFillColor: 'transparent', 
-        fontWeight: 700, 
-        fontSize: '0.8rem' 
-      }}>
-        وكالة جزائرية 100% 🇩🇿
-      </span>
-    </motion.div>
+    {/* Badge Removed per user request */}
 
     {/* Headline */}
     <motion.h1

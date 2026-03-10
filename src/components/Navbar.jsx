@@ -69,7 +69,7 @@ const Navbar = () => {
         }
 
         .brand-logo {
-          height: ${isScrolled ? '55px' : '75px'};
+          height: ${isScrolled ? '65px' : '90px'};
           width: auto;
           transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
@@ -77,7 +77,7 @@ const Navbar = () => {
 
         @media (max-width: 768px) {
           .brand-logo {
-            height: ${isScrolled ? '48px' : '65px'};
+            height: ${isScrolled ? '55px' : '75px'};
           }
         }
 
@@ -280,16 +280,25 @@ const Navbar = () => {
                 className={`shelf-item ${isActive ? 'active' : ''}`}
                 aria-label={link.name}
               >
-                <div className="shelf-icon-wrapper">
+                <div className="shelf-icon-wrapper" style={{ marginBottom: '2px' }}>
                   {/* Fill icon if active, outline if inactive */}
                   {React.cloneElement(link.icon, {
-                    size: isActive ? 24 : 22,
+                    size: isActive ? 22 : 20,
                     strokeWidth: isActive ? 2.5 : 2,
                     fill: isActive ? 'url(#gradientFill)' : 'none',
                     color: isActive ? 'transparent' : 'currentColor'
                   })}
-                  <div className="shelf-dot" />
+                  <div className="shelf-dot" style={{ bottom: '-14px' }} />
                 </div>
+                <span style={{ 
+                  fontSize: '0.65rem', 
+                  fontWeight: isActive ? 600 : 400,
+                  color: isActive ? '#fff' : 'rgba(255,255,255,0.6)',
+                  marginTop: '4px',
+                  transition: 'color 0.3s ease'
+                }}>
+                  {link.name}
+                </span>
               </Link>
             );
           })}

@@ -63,105 +63,109 @@ const MobileServicesPage = () => (
       </div>
 
       {/* Features — stacked cards */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.25rem' }}>
+      <StaggerContainer style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.25rem' }} staggerDelay={0.1}>
         {features.map((f, i) => (
-          <div key={i} style={{
-            background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%)',
-            border: '1px solid rgba(255,255,255,0.04)',
-            borderRadius: '16px', padding: '1rem',
-            display: 'flex', gap: '0.8rem', alignItems: 'center',
-            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 15px rgba(0,0,0,0.2)',
-            position: 'relative', overflow: 'hidden'
-          }}>
-            {/* Inner top glow */}
+          <StaggerItem key={i}>
             <div style={{
-              position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)'
-            }} />
-            
-            <div style={{
-              width: '42px', height: '42px', borderRadius: '12px',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.1)',
-              position: 'relative', zIndex: 1
+              background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%)',
+              border: '1px solid rgba(255,255,255,0.04)',
+              borderRadius: '16px', padding: '1rem',
+              display: 'flex', gap: '0.8rem', alignItems: 'center',
+              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 15px rgba(0,0,0,0.2)',
+              position: 'relative', overflow: 'hidden'
             }}>
-              {/* Subtle glow behind icon */}
+              {/* Inner top glow */}
               <div style={{
-                position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                width: '30px', height: '30px', background: f.icon.props.color || '#fff',
-                filter: 'blur(15px)', opacity: 0.2, zIndex: 0
+                position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
+                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)'
               }} />
-              {React.cloneElement(f.icon, { size: 20 })}
+              
+              <div style={{
+                width: '42px', height: '42px', borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.1)',
+                position: 'relative', zIndex: 1
+              }}>
+                {/* Subtle glow behind icon */}
+                <div style={{
+                  position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                  width: '30px', height: '30px', background: f.icon.props.color || '#fff',
+                  filter: 'blur(15px)', opacity: 0.2, zIndex: 0
+                }} />
+                {React.cloneElement(f.icon, { size: 20 })}
+              </div>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'white', marginBottom: '0.15rem' }}>{f.title}</div>
+                <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>{f.desc}</div>
+              </div>
             </div>
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'white', marginBottom: '0.15rem' }}>{f.title}</div>
-              <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>{f.desc}</div>
-            </div>
-          </div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
 
       {/* Pricing — stacked cards */}
       <h2 style={{ fontSize: '1.05rem', textAlign: 'center', marginBottom: '0.75rem' }}>باقات الخدمات</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.5rem' }}>
+      <StaggerContainer style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.5rem' }} staggerDelay={0.15}>
         {plans.map((plan, i) => (
-          <div key={i} style={{
-            background: plan.highlight 
-              ? 'linear-gradient(160deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)' 
-              : 'linear-gradient(145deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.7) 100%)',
-            border: plan.highlight ? '1px solid rgba(6, 182, 212, 0.4)' : '1px solid rgba(255,255,255,0.05)',
-            borderRadius: '20px', padding: '1.1rem', position: 'relative',
-            boxShadow: plan.highlight 
-              ? 'inset 0 1px 1px rgba(255,255,255,0.1), 0 8px 25px rgba(6, 182, 212, 0.15)' 
-              : 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 15px rgba(0,0,0,0.2)'
-          }}>
-            {/* Inner top glow */}
+          <StaggerItem key={i}>
             <div style={{
-              position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px',
               background: plan.highlight 
-                ? 'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent)' 
-                : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)'
-            }} />
-
-            {plan.highlight && (
-              <div style={{
-                position: 'absolute', top: -10, right: 20,
-                background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)', color: 'white',
-                padding: '0.2rem 0.8rem', borderRadius: '12px', fontWeight: 800, fontSize: '0.65rem',
-                boxShadow: '0 4px 10px rgba(6, 182, 212, 0.3)'
-              }}>الأكثر طلبًا</div>
-            )}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', marginTop: plan.highlight ? '0.5rem' : '0' }}>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: 'white' }}>{plan.name}</h3>
-              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: plan.highlight ? '#22d3ee' : 'rgba(255,255,255,0.6)' }}>{plan.price}</span>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1rem' }}>
-              {plan.features.map((f, j) => (
-                <span key={j} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
-                  fontSize: '0.65rem', color: 'rgba(255,255,255,0.7)',
-                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.05)', 
-                  borderRadius: '8px', padding: '0.3rem 0.5rem'
-                }}>
-                  <Check size={12} color={plan.highlight ? '#22d3ee' : '#9ca3af'} />
-                  {f}
-                </span>
-              ))}
-            </div>
-            <Link to="/contact" className="cta-shimmer" style={{
-              width: '100%', textAlign: 'center', justifyContent: 'center',
-              padding: '0.6rem', fontSize: '0.8rem', borderRadius: '12px',
-              background: plan.highlight ? 'linear-gradient(135deg, #8b5cf6, #06b6d4)' : 'transparent',
-              border: plan.highlight ? 'none' : '1px solid rgba(255,255,255,0.15)',
-              textDecoration: 'none', color: 'white', fontWeight: 700
+                ? 'linear-gradient(160deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)' 
+                : 'linear-gradient(145deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.7) 100%)',
+              border: plan.highlight ? '1px solid rgba(6, 182, 212, 0.4)' : '1px solid rgba(255,255,255,0.05)',
+              borderRadius: '20px', padding: '1.1rem', position: 'relative',
+              boxShadow: plan.highlight 
+                ? 'inset 0 1px 1px rgba(255,255,255,0.1), 0 8px 25px rgba(6, 182, 212, 0.15)' 
+                : 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 15px rgba(0,0,0,0.2)'
             }}>
-              طلب عرض سعر
-            </Link>
-          </div>
+              {/* Inner top glow */}
+              <div style={{
+                position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px',
+                background: plan.highlight 
+                  ? 'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent)' 
+                  : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)'
+              }} />
+
+              {plan.highlight && (
+                <div style={{
+                  position: 'absolute', top: -10, right: 20,
+                  background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)', color: 'white',
+                  padding: '0.2rem 0.8rem', borderRadius: '12px', fontWeight: 800, fontSize: '0.65rem',
+                  boxShadow: '0 4px 10px rgba(6, 182, 212, 0.3)'
+                }}>الأكثر طلبًا</div>
+              )}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', marginTop: plan.highlight ? '0.5rem' : '0' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: 'white' }}>{plan.name}</h3>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: plan.highlight ? '#22d3ee' : 'rgba(255,255,255,0.6)' }}>{plan.price}</span>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1rem' }}>
+                {plan.features.map((f, j) => (
+                  <span key={j} style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
+                    fontSize: '0.65rem', color: 'rgba(255,255,255,0.7)',
+                    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.05)', 
+                    borderRadius: '8px', padding: '0.3rem 0.5rem'
+                  }}>
+                    <Check size={12} color={plan.highlight ? '#22d3ee' : '#9ca3af'} />
+                    {f}
+                  </span>
+                ))}
+              </div>
+              <Link to="/contact" className="cta-shimmer" style={{
+                width: '100%', textAlign: 'center', justifyContent: 'center',
+                padding: '0.6rem', fontSize: '0.8rem', borderRadius: '12px',
+                background: plan.highlight ? 'linear-gradient(135deg, #8b5cf6, #06b6d4)' : 'transparent',
+                border: plan.highlight ? 'none' : '1px solid rgba(255,255,255,0.15)',
+                textDecoration: 'none', color: 'white', fontWeight: 700
+              }}>
+                طلب عرض سعر
+              </Link>
+            </div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
 
       {/* Sectors — 2×2 grid */}
       <h2 style={{ fontSize: '1.05rem', textAlign: 'center', marginBottom: '0.6rem' }}>خبرة مع السوق الجزائري 🇩🇿</h2>
