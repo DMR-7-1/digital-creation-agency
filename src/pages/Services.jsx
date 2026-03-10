@@ -32,10 +32,16 @@ const sectors = [
   { emoji: '🚀', title: 'ستارتاب', desc: 'حلول تقنية ذكية ومدروسة', highlight: '💡 من الفكرة للإطلاق' }
 ];
 
+import SEO from '../components/SEO';
+
 const ServicesPage = () => {
   const isMobile = useIsMobile();
-  if (isMobile) return <MobileServicesPage />;
-  return <DesktopServicesPage />;
+  return (
+    <>
+      <SEO title="خدماتنا" description="مواقع إلكترونية، متاجر، وتطبيقات ويب سريعة وذكية لمشروعك" />
+      {isMobile ? <MobileServicesPage /> : <DesktopServicesPage />}
+    </>
+  );
 };
 
 /* ══════════════════════════════════════

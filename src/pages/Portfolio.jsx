@@ -12,10 +12,16 @@ const projects = [
   { title: "لوحة تحكم تحليلات", category: "Dashboard", description: "لوحة تحكم لتحليل البيانات وإنشاء التقارير", tech: ["React", "D3.js", "Python"], image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" },
 ];
 
+import SEO from '../components/SEO';
+
 const Portfolio = () => {
   const isMobile = useIsMobile();
-  if (isMobile) return <MobilePortfolio />;
-  return <DesktopPortfolio />;
+  return (
+    <>
+      <SEO title="أعمالنا" description="مشاريع حقيقية وحلول رقمية طورناها لعملائنا بكل احترافية" />
+      {isMobile ? <MobilePortfolio /> : <DesktopPortfolio />}
+    </>
+  );
 };
 
 /* ══════════════════════════════════════
@@ -35,61 +41,66 @@ const MobilePortfolio = () => {
 
   return (
   <PageTransition>
-    <div style={{ padding: '1rem 1.25rem 2rem' }}>
+    <div style={{ padding: '6rem 1.25rem 6rem' }}>
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-        <h1 style={{ fontSize: '1.3rem', marginBottom: '0.3rem' }}>أعمالنا</h1>
-        <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', margin: 0 }}>
+      <AnimatedSection direction="up" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <h1 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', background: 'linear-gradient(to right, #fff, #a5b4fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>أعمالنا</h1>
+        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', margin: 0 }}>
           مشاريع حقيقية حوّلنا فيها أفكار لمنتجات رقمية
         </p>
-      </div>
+      </AnimatedSection>
 
       {/* Project cards — compact list */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+      <StaggerContainer style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }} staggerDelay={0.15}>
         {projects.map((p, i) => (
-          <div key={i} style={{
-            display: 'flex', gap: '0.7rem',
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: '12px',
-            overflow: 'hidden'
-          }}>
-            {/* Thumbnail */}
+          <StaggerItem key={i}>
             <div style={{
-              width: '90px', minHeight: '80px', flexShrink: 0,
-              background: `linear-gradient(135deg, rgba(139,92,246,0.3), rgba(6,182,212,0.3)), url(${p.image})`,
-              backgroundSize: 'cover', backgroundPosition: 'center'
-            }} />
-            {/* Info */}
-            <div style={{ padding: '0.6rem 0.6rem 0.6rem 0', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.15rem' }}>
-                <h3 style={{ fontSize: '0.82rem', fontWeight: 700, margin: 0, color: 'white' }}>{p.title}</h3>
-                <span style={{
-                  fontSize: '0.55rem', fontWeight: 600,
-                  background: 'rgba(6, 182, 212, 0.15)', color: '#06b6d4',
-                  padding: '0.12rem 0.4rem', borderRadius: '6px', flexShrink: 0
-                }}>{p.category}</span>
+              display: 'flex', flexDirection: 'column',
+              background: 'linear-gradient(160deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+            }}>
+              {/* Large Thumbnail for Mobile */}
+              <div style={{
+                width: '100%', height: '140px',
+                background: `linear-gradient(to bottom, rgba(15,23,42,0) 50%, rgba(15,23,42,0.9) 100%), url(${p.image})`,
+                backgroundSize: 'cover', backgroundPosition: 'center',
+                position: 'relative'
+              }}>
+                 <span style={{
+                    position: 'absolute', top: '10px', right: '10px',
+                    fontSize: '0.65rem', fontWeight: 700,
+                    background: 'rgba(15, 23, 42, 0.8)', color: '#fff',
+                    backdropFilter: 'blur(10px)',
+                    padding: '0.3rem 0.6rem', borderRadius: '8px'
+                  }}>{p.category}</span>
               </div>
-              <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)', margin: '0 0 0.3rem', lineHeight: 1.4 }}>{p.description}</p>
-              <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
-                {p.tech.map((t, j) => {
-                  const iconPath = iconMap[t];
-                  if (iconPath) {
-                    return (
-                      <div key={j} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '18px', height: '18px' }} title={t}>
-                        <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} alt={t}
-                          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                          onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = t; }} />
-                      </div>
-                    );
-                  }
-                  return <span key={j} style={{ fontSize: '0.55rem', color: 'rgba(139,92,246,0.8)', fontWeight: 600 }}>{t}</span>;
-                })}
+              {/* Info */}
+              <div style={{ padding: '1rem' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.4rem 0', color: 'white' }}>{p.title}</h3>
+                <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', margin: '0 0 0.8rem', lineHeight: 1.5 }}>{p.description}</p>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                  {p.tech.map((t, j) => {
+                    const iconPath = iconMap[t];
+                    if (iconPath) {
+                      return (
+                        <div key={j} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px' }} title={t}>
+                          <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} alt={t}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                            onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = t; }} />
+                        </div>
+                      );
+                    }
+                    return <span key={j} style={{ fontSize: '0.65rem', color: 'rgba(139,92,246,0.9)', fontWeight: 600 }}>{t}</span>;
+                  })}
+                </div>
               </div>
             </div>
-          </div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </div>
   </PageTransition>
   );

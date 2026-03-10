@@ -10,10 +10,16 @@ const values = [
   { icon: <Zap size={24} />, title: 'نهجنا', desc: 'حلول مبتكرة مصمّمة خصيصًا لاحتياجاتك — مش قوالب جاهزة' }
 ];
 
+import SEO from '../components/SEO';
+
 const AboutPage = () => {
   const isMobile = useIsMobile();
-  if (isMobile) return <MobileAboutPage />;
-  return <DesktopAboutPage />;
+  return (
+    <>
+      <SEO title="من نحن" description="نحن فريق مهندسين جزائريين، نصنع لك حلول رقمية ترفع مشروعك لمستوى ثاني" />
+      {isMobile ? <MobileAboutPage /> : <DesktopAboutPage />}
+    </>
+  );
 };
 
 /* ══════════════════════════════════════

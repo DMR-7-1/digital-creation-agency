@@ -6,6 +6,8 @@ import useIsMobile from '../hooks/useIsMobile';
 
 const WEB3FORMS_ACCESS_KEY = 'ac9c514d-d0d1-4746-90db-01538d0d2af5';
 
+import SEO from '../components/SEO';
+
 const StartProject = () => {
   const isMobile = useIsMobile();
   const [formData, setFormData] = useState({ name: '', phone: '', type: 'website', message: '' });
@@ -170,6 +172,13 @@ const StartProject = () => {
   );
 };
 
+const StartProjectWrapper = () => (
+  <>
+    <SEO title="ابدأ مشروعك" description="أخبرنا عن فكرتك وانطلق في رحلة النجاح الرقمي مع فريق عمل محترف" />
+    <StartProject />
+  </>
+);
+
 const desktopInput = {
   background: 'rgba(255,255,255,0.05)',
   border: '1px solid var(--glass-border)',
@@ -177,4 +186,4 @@ const desktopInput = {
   color: 'white', fontFamily: 'inherit'
 };
 
-export default StartProject;
+export default StartProjectWrapper;

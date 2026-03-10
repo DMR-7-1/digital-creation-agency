@@ -1,6 +1,6 @@
 import React from 'react';
 import { Globe, ShoppingBag, Terminal, Database } from 'lucide-react';
-import { StaggerContainer, StaggerItem } from '../components/AnimatedSection';
+import { StaggerContainer, StaggerItem, AnimatedSection } from '../components/AnimatedSection';
 import useIsMobile from '../hooks/useIsMobile';
 
 const services = [
@@ -18,48 +18,63 @@ const Services = () => {
 };
 
 /* ══════════════════════════════════════════
-   MOBILE SERVICES — Horizontal scroll cards
+   MOBILE SERVICES — Animated Horizontal Grid
    ══════════════════════════════════════════ */
 const MobileServices = () => (
-  <section style={{ padding: '1rem 0 1.5rem' }}>
+  <section style={{ padding: '1rem 0 1.5rem', overflow: 'hidden' }}>
     <div style={{ padding: '0 1.25rem', marginBottom: '0.75rem' }}>
-      <h2 style={{ fontSize: '1.15rem', textAlign: 'center', marginBottom: '0.3rem' }}>خدماتنا</h2>
-      <p style={{ fontSize: '0.75rem', textAlign: 'center', color: 'rgba(255,255,255,0.5)', margin: 0 }}>
-        كل مشروع يبدا بفكرة ويولّي منتج رقمي كامل
-      </p>
+      <AnimatedSection direction="up" delay={0.1}>
+        <h2 style={{ fontSize: '1.25rem', textAlign: 'center', marginBottom: '0.3rem', background: 'linear-gradient(to right, #fff, #a5b4fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>خدماتنا</h2>
+        <p style={{ fontSize: '0.8rem', textAlign: 'center', color: 'rgba(255,255,255,0.6)', margin: 0 }}>
+          كل مشروع يبدا بفكرة ويولّي منتج رقمي كامل
+        </p>
+      </AnimatedSection>
     </div>
 
     {/* 2×2 Grid */}
-    <div style={{
+    <StaggerContainer style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '0.5rem',
+      gap: '0.6rem',
       padding: '0 1.25rem'
-    }}>
+    }} staggerDelay={0.1}>
       {services.map((s, i) => (
-        <div
-          key={i}
-          style={{
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: '12px',
-            padding: '0.75rem',
-            textAlign: 'center'
-          }}
-        >
-          <div style={{
-            width: '38px', height: '38px', borderRadius: '10px',
-            background: 'rgba(255,255,255,0.06)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto 0.4rem'
-          }}>
-            {React.cloneElement(s.icon, { size: 18 })}
+        <StaggerItem key={i}>
+          <div
+            style={{
+              background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%)',
+              border: '1px solid rgba(255,255,255,0.05)',
+              borderRadius: '16px',
+              padding: '1rem 0.75rem',
+              textAlign: 'center',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+          >
+            {/* Subtle glow behind icon */}
+            <div style={{
+              position: 'absolute', top: '10px', left: '50%', transform: 'translateX(-50%)',
+              width: '40px', height: '40px', background: s.icon.props.color || '#fff',
+              filter: 'blur(25px)', opacity: 0.15, zIndex: 0
+            }} />
+            
+            <div style={{
+              width: '42px', height: '42px', borderRadius: '12px',
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              margin: '0 auto 0.6rem',
+              position: 'relative', zIndex: 1
+            }}>
+              {React.cloneElement(s.icon, { size: 20 })}
+            </div>
+            <h3 style={{ fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem', color: 'white', position: 'relative', zIndex: 1 }}>{s.title}</h3>
+            <p style={{ fontSize: '0.65rem', lineHeight: 1.5, color: 'rgba(255,255,255,0.5)', margin: 0, position: 'relative', zIndex: 1 }}>{s.desc}</p>
           </div>
-          <h3 style={{ fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem', color: 'white' }}>{s.title}</h3>
-          <p style={{ fontSize: '0.6rem', lineHeight: 1.4, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{s.desc}</p>
-        </div>
+        </StaggerItem>
       ))}
-    </div>
+    </StaggerContainer>
   </section>
 );
 

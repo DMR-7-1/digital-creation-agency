@@ -68,14 +68,31 @@ const Navbar = () => {
       }}>
         <div style={{ maxWidth: '100%', margin: '0 auto', padding: '0 2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           
-          {/* Logo */}
+          {/* Logo with Smart Contrast Stage */}
           <Link to="/" style={{ textDecoration: 'none', zIndex: 1001, display: 'flex', alignItems: 'center' }}>
-            <img src={logoImg} alt="Digital Creation" style={{
-              height: isScrolled ? '110px' : '150px',
-              width: 'auto', transition: 'all 0.4s ease', display: 'block',
-              filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5)) drop-shadow(0 0 2px rgba(255,255,255,0.3)) drop-shadow(0 0 6px rgba(139,92,246,0.3))',
-              marginTop: '-45px', marginBottom: '-45px'
-            }} />
+            <div style={{
+              position: 'relative',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              {/* The Soft Glow "Halo" Behind the Logo */}
+              <div style={{
+                position: 'absolute',
+                width: '70%', height: '40%',
+                background: 'radial-gradient(ellipse, rgba(255,255,255,0.12) 0%, transparent 70%)',
+                filter: 'blur(10px)',
+                zIndex: -1,
+                opacity: isScrolled ? 1 : 0.7,
+                transition: 'opacity 0.4s ease'
+              }} />
+              <img src={logoImg} alt="Digital Creation" style={{
+                height: isScrolled ? '110px' : '150px',
+                width: 'auto', transition: 'all 0.4s ease', display: 'block',
+                filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.4))',
+                marginTop: '-45px', marginBottom: '-45px'
+              }} />
+            </div>
           </Link>
 
           {/* Center Links */}
@@ -101,21 +118,22 @@ const Navbar = () => {
 };
 
 /* ══════════════════════════════════════
-   MOBILE — Fixed bottom tab bar
+   MOBILE — Next-Level Header & Bottom Tab Bar
    ══════════════════════════════════════ */
 const MobileNavbar = ({ navLinks, location }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY < 10) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
+      setIsScrolled(currentScrollY > 20);
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsScrollingDown(true);
       } else {
-        setIsVisible(true);
+        setIsScrollingDown(false);
       }
       setLastScrollY(currentScrollY);
     };
@@ -127,99 +145,121 @@ const MobileNavbar = ({ navLinks, location }) => {
   return (
     <>
       <style>{`
-        /* ── Floating Top Pill Header ── */
-        .mobile-top-container {
+        /* ── Full Width Modern Mobile Header ── */
+        .mobile-header {
           position: fixed;
-          top: 0.75rem;
-          left: 50%;
-          transform: translateX(-50%);
+          top: 0; left: 0; right: 0;
           z-index: 1000;
-          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-          opacity: ${isVisible ? 1 : 0};
-          pointer-events: ${isVisible ? 'all' : 'none'};
-          margin-top: ${isVisible ? '0' : '-35px'};
-          width: 55%;
-          max-width: 280px;
-        }
-        .mobile-top-pill {
-          background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%);
-          backdrop-filter: blur(25px);
-          -webkit-backdrop-filter: blur(25px);
-          padding: 0.25rem 1.25rem 0.1rem;
-          border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          box-shadow: 
-            0 12px 40px -8px rgba(0, 0, 0, 0.8),
-            0 0 15px rgba(139, 92, 246, 0.2),
-            inset 0 1px 1px rgba(255, 255, 255, 0.15);
+          padding: 0.5rem 1rem;
           display: flex;
           align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-        .mobile-top-pill::before {
-          content: '';
-          position: absolute;
-          inset: -1.5px;
-          border-radius: 999px;
-          padding: 1.5px;
-          background: linear-gradient(135deg, rgba(139, 92, 246, 0.7), rgba(6, 182, 212, 0.7));
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-        }
-        .mobile-top-logo {
-          height: 135px;
-          width: auto;
-          margin-top: -38px;
-          margin-bottom: -38px;
-          filter: drop-shadow(0 0 12px rgba(139,92,246,0.6));
-          transition: all 0.3s ease;
+          justify-content: space-between;
+          background: ${isScrolled ? 'rgba(15, 23, 42, 0.85)' : 'transparent'};
+          backdrop-filter: ${isScrolled ? 'blur(16px)' : 'none'};
+          -webkit-backdrop-filter: ${isScrolled ? 'blur(16px)' : 'none'};
+          border-bottom: ${isScrolled ? '1px solid rgba(255, 255, 255, 0.05)' : 'none'};
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateY(${isScrollingDown ? '-100%' : '0'});
         }
 
-        /* ── Bottom tab bar ── */
+        /* Smart Logo Fix: Subtle Stage/Glow behind logo for true contrast */
+        .logo-stage {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+        
+        .logo-stage::before {
+          content: '';
+          position: absolute;
+          width: 80%; height: 50%;
+          background: radial-gradient(ellipse, rgba(255,255,255,0.15) 0%, transparent 70%);
+          z-index: -1;
+          filter: blur(8px);
+        }
+
+        .mobile-logo {
+          height: 80px;
+          margin: -20px 0;
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+          transition: transform 0.3s ease;
+        }
+
+        .mobile-cta {
+          background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(6, 182, 212, 0.9));
+          color: white;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+          border-radius: 99px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ── Floating Bottom Tab Bar ── */
         .mobile-tab-bar {
           position: fixed;
-          bottom: 0; left: 0; right: 0;
+          bottom: 1rem;
+          left: 1rem;
+          right: 1rem;
           z-index: 1000;
-          background: rgba(15, 23, 42, 0.95);
+          background: rgba(15, 23, 42, 0.85);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
-          padding: 0.3rem 0.25rem 0.4rem;
+          border-radius: 24px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 0.5rem;
           display: flex;
           justify-content: space-around;
           align-items: center;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateY(${isScrollingDown ? '150%' : '0'});
         }
+
         .mobile-tab {
+          position: relative;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.15rem;
+          gap: 0.2rem;
           text-decoration: none;
-          padding: 0.2rem 0;
-          min-width: 48px;
-          transition: all 0.2s ease;
+          padding: 0.4rem 0.5rem;
+          border-radius: 16px;
+          flex: 1;
+          transition: all 0.3s ease;
         }
+
+        .mobile-tab.active {
+          background: rgba(139, 92, 246, 0.15);
+        }
+
         .mobile-tab-label {
-          font-size: 0.55rem;
+          font-size: 0.6rem;
           font-weight: 600;
           white-space: nowrap;
+          transition: all 0.3s ease;
         }
       `}</style>
 
-      {/* Floating Top Pill */}
-      <div className="mobile-top-container">
-        <div className="mobile-top-pill">
-          <Link to="/">
-            <img src={logoImg} alt="Digital Creation" className="mobile-top-logo" />
-          </Link>
-        </div>
-      </div>
+      {/* Top Header */}
+      <header className="mobile-header">
+        <Link to="/" className="logo-stage">
+          <img src={logoImg} alt="Digital Creation" className="mobile-logo" />
+        </Link>
+        <Link to="/start-project" className="mobile-cta">
+          <Sparkles size={14} /> ابدأ
+        </Link>
+      </header>
 
-      {/* Bottom tab bar */}
+      {/* Floating Bottom Navigation */}
       <nav className="mobile-tab-bar">
         {navLinks.map((link) => {
           const isActive = location.pathname === link.href;
@@ -227,15 +267,22 @@ const MobileNavbar = ({ navLinks, location }) => {
             <Link
               key={link.name}
               to={link.href}
-              className="mobile-tab"
-              style={{ color: isActive ? '#8b5cf6' : 'rgba(255,255,255,0.45)' }}
+              className={`mobile-tab ${isActive ? 'active' : ''}`}
+              style={{ color: isActive ? '#8b5cf6' : 'rgba(255,255,255,0.5)' }}
             >
-              {React.cloneElement(link.icon, {
-                size: 20,
-                color: isActive ? '#8b5cf6' : 'rgba(255,255,255,0.45)',
-                strokeWidth: isActive ? 2.5 : 1.8
-              })}
-              <span className="mobile-tab-label">{link.name}</span>
+              <div style={{
+                transform: isActive ? 'translateY(-2px)' : 'none',
+                transition: 'transform 0.3s ease'
+              }}>
+                {React.cloneElement(link.icon, {
+                  size: 22,
+                  color: isActive ? '#a855f7' : 'currentColor',
+                  strokeWidth: isActive ? 2.5 : 1.5
+                })}
+              </div>
+              {isActive && (
+                <span className="mobile-tab-label">{link.name}</span>
+              )}
             </Link>
           );
         })}

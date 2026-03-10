@@ -6,6 +6,8 @@ import useIsMobile from '../hooks/useIsMobile';
 
 const WEB3FORMS_ACCESS_KEY = 'ac9c514d-d0d1-4746-90db-01538d0d2af5';
 
+import SEO from '../components/SEO';
+
 const ContactPage = () => {
   const isMobile = useIsMobile();
   const [formData, setFormData] = useState({ name: '', phone: '', type: 'website', message: '' });
@@ -228,6 +230,16 @@ const ContactPage = () => {
   );
 };
 
+// Wrapper handling SEO injection cleanly
+const ContactWrapper = () => {
+  return (
+    <>
+      <SEO title="تواصل معنا" description="قولنا فكرتك ونعطيك استشارة تقنية مجانية في أقل من 5 دقائق" />
+      <ContactPage />
+    </>
+  );
+};
+
 const ContactItem = ({ icon, title, desc }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
     <div style={{ background: 'var(--glass-border)', padding: '0.8rem', borderRadius: '50%' }}>{icon}</div>
@@ -252,4 +264,4 @@ const desktopInput = {
   color: 'white', fontFamily: 'inherit', width: '100%'
 };
 
-export default ContactPage;
+export default ContactWrapper;

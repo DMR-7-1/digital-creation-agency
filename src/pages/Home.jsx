@@ -5,9 +5,12 @@ import Services from '../sections/Services';
 import About from '../sections/About';
 import Contact from '../sections/Contact';
 
+import SEO from '../components/SEO';
+
 const Home = () => {
   return (
     <PageTransition>
+      <SEO title="الرئيسية" description="وكالة رقمية جزائرية تقدم تصميم مواقع، متاجر إلكترونية، وتطبيقات ويب بجودة عالمية" />
       <div>
         <Hero />
         <Services preview={true} />
