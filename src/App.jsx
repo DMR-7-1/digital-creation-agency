@@ -11,20 +11,11 @@ import StartProject from './pages/StartProject';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 
-// Scroll to top on route change
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
-
 // Animated routes wrapper
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -38,11 +29,26 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  const [theme, setTheme] = React.useState('dark');
+
+  useEffect(() => {
+    // Check local storage or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
   return (
     <Router>
-      <ScrollToTop />
-      <div className="app-container">
-        <Navbar />
+      <div className={`app-container theme-${theme}`}>
+        <Navbar toggleTheme={toggleTheme} theme={theme} />
         <main style={{ minHeight: '100vh' }}>
           <AnimatedRoutes />
         </main>

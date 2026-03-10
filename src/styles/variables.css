@@ -13,10 +13,13 @@
   --color-text-muted: #9ca3af;
   --color-text-inverted: #111827;
 
-  /* Glassmorphism */
+  /* Glassmorphism & Cards */
   --glass-bg: rgba(17, 24, 39, 0.7);
+  --glass-bg-hover: rgba(17, 24, 39, 0.85);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --card-bg: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+  --badge-bg: rgba(139, 92, 246, 0.15);
   --backdrop-blur: 12px;
 
   /* Spacing */
@@ -26,6 +29,24 @@
   /* Typography */
   --font-arabic: "Cairo", sans-serif;
   --font-english: "Inter", sans-serif;
+}
+
+/* ═══════════════════════════════════════
+   LIGHT THEME OVERRIDES
+   ═══════════════════════════════════════ */
+[data-theme="light"] {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text-main: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-inverted: #f8fafc;
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-hover: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  --card-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.8) 0%, rgba(241, 245, 249, 0.9) 100%);
+  --badge-bg: rgba(139, 92, 246, 0.1);
 }
 
 /* Base resets handled in global.css, these are valid variables for usage */

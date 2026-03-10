@@ -45,21 +45,22 @@ const WhatsAppButton = () => {
           right: calc(100% + 12px);
           top: 50%;
           transform: translateY(-50%);
-          background: rgba(17, 24, 39, 0.95);
-          color: white;
+          background: var(--color-surface);
+          color: var(--color-text-main);
           padding: 0.6rem 1rem;
           border-radius: 10px;
           font-size: 0.85rem;
           font-weight: 600;
           white-space: nowrap;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+          border: 1px solid var(--glass-border);
           pointer-events: none;
         }
         @media (max-width: 768px) {
           .whatsapp-fab {
             width: 50px;
             height: 50px;
-            bottom: calc(85px + 1.5rem); /* Clears the new 85px glass shelf */
+            bottom: calc(75px + 1.25rem); /* Clears the 75px shelf + margin */
             right: 1.25rem;
           }
           .whatsapp-tooltip {

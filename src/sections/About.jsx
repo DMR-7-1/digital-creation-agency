@@ -17,17 +17,17 @@ const MobileAbout = () => (
   <section style={{ padding: '1.25rem 1.25rem 1.5rem' }}>
     {/* Badge */}
     <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-      <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: 'rgba(139, 92, 246, 0.15)', borderRadius: '20px' }}>
-        <span style={{ color: '#8b5cf6', fontWeight: 700, fontSize: '0.72rem' }}>من نحن</span>
+      <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: 'var(--badge-bg)', borderRadius: '20px' }}>
+        <span style={{ color: 'var(--color-secondary)', fontWeight: 700, fontSize: '0.72rem' }}>من نحن</span>
       </div>
     </div>
 
     {/* Headline */}
-    <h2 style={{ fontSize: '1.15rem', textAlign: 'center', marginBottom: '0.6rem', lineHeight: 1.3 }}>
+    <h2 style={{ fontSize: '1.15rem', textAlign: 'center', marginBottom: '0.6rem', lineHeight: 1.3, color: 'var(--color-text-main)' }}>
       فريق جزائري يفهم السوق ويتقن التقنية
     </h2>
-    <p style={{ fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.65)', textAlign: 'center', marginBottom: '1.25rem', maxWidth: '340px', margin: '0 auto 1.25rem' }}>
-      <strong style={{ color: '#06b6d4' }}>Digital Creation</strong> شريكك اللي يفهم شنو تحتاج، يبنيلك حل يناسب مشروعك، ويبقى معاك حتى بعد التسليم.
+    <p style={{ fontSize: '0.78rem', lineHeight: 1.6, color: 'var(--color-text-muted)', textAlign: 'center', marginBottom: '1.25rem', maxWidth: '340px', margin: '0 auto 1.25rem' }}>
+      <strong style={{ color: 'var(--color-primary)' }}>Digital Creation</strong> شريكك اللي يفهم شنو تحتاج، يبنيلك حل يناسب مشروعك، ويبقى معاك حتى بعد التسليم.
     </p>
 
     {/* Checklist — 2×2 grid */}
@@ -38,12 +38,12 @@ const MobileAbout = () => (
       {['فريق شغوف', 'تقنيات حديثة', 'نعرفو السوق', 'دعم مستمر'].map((item, i) => (
         <div key={i} style={{
           display: 'flex', alignItems: 'center', gap: '0.3rem',
-          background: 'rgba(255,255,255,0.04)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          background: 'var(--glass-bg)',
+          border: '1px solid var(--glass-border)',
           borderRadius: '8px', padding: '0.35rem 0.5rem',
-          fontSize: '0.68rem', color: 'rgba(255,255,255,0.7)'
+          fontSize: '0.68rem', color: 'var(--color-text-muted)'
         }}>
-          <CheckCircle size={12} color="#06b6d4" />
+          <CheckCircle size={12} color="var(--color-primary)" />
           {item}
         </div>
       ))}
@@ -52,32 +52,32 @@ const MobileAbout = () => (
     {/* Stats — horizontal row */}
     <div style={{ display: 'flex', gap: '0.5rem' }}>
       <div style={{
-        flex: 1, background: 'rgba(255,255,255,0.04)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        flex: 1, background: 'var(--glass-bg)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '12px', padding: '0.75rem', textAlign: 'center'
       }}>
-        <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#06b6d4' }}>
+        <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-primary)' }}>
           <AnimatedCounter target={50} prefix="+" />
         </div>
-        <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>مشروع ناجح</div>
+        <div style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)' }}>مشروع ناجح</div>
       </div>
       <div style={{
-        flex: 1, background: 'rgba(255,255,255,0.04)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        flex: 1, background: 'var(--glass-bg)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '12px', padding: '0.75rem', textAlign: 'center'
       }}>
-        <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#8b5cf6' }}>
+        <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-secondary)' }}>
           <AnimatedCounter target={100} suffix="%" />
         </div>
-        <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>رضا العملاء</div>
+        <div style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)' }}>رضا العملاء</div>
       </div>
       <div style={{
-        flex: 1, background: 'rgba(255,255,255,0.04)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        flex: 1, background: 'var(--glass-bg)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '12px', padding: '0.75rem', textAlign: 'center'
       }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'white', marginBottom: '0.2rem' }}>تقنياتنا</div>
-        <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.5)' }}>React • Node • Cloud</div>
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '0.2rem' }}>تقنياتنا</div>
+        <div style={{ fontSize: '0.6rem', color: 'var(--color-text-muted)' }}>React • Node • Cloud</div>
       </div>
     </div>
   </section>

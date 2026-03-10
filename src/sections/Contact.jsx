@@ -45,11 +45,11 @@ const Contact = () => {
   };
 
   const inputStyle = {
-    background: 'rgba(255,255,255,0.05)',
-    border: '1px solid rgba(255,255,255,0.12)',
+    background: 'var(--glass-bg)',
+    border: '1px solid var(--glass-border)',
     padding: isMobile ? '0.7rem' : '1rem',
     borderRadius: isMobile ? '10px' : '0.5rem',
-    color: 'white',
+    color: 'var(--color-text-main)',
     fontFamily: 'inherit',
     fontSize: isMobile ? '14px' : 'inherit',
     width: '100%',
@@ -60,7 +60,8 @@ const Contact = () => {
     fontSize: isMobile ? '0.75rem' : '0.9rem',
     fontWeight: 600,
     marginBottom: '0.3rem',
-    display: 'block'
+    display: 'block',
+    color: 'var(--color-text-main)'
   };
 
   if (isSuccess) {
@@ -70,7 +71,7 @@ const Contact = () => {
           <div className={isMobile ? '' : 'glass-panel'} style={{ padding: isMobile ? '2rem 1rem' : '4rem 3rem', ...(isMobile ? { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' } : {}) }}>
             <CheckCircle size={isMobile ? 40 : 64} color="#4ADE80" style={{ marginBottom: '1rem' }} />
             <h2 style={{ fontSize: isMobile ? '1.15rem' : '2rem', marginBottom: '0.5rem', color: '#4ADE80' }}>وصلنا طلبك! ✅</h2>
-            <p style={{ marginBottom: '1.5rem', lineHeight: 1.6, fontSize: isMobile ? '0.82rem' : '1rem' }}>
+            <p style={{ marginBottom: '1.5rem', lineHeight: 1.6, fontSize: isMobile ? '0.82rem' : '1rem', color: 'var(--color-text-main)' }}>
               فريقنا رايح يتواصل معاك في أقرب وقت. شكرًا على ثقتك فينا!
             </p>
             <button onClick={() => setIsSuccess(false)} className="btn btn-primary" style={{ fontSize: isMobile ? '0.85rem' : '1rem' }}>
@@ -87,16 +88,16 @@ const Contact = () => {
       <section style={{ padding: '1.25rem 1.25rem 2rem' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-          <h2 style={{ fontSize: '1.15rem', marginBottom: '0.3rem' }}>جاهز تبدا؟ 💬</h2>
-          <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', margin: 0 }}>
+          <h2 style={{ fontSize: '1.15rem', marginBottom: '0.3rem', color: 'var(--color-text-main)' }}>جاهز تبدا؟ 💬</h2>
+          <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: 0 }}>
             الاستشارة مجانية — بلا التزام
           </p>
         </div>
 
         {/* Form */}
         <div style={{
-          background: 'rgba(255,255,255,0.03)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          background: 'var(--glass-bg)',
+          border: '1px solid var(--glass-border)',
           borderRadius: '16px',
           padding: '1rem'
         }}>
@@ -115,7 +116,7 @@ const Contact = () => {
             </div>
             <div>
               <label style={labelStyle}>نوع الخدمة</label>
-              <select value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})} style={{...inputStyle, background: 'rgba(17, 24, 39, 0.8)'}}>
+              <select value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})} style={{...inputStyle, background: 'var(--color-bg)'}}>
                 <option value="consultation">استشارة مجانية</option>
                 <option value="website">تصميم موقع</option>
                 <option value="store">متجر إلكتروني</option>
@@ -144,7 +145,7 @@ const Contact = () => {
           </form>
 
           {/* WhatsApp quick link */}
-          <div style={{ marginTop: '0.75rem', textAlign: 'center', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ marginTop: '0.75rem', textAlign: 'center', paddingTop: '0.75rem', borderTop: '1px solid var(--glass-border)' }}>
             <a href="https://wa.me/213770784404" target="_blank" rel="noopener noreferrer" style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
               color: '#4ADE80', textDecoration: 'none', fontWeight: 700, fontSize: '0.78rem'
@@ -164,8 +165,8 @@ const Contact = () => {
     <section id="contact" className="section" style={{ paddingBottom: '8rem' }}>
       <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
         <AnimatedSection>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>جاهز تبدا؟ خلّينا نحكيو 💬</h2>
-          <p style={{ marginBottom: '3rem' }}>قولنا وش تحتاج ونحن نتكفّلوا بالباقي. <strong>الاستشارة مجانية</strong> — بلا التزام.</p>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--color-text-main)' }}>جاهز تبدا؟ خلّينا نحكيو 💬</h2>
+          <p style={{ marginBottom: '3rem', color: 'var(--color-text-muted)' }}>قولنا وش تحتاج ونحن نتكفّلوا بالباقي. <strong>الاستشارة مجانية</strong> — بلا التزام.</p>
         </AnimatedSection>
 
         <FadeIn delay={0.2}>
@@ -188,7 +189,7 @@ const Contact = () => {
                 </div>
                 <div style={{ display: 'grid', gap: '0.5rem' }}>
                   <label style={labelStyle}>نوع الخدمة المطلوبة</label>
-                  <select value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})} style={{...inputStyle, background: 'rgba(17, 24, 39, 0.8)'}}>
+                  <select value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})} style={{...inputStyle, background: 'var(--color-bg)'}}>
                     <option value="consultation">استشارة مجانية</option>
                     <option value="website">تصميم موقع</option>
                     <option value="store">متجر إلكتروني</option>

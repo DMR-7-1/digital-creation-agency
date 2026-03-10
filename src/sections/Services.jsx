@@ -25,7 +25,7 @@ const MobileServices = () => (
     <div style={{ padding: '0 1.25rem', marginBottom: '0.75rem' }}>
       <AnimatedSection direction="up" delay={0.1}>
         <h2 style={{ fontSize: '1.25rem', textAlign: 'center', marginBottom: '0.3rem', background: 'linear-gradient(to right, #fff, #a5b4fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>خدماتنا</h2>
-        <p style={{ fontSize: '0.8rem', textAlign: 'center', color: 'rgba(255,255,255,0.6)', margin: 0 }}>
+        <p style={{ fontSize: '0.8rem', textAlign: 'center', color: 'var(--color-text-muted)', margin: 0 }}>
           كل مشروع يبدا بفكرة ويولّي منتج رقمي كامل
         </p>
       </AnimatedSection>
@@ -42,7 +42,7 @@ const MobileServices = () => (
         <StaggerItem key={i}>
           <div
             style={{
-              background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%)',
+              background: 'var(--card-bg)',
               border: '1px solid rgba(255,255,255,0.03)',
               borderRadius: '20px',
               padding: '1.25rem 0.85rem',
@@ -78,8 +78,8 @@ const MobileServices = () => (
             }}>
               {React.cloneElement(s.icon, { size: 22 })}
             </div>
-            <h3 style={{ fontSize: '0.85rem', fontWeight: 800, marginBottom: '0.35rem', color: 'white', position: 'relative', zIndex: 1 }}>{s.title}</h3>
-            <p style={{ fontSize: '0.7rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.5)', margin: 0, position: 'relative', zIndex: 1 }}>{s.desc}</p>
+            <h3 style={{ fontSize: '0.85rem', fontWeight: 800, marginBottom: '0.35rem', color: 'var(--color-text-main)', position: 'relative', zIndex: 1 }}>{s.title}</h3>
+            <p style={{ fontSize: '0.7rem', lineHeight: 1.6, color: 'var(--color-text-muted)', margin: 0, position: 'relative', zIndex: 1 }}>{s.desc}</p>
           </div>
         </StaggerItem>
       ))}
@@ -117,7 +117,7 @@ const ServiceCard = ({ service }) => {
       padding: '2.5rem 2rem', 
       textAlign: 'center', 
       cursor: 'pointer',
-      background: 'linear-gradient(160deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%)',
+      background: 'var(--card-bg)',
       borderRadius: '24px',
       border: '1px solid rgba(255,255,255,0.03)',
       boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.2)',
@@ -153,8 +153,8 @@ const ServiceCard = ({ service }) => {
       }}>
         {React.cloneElement(service.icon, { size: 36 })}
       </div>
-      <h3 style={{ marginBottom: '1rem', fontSize: '1.4rem', color: isHovered ? 'white' : 'white', transition: 'color 0.3s', position: 'relative', zIndex: 1, fontWeight: 800 }}>{service.title}</h3>
-      <p style={{ fontSize: '1rem', lineHeight: '1.7', color: 'rgba(255,255,255,0.6)', position: 'relative', zIndex: 1 }}>{service.desc}</p>
+      <h3 style={{ marginBottom: '1rem', fontSize: '1.4rem', color: 'var(--color-text-main)', transition: 'color 0.3s', position: 'relative', zIndex: 1, fontWeight: 800 }}>{service.title}</h3>
+      <p style={{ fontSize: '1rem', lineHeight: '1.7', color: 'var(--color-text-muted)', position: 'relative', zIndex: 1 }}>{service.desc}</p>
     </div>
   );
 };

@@ -44,8 +44,8 @@ const MobilePortfolio = () => {
     <div style={{ padding: '6rem 1.25rem 6rem' }}>
       {/* Header */}
       <AnimatedSection direction="up" style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', background: 'linear-gradient(to right, #fff, #a5b4fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>أعمالنا</h1>
-        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', margin: 0 }}>
+        <h1 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', background: 'linear-gradient(to left, var(--color-primary), var(--color-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'var(--color-text-main)' }}>أعمالنا</h1>
+        <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', margin: 0 }}>
           مشاريع حقيقية حوّلنا فيها أفكار لمنتجات رقمية
         </p>
       </AnimatedSection>
@@ -56,8 +56,8 @@ const MobilePortfolio = () => {
           <StaggerItem key={i}>
             <div style={{
               display: 'flex', flexDirection: 'column',
-              background: 'linear-gradient(160deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%)',
-              border: '1px solid rgba(255,255,255,0.06)',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '16px',
               overflow: 'hidden',
               boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
@@ -72,15 +72,16 @@ const MobilePortfolio = () => {
                  <span style={{
                     position: 'absolute', top: '10px', right: '10px',
                     fontSize: '0.65rem', fontWeight: 700,
-                    background: 'rgba(15, 23, 42, 0.8)', color: '#fff',
+                    background: 'var(--color-surface)', color: 'var(--color-text-main)',
                     backdropFilter: 'blur(10px)',
-                    padding: '0.3rem 0.6rem', borderRadius: '8px'
+                    padding: '0.3rem 0.6rem', borderRadius: '8px',
+                    border: '1px solid var(--glass-border)'
                   }}>{p.category}</span>
               </div>
               {/* Info */}
               <div style={{ padding: '1rem' }}>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.4rem 0', color: 'white' }}>{p.title}</h3>
-                <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', margin: '0 0 0.8rem', lineHeight: 1.5 }}>{p.description}</p>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.4rem 0', color: 'var(--color-text-main)' }}>{p.title}</h3>
+                <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', margin: '0 0 0.8rem', lineHeight: 1.5 }}>{p.description}</p>
                 <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
                   {p.tech.map((t, j) => {
                     const iconPath = iconMap[t];
@@ -127,8 +128,8 @@ const DesktopPortfolio = () => {
         <section className="section">
           <div className="container">
             <AnimatedSection style={{ textAlign: "center", marginBottom: "4rem" }}>
-              <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>أعمالنا</h1>
-              <p style={{ fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto" }}>
+              <h1 style={{ fontSize: "3rem", marginBottom: "1rem", color: 'var(--color-text-main)' }}>أعمالنا</h1>
+              <p style={{ fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto", color: 'var(--color-text-muted)' }}>
                 مشاريع حقيقية ساعدنا أصحابها يحوّلو أفكارهم لواقع رقمي
               </p>
             </AnimatedSection>
@@ -140,13 +141,13 @@ const DesktopPortfolio = () => {
                     onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-10px)"; }}
                     onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
                   >
-                    <div style={{ height: "220px", background: `linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3)), url(${project.image})`, backgroundSize: "cover", backgroundPosition: "center", position: "relative" }}>
-                      <div style={{ position: "absolute", top: "1rem", right: "1rem", background: "rgba(17, 24, 39, 0.9)", padding: "0.5rem 1rem", borderRadius: "20px", fontSize: "0.85rem", backdropFilter: "blur(10px)" }}>
+                    <div style={{ height: "220px", background: `linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1)), url(${project.image})`, backgroundSize: "cover", backgroundPosition: "center", position: "relative" }}>
+                      <div style={{ position: "absolute", top: "1rem", right: "1rem", background: "var(--color-surface)", color: 'var(--color-text-main)', padding: "0.5rem 1rem", borderRadius: "20px", fontSize: "0.85rem", backdropFilter: "blur(10px)", border: '1px solid var(--glass-border)' }}>
                         {project.category}
                       </div>
                     </div>
                     <div style={{ padding: "2rem" }}>
-                      <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>{project.title}</h3>
+                      <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem", color: 'var(--color-text-main)' }}>{project.title}</h3>
                       <p style={{ marginBottom: "1.5rem", lineHeight: "1.7", color: "var(--color-text-muted)" }}>{project.description}</p>
                       <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
                         {project.tech.map((tech, i) => {

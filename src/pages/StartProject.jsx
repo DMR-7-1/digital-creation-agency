@@ -38,10 +38,10 @@ const StartProject = () => {
   };
 
   const mobileInput = {
-    background: 'rgba(255,255,255,0.05)',
-    border: '1px solid rgba(255,255,255,0.12)',
+    background: 'var(--glass-bg)',
+    border: '1px solid var(--glass-border)',
     padding: '0.7rem', borderRadius: '10px',
-    color: 'white', fontFamily: 'inherit',
+    color: 'var(--color-text-main)', fontFamily: 'inherit',
     fontSize: '14px', width: '100%', boxSizing: 'border-box'
   };
 
@@ -50,37 +50,37 @@ const StartProject = () => {
       <PageTransition>
         <div style={{ padding: '1rem 1.25rem 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-            <h1 style={{ fontSize: '1.3rem', marginBottom: '0.3rem' }}>🚀 خلّينا نبداو</h1>
-            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', margin: 0 }}>
+            <h1 style={{ fontSize: '1.3rem', marginBottom: '0.3rem', color: 'var(--color-text-main)' }}>🚀 خلّينا نبداو</h1>
+            <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: 0 }}>
               نردو عليك بعرض مفصّل في أقل من 24 ساعة
             </p>
           </div>
 
           <div style={{
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'var(--glass-bg)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '16px', padding: '1rem'
           }}>
             {status === 'success' ? (
               <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
                 <CheckCircle size={40} color="#34D399" style={{ marginBottom: '0.75rem' }} />
                 <h2 style={{ fontSize: '1.1rem', color: '#34D399', marginBottom: '0.5rem' }}>وصلنا طلبك! ✅</h2>
-                <p style={{ fontSize: '0.78rem', marginBottom: '1rem' }}>فريقنا رايح يدرس مشروعك ويتواصل معاك قريبًا.</p>
+                <p style={{ fontSize: '0.78rem', marginBottom: '1rem', color: 'var(--color-text-main)' }}>فريقنا رايح يدرس مشروعك ويتواصل معاك قريبًا.</p>
                 <button onClick={() => setStatus('idle')} className="btn btn-primary" style={{ fontSize: '0.82rem' }}>إرسال طلب آخر</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block' }}>الاسم *</label>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block', color: 'var(--color-text-main)' }}>الاسم *</label>
                   <input type="text" required name="name" value={formData.name} onChange={handleChange} style={mobileInput} placeholder="اسمك أو شركتك" />
                 </div>
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block' }}>الهاتف *</label>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block', color: 'var(--color-text-main)' }}>الهاتف *</label>
                   <input type="tel" required name="phone" value={formData.phone} onChange={handleChange} style={{...mobileInput, textAlign: 'right'}} placeholder="05 XX XX XX XX" />
                 </div>
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block' }}>نوع المشروع</label>
-                  <select name="type" value={formData.type} onChange={handleChange} style={{...mobileInput, background: 'rgba(17,24,39,0.8)'}}>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block', color: 'var(--color-text-main)' }}>نوع المشروع</label>
+                  <select name="type" value={formData.type} onChange={handleChange} style={{...mobileInput, background: 'var(--color-bg)'}}>
                     <option value="website">موقع إلكتروني</option>
                     <option value="ecommerce">متجر إلكتروني</option>
                     <option value="webapp">نظام / تطبيق ويب</option>
@@ -89,7 +89,7 @@ const StartProject = () => {
                   </select>
                 </div>
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block' }}>فكرتك</label>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.2rem', display: 'block', color: 'var(--color-text-main)' }}>فكرتك</label>
                   <textarea name="message" value={formData.message} onChange={handleChange} rows={3} style={{...mobileInput, resize: 'none'}} placeholder="وصفلنا المشروع باختصار..." />
                 </div>
                 {status === 'error' && (
@@ -114,11 +114,11 @@ const StartProject = () => {
       <div className="section" style={{ paddingTop: '8rem', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
         <div className="container" style={{ maxWidth: '800px' }}>
           <AnimatedSection style={{ marginBottom: '2rem' }}>
-            <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', marginBottom: '2rem' }}>
+            <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', textDecoration: 'none', marginBottom: '2rem' }}>
               <ArrowRight size={20} /> عودة للرئيسية
             </Link>
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center' }}>🚀 خلّينا نبداو</h1>
-            <p style={{ textAlign: 'center', opacity: 0.8, maxWidth: '500px', margin: '0 auto 3rem' }}>
+            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center', color: 'var(--color-text-main)' }}>🚀 خلّينا نبداو</h1>
+            <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', maxWidth: '500px', margin: '0 auto 3rem' }}>
               قولنا شوية على فكرتك ونحن نتكفّلوا بالباقي. نردو عليك بعرض مفصّل في أقل من 24 ساعة.
             </p>
           </AnimatedSection>
@@ -129,33 +129,33 @@ const StartProject = () => {
                 <div style={{ textAlign: 'center', padding: '2rem' }}>
                   <CheckCircle size={64} color="#34D399" style={{ marginBottom: '1.5rem', marginInline: 'auto' }} />
                   <h2 style={{ color: '#34D399', marginBottom: '1rem' }}>وصلنا طلبك! ✅</h2>
-                  <p style={{ marginBottom: '2rem' }}>فريقنا رايح يدرس مشروعك ويتواصل معاك قريبًا.</p>
+                  <p style={{ marginBottom: '2rem', color: 'var(--color-text-main)' }}>فريقنا رايح يدرس مشروعك ويتواصل معاك قريبًا.</p>
                   <button onClick={() => setStatus('idle')} className="btn btn-primary">إرسال طلب آخر</button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.5rem' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
                     <div style={{ display: 'grid', gap: '0.5rem' }}>
-                      <label style={{ fontSize: '0.9rem', fontWeight: '600' }}>الاسم الكامل *</label>
+                      <label style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-text-main)' }}>الاسم الكامل *</label>
                       <input type="text" required name="name" value={formData.name} onChange={handleChange} style={desktopInput} placeholder="اسمك أو اسم شركتك" />
                     </div>
                     <div style={{ display: 'grid', gap: '0.5rem' }}>
-                      <label style={{ fontSize: '0.9rem', fontWeight: '600' }}>رقم الهاتف *</label>
+                      <label style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-text-main)' }}>رقم الهاتف *</label>
                       <input type="tel" required name="phone" value={formData.phone} onChange={handleChange} style={{...desktopInput, direction: 'ltr', textAlign: 'right'}} placeholder="05 XX XX XX XX" />
                     </div>
                   </div>
                   <div style={{ display: 'grid', gap: '0.5rem' }}>
-                    <label style={{ fontSize: '0.9rem', fontWeight: '600' }}>نوع المشروع</label>
-                    <select name="type" value={formData.type} onChange={handleChange} style={desktopInput}>
-                      <option value="website" style={{ background: '#1e293b' }}>موقع إلكتروني تعريفي</option>
-                      <option value="ecommerce" style={{ background: '#1e293b' }}>متجر إلكتروني</option>
-                      <option value="webapp" style={{ background: '#1e293b' }}>نظام / تطبيق ويب</option>
-                      <option value="design" style={{ background: '#1e293b' }}>تصميم هوية بصرية</option>
-                      <option value="consultation" style={{ background: '#1e293b' }}>استشارة تقنية</option>
+                    <label style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-text-main)' }}>نوع المشروع</label>
+                    <select name="type" value={formData.type} onChange={handleChange} style={{...desktopInput, background: 'var(--color-bg)'}}>
+                      <option value="website">موقع إلكتروني تعريفي</option>
+                      <option value="ecommerce">متجر إلكتروني</option>
+                      <option value="webapp">نظام / تطبيق ويب</option>
+                      <option value="design">تصميم هوية بصرية</option>
+                      <option value="consultation">استشارة تقنية</option>
                     </select>
                   </div>
                   <div style={{ display: 'grid', gap: '0.5rem' }}>
-                    <label style={{ fontSize: '0.9rem', fontWeight: '600' }}>قولنا على فكرتك</label>
+                    <label style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--color-text-main)' }}>قولنا على فكرتك</label>
                     <textarea name="message" value={formData.message} onChange={handleChange} rows="4" style={{...desktopInput, resize: 'vertical'}} placeholder="وصفلنا المشروع باختصار..." />
                   </div>
                   <button type="submit" disabled={status === 'submitting'} className="btn btn-primary" style={{ marginTop: '1rem', justifyContent: 'center', padding: '1rem' }}>
@@ -180,10 +180,10 @@ const StartProjectWrapper = () => (
 );
 
 const desktopInput = {
-  background: 'rgba(255,255,255,0.05)',
+  background: 'var(--glass-bg)',
   border: '1px solid var(--glass-border)',
   padding: '1rem', borderRadius: '0.5rem',
-  color: 'white', fontFamily: 'inherit'
+  color: 'var(--color-text-main)', fontFamily: 'inherit'
 };
 
 export default StartProjectWrapper;

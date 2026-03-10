@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Home, Briefcase, Users, FolderOpen, MessageCircle } from 'lucide-react';
+import { Sparkles, Home, Briefcase, Users, FolderOpen, MessageCircle, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo_new.png';
 import useIsMobile from '../hooks/useIsMobile';
@@ -12,7 +12,7 @@ const navLinks = [
   { name: 'تواصل', href: '/contact', icon: <MessageCircle /> }
 ];
 
-const Navbar = () => {
+const Navbar = ({ toggleTheme, theme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const isMobile = useIsMobile();
@@ -32,10 +32,14 @@ const Navbar = () => {
           top: 0; left: 0; right: 0;
           z-index: 1000;
           padding: ${isScrolled ? '0.75rem 0' : '1.25rem 0'};
-          background: ${isScrolled ? 'rgba(11, 15, 25, 0.65)' : 'transparent'};
+          background: ${theme === 'light'
+            ? (isScrolled ? 'rgba(248, 250, 252, 0.85)' : 'rgba(248, 250, 252, 0.5)')
+            : (isScrolled ? 'rgba(11, 15, 25, 0.75)' : 'transparent')};
           backdrop-filter: ${isScrolled ? 'blur(24px)' : 'none'};
           -webkit-backdrop-filter: ${isScrolled ? 'blur(24px)' : 'none'};
-          border-bottom: 1px solid ${isScrolled ? 'rgba(255, 255, 255, 0.03)' : 'transparent'};
+          border-bottom: 1px solid ${theme === 'light'
+            ? 'rgba(15, 23, 42, 0.08)'
+            : (isScrolled ? 'rgba(255, 255, 255, 0.05)' : 'transparent')};
           transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -69,15 +73,18 @@ const Navbar = () => {
         }
 
         .brand-logo {
-          height: ${isScrolled ? '65px' : '90px'};
+          height: ${isScrolled ? '45px' : '55px'};
           width: auto;
-          transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+          transform: scale(${isScrolled ? 1.3 : 1.6});
+          transform-origin: right center;
         }
 
         @media (max-width: 768px) {
           .brand-logo {
-            height: ${isScrolled ? '55px' : '75px'};
+            height: ${isScrolled ? '38px' : '48px'};
+            transform: scale(${isScrolled ? 1.25 : 1.4});
           }
         }
 
@@ -89,7 +96,7 @@ const Navbar = () => {
         }
 
         .desktop-link {
-          color: rgba(255, 255, 255, 0.65);
+          color: ${theme === 'light' ? 'rgba(15, 23, 42, 0.65)' : 'rgba(255, 255, 255, 0.65)'};
           text-decoration: none;
           font-weight: 500;
           font-size: 0.95rem;
@@ -99,7 +106,7 @@ const Navbar = () => {
         }
 
         .desktop-link:hover, .desktop-link.active {
-          color: rgba(255, 255, 255, 1);
+          color: ${theme === 'light' ? 'rgba(15, 23, 42, 1)' : 'rgba(255, 255, 255, 1)'};
         }
 
         .desktop-link::after {
@@ -122,9 +129,11 @@ const Navbar = () => {
 
         /* Shimmering CTA Button */
         .cta-shimmer {
-          background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-          border: 1px solid rgba(255,255,255,0.1);
-          color: white;
+          background: ${theme === 'light'
+            ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))'
+            : 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))'};
+          border: 1px solid ${theme === 'light' ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255,255,255,0.1)'};
+          color: ${theme === 'light' ? '#1e293b' : 'white'};
           text-decoration: none;
           padding: 0.65rem 1.4rem;
           border-radius: 12px;
@@ -167,15 +176,17 @@ const Navbar = () => {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 85px; /* Taller to accommodate safe area + icons */
+          height: 75px; /* Shorter */
           padding-bottom: env(safe-area-inset-bottom);
           z-index: 1000;
-          background: rgba(11, 15, 25, 0.75);
+          background: ${theme === 'light'
+            ? 'rgba(248, 250, 252, 0.8)'
+            : 'rgba(11, 15, 25, 0.75)'};
           backdrop-filter: blur(24px) saturate(150%);
           -webkit-backdrop-filter: blur(24px) saturate(150%);
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          border-top: 1px solid ${theme === 'light' ? 'rgba(15, 23, 42, 0.08)' : 'rgba(255, 255, 255, 0.08)'};
           display: flex;
-          align-items: flex-start; /* Align to top of shelf */
+          align-items: center; /* Center items instead of flex-start */
           justify-content: space-around;
         }
 
@@ -189,20 +200,19 @@ const Navbar = () => {
 
         .shelf-item {
           flex: 1;
-          height: 60px; /* Clickable area */
+          height: 60px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          color: rgba(255, 255, 255, 0.4);
+          color: ${theme === 'light' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(255, 255, 255, 0.4)'};
           text-decoration: none;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           position: relative;
-          margin-top: 4px; /* Push down slightly from top edge */
         }
 
         .shelf-item.active {
-          color: rgba(255, 255, 255, 0.95);
+          color: ${theme === 'light' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.95)'};
         }
 
         .shelf-icon-wrapper {
@@ -217,54 +227,60 @@ const Navbar = () => {
           transform: translateY(-4px);
         }
 
-        /* Active dot indicator */
-        .shelf-dot {
-          position: absolute;
-          bottom: -8px;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          background: linear-gradient(90deg, #8b5cf6, #06b6d4);
-          opacity: 0;
-          transform: scale(0);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 0 8px rgba(6, 182, 212, 0.8);
+        .theme-toggle {
+          background: transparent;
+          border: 1px solid ${theme === 'light' ? 'rgba(15, 23, 42, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+          color: ${theme === 'light' ? 'rgba(15, 23, 42, 0.7)' : 'rgba(255, 255, 255, 0.7)'};
+          width: 38px;
+          height: 38px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
         }
 
-        .shelf-item.active .shelf-dot {
-          opacity: 1;
-          transform: scale(1);
+        .theme-toggle:hover {
+          background: ${theme === 'light' ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.05)'};
+          color: ${theme === 'light' ? '#000' : '#fff'};
         }
       `}</style>
 
       {/* ── Global Header (Desktop & Mobile) ── */}
       <header className="premium-header">
         <div className="header-container">
-          {/* Right/Start side in RTL: CTA & Nav */}
-          {isMobile ? (
-            <Link to="/start-project" className="cta-shimmer" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', borderRadius: '8px' }}>
-              <Sparkles size={14} /> ابدأ
-            </Link>
-          ) : (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
-              <Link to="/start-project" className="cta-shimmer">
-                <Sparkles size={16} /> ابدأ مشروعك
-              </Link>
-              <nav className="nav-links-desktop">
-                {navLinks.map((link) => (
-                  <Link key={link.name} to={link.href} className={`desktop-link ${location.pathname === link.href ? 'active' : ''}`}>
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-          )}
-
-          {/* Left/End side in RTL: Logo */}
+          {/* Logo First = Right Side in RTL */}
           <Link to="/" className="logo-wrap">
             <div className="logo-glow" />
             <img src={logoImg} alt="Digital Creation" className="brand-logo" />
           </Link>
+
+          {/* Links/CTA Second = Left Side in RTL */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            {isMobile ? (
+              <Link to="/start-project" className="cta-shimmer" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', borderRadius: '8px' }}>
+                <Sparkles size={14} /> ابدأ
+              </Link>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+                <nav className="nav-links-desktop">
+                  {navLinks.map((link) => (
+                    <Link key={link.name} to={link.href} className={`desktop-link ${location.pathname === link.href ? 'active' : ''}`}>
+                      {link.name}
+                    </Link>
+                  ))}
+                </nav>
+                <Link to="/start-project" className="cta-shimmer">
+                  <Sparkles size={16} /> ابدأ مشروعك
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
@@ -288,7 +304,6 @@ const Navbar = () => {
                     fill: isActive ? 'url(#gradientFill)' : 'none',
                     color: isActive ? 'transparent' : 'currentColor'
                   })}
-                  <div className="shelf-dot" style={{ bottom: '-14px' }} />
                 </div>
                 <span style={{ 
                   fontSize: '0.65rem', 

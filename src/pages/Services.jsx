@@ -53,11 +53,11 @@ const MobileServicesPage = () => (
       
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
-        <span style={{ color: '#06b6d4', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '1px' }}>خدماتنا</span>
-        <h1 style={{ fontSize: '1.3rem', marginBottom: '0.4rem', marginTop: '0.3rem' }}>
+        <span style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '1px' }}>خدماتنا</span>
+        <h1 style={{ fontSize: '1.3rem', marginBottom: '0.4rem', marginTop: '0.3rem', color: 'var(--color-text-main)' }}>
           فكرتك تستاهل تولّي واقع ✨
         </h1>
-        <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', margin: 0 }}>
+        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', margin: 0 }}>
           مواقع سريعة • أنظمة ذكية • تجربة لا تُنسى
         </p>
       </div>
@@ -67,11 +67,11 @@ const MobileServicesPage = () => (
         {features.map((f, i) => (
           <StaggerItem key={i}>
             <div style={{
-              background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%)',
-              border: '1px solid rgba(255,255,255,0.04)',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '16px', padding: '1rem',
               display: 'flex', gap: '0.8rem', alignItems: 'center',
-              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 15px rgba(0,0,0,0.2)',
+              boxShadow: 'var(--glass-shadow)',
               position: 'relative', overflow: 'hidden'
             }}>
               {/* Inner top glow */}
@@ -97,8 +97,8 @@ const MobileServicesPage = () => (
                 {React.cloneElement(f.icon, { size: 20 })}
               </div>
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'white', marginBottom: '0.15rem' }}>{f.title}</div>
-                <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>{f.desc}</div>
+                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-text-main)', marginBottom: '0.15rem' }}>{f.title}</div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>{f.desc}</div>
               </div>
             </div>
           </StaggerItem>
@@ -137,15 +137,15 @@ const MobileServicesPage = () => (
                 }}>الأكثر طلبًا</div>
               )}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', marginTop: plan.highlight ? '0.5rem' : '0' }}>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: 'white' }}>{plan.name}</h3>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: plan.highlight ? '#22d3ee' : 'rgba(255,255,255,0.6)' }}>{plan.price}</span>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: 'var(--color-text-main)' }}>{plan.name}</h3>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: plan.highlight ? '#22d3ee' : 'var(--color-text-muted)' }}>{plan.price}</span>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1rem' }}>
                 {plan.features.map((f, j) => (
                   <span key={j} style={{
                     display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
-                    fontSize: '0.65rem', color: 'rgba(255,255,255,0.7)',
-                    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.05)', 
+                    fontSize: '0.65rem', color: 'var(--color-text-muted)',
+                    background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', 
                     borderRadius: '8px', padding: '0.3rem 0.5rem'
                   }}>
                     <Check size={12} color={plan.highlight ? '#22d3ee' : '#9ca3af'} />
@@ -175,15 +175,15 @@ const MobileServicesPage = () => (
       }}>
         {sectors.map((s, i) => (
           <div key={i} style={{
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'var(--glass-bg)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '12px', padding: '0.75rem', textAlign: 'center',
             ...(i === 2 ? { gridColumn: 'span 2' } : {})
           }}>
             <div style={{ fontSize: '1.5rem', marginBottom: '0.3rem' }}>{s.emoji}</div>
-            <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'white', marginBottom: '0.2rem' }}>{s.title}</div>
-            <div style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.5)', marginBottom: '0.3rem' }}>{s.desc}</div>
-            <div style={{ fontSize: '0.6rem', color: '#06b6d4', fontWeight: 600 }}>{s.highlight}</div>
+            <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '0.2rem' }}>{s.title}</div>
+            <div style={{ fontSize: '0.62rem', color: 'var(--color-text-muted)', marginBottom: '0.3rem' }}>{s.desc}</div>
+            <div style={{ fontSize: '0.6rem', color: 'var(--color-primary)', fontWeight: 600 }}>{s.highlight}</div>
           </div>
         ))}
       </div>
@@ -212,8 +212,8 @@ const DesktopServicesPage = () => (
               <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
                 <div className="glass-panel" style={{ padding: '1rem', borderRadius: '12px' }}>{React.cloneElement(f.icon, { size: 32 })}</div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{f.title}</h3>
-                  <p style={{ fontSize: '0.95rem' }}>{f.desc}</p>
+                  <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--color-text-main)' }}>{f.title}</h3>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)' }}>{f.desc}</p>
                 </div>
               </div>
             </StaggerItem>

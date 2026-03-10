@@ -58,7 +58,7 @@ const MobileHero = () => (
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ delay: 0.2, type: 'spring', stiffness: 150, damping: 20 }}
-      style={{ fontSize: '1.8rem', lineHeight: 1.35, marginBottom: '1rem', fontWeight: 800, letterSpacing: '-0.02em' }}
+      style={{ fontSize: '1.8rem', lineHeight: 1.35, marginBottom: '1rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-main)' }}
     >
       مشروعك يستاهل يكون{' '}
       <br/>
@@ -77,7 +77,7 @@ const MobileHero = () => (
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.35, duration: 0.6 }}
-      style={{ fontSize: '0.95rem', marginBottom: '2rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', maxWidth: '340px', margin: '0 auto 2rem' }}
+      style={{ fontSize: '0.95rem', marginBottom: '2rem', lineHeight: 1.6, color: 'var(--color-text-muted)', maxWidth: '340px', margin: '0 auto 2rem' }}
     >
       نصمّم لك مواقع، متاجر، وأنظمة ويب تخلّي الناس تثق فيك من أول نظرة.
     </motion.p>
@@ -115,7 +115,7 @@ const MobileHero = () => (
       style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '2rem' }}
     >
       {['دعم فني مستمر', 'تصميم عصري'].map((t, i) => (
-        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>
+        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg, #34d399, #10b981)', boxShadow: '0 0 10px rgba(52, 211, 153, 0.5)' }} />
           {t}
         </div>
@@ -134,7 +134,7 @@ const DesktopHero = () => (
 
     <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
       <div style={{ maxWidth: '650px', zIndex: 1 }}>
-        <motion.div className="glass-panel hero-badge" style={{ display: 'inline-block', padding: '0.5rem 1rem', marginBottom: '1.5rem', borderRadius: '2rem', border: '1px solid rgba(6, 182, 212, 0.3)', background: 'rgba(6, 182, 212, 0.1)' }}
+        <motion.div className="glass-panel hero-badge" style={{ display: 'inline-block', padding: '0.5rem 1rem', marginBottom: '1.5rem', borderRadius: '2rem', border: '1px solid rgba(6, 182, 212, 0.3)', background: 'var(--badge-bg)' }}
           initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
         >
           <span style={{ color: 'var(--color-primary)', fontWeight: '700', fontSize: '0.9rem' }}>وكالة جزائرية 100% 🇩🇿</span>
@@ -179,12 +179,12 @@ const DesktopHero = () => (
           animate={{ opacity: 1, scale: 1, y: [0, -12, 0] }}
           transition={{ opacity: { delay: 0.4, duration: 0.8 }, scale: { delay: 0.4, duration: 0.8 }, y: { delay: 1.2, duration: 5, repeat: Infinity, ease: 'easeInOut' } }}
         />
-        <motion.div className="glass-panel" style={{ position: 'absolute', bottom: '10%', left: '-5%', padding: '1rem 1.5rem', zIndex: 2, background: 'rgba(17, 24, 39, 0.9)', borderLeft: '4px solid var(--color-primary)', display: 'flex', alignItems: 'center', gap: '1rem' }}
+        <motion.div className="glass-panel" style={{ position: 'absolute', bottom: '10%', left: '-5%', padding: '1rem 1.5rem', zIndex: 2, background: 'var(--glass-bg)', borderLeft: '4px solid var(--color-primary)', display: 'flex', alignItems: 'center', gap: '1rem' }}
           initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.6 }}
         >
           <div>
             <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>مشاريع نشطة</div>
-            <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'white' }}>+24 نظام</div>
+            <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--color-text-main)' }}>+24 نظام</div>
           </div>
         </motion.div>
       </div>
