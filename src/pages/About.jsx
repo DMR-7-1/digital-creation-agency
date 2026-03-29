@@ -38,8 +38,8 @@ const MobileAboutPage = () => (
 
       {/* Story text */}
       <div style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        background: 'var(--card-bg)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '14px', padding: '1rem', marginBottom: '1rem'
       }}>
         <h2 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>فريق يفهم السوق ويتقن التقنية</h2>
@@ -69,8 +69,8 @@ const MobileAboutPage = () => (
       }}>
         {values.map((v, i) => (
           <div key={i} style={{
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'var(--glass-bg)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '12px', padding: '0.75rem', textAlign: 'center',
             ...(i === 2 ? { gridColumn: 'span 2' } : {})
           }}>

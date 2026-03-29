@@ -195,7 +195,7 @@ const Navbar = ({ toggleTheme, theme }) => {
           content: '';
           position: absolute;
           top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+          background: linear-gradient(90deg, transparent, ${theme === 'light' ? 'rgba(15,23,42,0.05)' : 'rgba(255,255,255,0.15)'}, transparent);
         }
 
         .shelf-item {
@@ -310,7 +310,7 @@ const Navbar = ({ toggleTheme, theme }) => {
                 <span style={{ 
                   fontSize: '0.65rem', 
                   fontWeight: isActive ? 600 : 400,
-                  color: isActive ? '#fff' : 'rgba(255,255,255,0.6)',
+                  color: isActive ? (theme === 'light' ? 'var(--color-primary)' : '#fff') : (theme === 'light' ? 'rgba(15, 23, 42, 0.5)' : 'rgba(255, 255, 255, 0.6)'),
                   marginTop: '4px',
                   transition: 'color 0.3s ease'
                 }}>

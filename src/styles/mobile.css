@@ -31,18 +31,12 @@
   /* ── Tactile Touch Feedback instead of dead hovers ── */
   .glass-panel:active {
     transform: scale(0.98) !important;
-    background: rgba(17, 24, 39, 0.9) !important;
+    background: var(--glass-bg-hover) !important;
     transition: all 0.1s ease !important;
   }
 
   .btn:active { 
     transform: scale(0.95) !important; 
     transition: transform 0.1s ease !important;
-  }
-
-  /* ── Select styling ── */
-  select option {
-    background-color: #1f2937;
-    color: white;
   }
 }

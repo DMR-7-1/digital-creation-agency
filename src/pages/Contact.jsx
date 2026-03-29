@@ -38,8 +38,8 @@ const ContactPage = () => {
   };
 
   const mobileInput = {
-    background: 'rgba(255,255,255,0.05)',
-    border: '1px solid rgba(255,255,255,0.12)',
+    background: 'var(--glass-bg)',
+    border: '1px solid var(--glass-border)',
     padding: '0.7rem', borderRadius: '10px',
     color: 'var(--color-text-main)', fontFamily: 'inherit',
     fontSize: '14px', width: '100%', boxSizing: 'border-box'
@@ -86,7 +86,7 @@ const ContactPage = () => {
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: '0.25rem',
                 fontSize: '0.6rem', color: 'var(--color-text-muted)',
-                background: 'rgba(255,255,255,0.04)', borderRadius: '8px',
+                background: 'var(--badge-bg)', borderRadius: '8px',
                 padding: '0.25rem 0.5rem'
               }}>
                 {React.cloneElement(c.icon, { color: '#8b5cf6' })}
@@ -258,7 +258,7 @@ const Input = ({ label, ...props }) => (
 );
 
 const desktopInput = {
-  background: 'rgba(255,255,255,0.05)',
+  background: 'var(--glass-bg)',
   border: '1px solid var(--glass-border)',
   padding: '1rem', borderRadius: '0.5rem',
   color: 'var(--color-text-main)', fontFamily: 'inherit', width: '100%'

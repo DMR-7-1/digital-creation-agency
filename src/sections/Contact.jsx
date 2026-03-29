@@ -68,7 +68,7 @@ const Contact = () => {
     return (
       <section id="contact" style={{ padding: isMobile ? '2rem 1.25rem' : '4rem 0 8rem' }}>
         <div className="container" style={{ maxWidth: '600px', textAlign: 'center' }}>
-          <div className={isMobile ? '' : 'glass-panel'} style={{ padding: isMobile ? '2rem 1rem' : '4rem 3rem', ...(isMobile ? { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' } : {}) }}>
+          <div className={isMobile ? '' : 'glass-panel'} style={{ padding: isMobile ? '2rem 1rem' : '4rem 3rem', ...(isMobile ? { background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '16px' } : {}) }}>
             <CheckCircle size={isMobile ? 40 : 64} color="#4ADE80" style={{ marginBottom: '1rem' }} />
             <h2 style={{ fontSize: isMobile ? '1.15rem' : '2rem', marginBottom: '0.5rem', color: '#4ADE80' }}>وصلنا طلبك!</h2>
             <p style={{ marginBottom: '1.5rem', lineHeight: 1.6, fontSize: isMobile ? '0.82rem' : '1rem', color: 'var(--color-text-main)' }}>

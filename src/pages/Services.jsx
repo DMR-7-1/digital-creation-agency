@@ -77,15 +77,14 @@ const MobileServicesPage = () => (
               {/* Inner top glow */}
               <div style={{
                 position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)'
+                background: 'linear-gradient(90deg, transparent, var(--glass-border), transparent)'
               }} />
               
               <div style={{
                 width: '42px', height: '42px', borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
+                background: 'var(--badge-bg)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.1)',
+                border: '1px solid var(--glass-border)',
                 position: 'relative', zIndex: 1
               }}>
                 {/* Subtle glow behind icon */}
@@ -113,12 +112,12 @@ const MobileServicesPage = () => (
             <div style={{
               background: plan.highlight 
                 ? 'linear-gradient(160deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)' 
-                : 'linear-gradient(145deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.7) 100%)',
-              border: plan.highlight ? '1px solid rgba(6, 182, 212, 0.4)' : '1px solid rgba(255,255,255,0.05)',
+                : 'var(--card-bg)',
+              border: plan.highlight ? '1px solid var(--color-primary)' : '1px solid var(--glass-border)',
               borderRadius: '20px', padding: '1.1rem', position: 'relative',
               boxShadow: plan.highlight 
-                ? 'inset 0 1px 1px rgba(255,255,255,0.1), 0 8px 25px rgba(6, 182, 212, 0.15)' 
-                : 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 15px rgba(0,0,0,0.2)'
+                ? 'var(--glass-shadow)'
+                : 'var(--glass-shadow)'
             }}>
               {/* Inner top glow */}
               <div style={{
@@ -156,9 +155,9 @@ const MobileServicesPage = () => (
               <Link to="/contact" className="cta-shimmer" style={{
                 width: '100%', textAlign: 'center', justifyContent: 'center',
                 padding: '0.6rem', fontSize: '0.8rem', borderRadius: '12px',
-                background: plan.highlight ? 'linear-gradient(135deg, #8b5cf6, #06b6d4)' : 'transparent',
-                border: plan.highlight ? 'none' : '1px solid rgba(255,255,255,0.15)',
-                textDecoration: 'none', color: 'white', fontWeight: 700
+                background: plan.highlight ? 'linear-gradient(135deg, #8b5cf6, #06b6d4)' : 'var(--badge-bg)',
+                border: plan.highlight ? 'none' : '1px solid var(--glass-border)',
+                textDecoration: 'none', color: plan.highlight ? 'white' : 'var(--color-text-main)', fontWeight: 700
               }}>
                 طلب عرض سعر
               </Link>

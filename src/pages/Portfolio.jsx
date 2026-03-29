@@ -196,13 +196,13 @@ const DesktopPortfolio = () => {
                             const iconPath = iconMap[tech];
                             if (iconPath) {
                               return (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255,255,255,0.03)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }} title={tech}>
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--badge-bg)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--glass-border)' }} title={tech}>
                                   <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} alt={tech} style={{ width: '18px', height: '18px', objectFit: 'contain' }} onError={(e) => { e.target.style.display='none'; }} />
                                   <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>{tech}</span>
                                 </div>
                               );
                             }
-                            return <span key={i} style={{ padding: '0.4rem 0.8rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: "0.85rem", color: "var(--color-text-muted)" }}>{tech}</span>;
+                            return <span key={i} style={{ padding: '0.4rem 0.8rem', background: 'var(--badge-bg)', borderRadius: '8px', border: '1px solid var(--glass-border)', fontSize: "0.85rem", color: "var(--color-text-muted)" }}>{tech}</span>;
                           })}
                         </div>
                         

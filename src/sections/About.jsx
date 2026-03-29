@@ -147,9 +147,9 @@ const DesktopAbout = () => (
           <div className="glass-panel" style={{ padding: '3rem', textAlign: 'center', background: 'var(--card-bg)', borderRadius: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginBottom: '1.5rem', color: 'var(--color-text-main)' }}>تقنيات حديثة</h3>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <span style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>React</span>
-              <span style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>Node</span>
-              <span style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>Cloud</span>
+              <span style={{ padding: '0.4rem 1rem', background: 'var(--badge-bg)', borderRadius: '8px', border: '1px solid var(--glass-border)', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>React</span>
+              <span style={{ padding: '0.4rem 1rem', background: 'var(--badge-bg)', borderRadius: '8px', border: '1px solid var(--glass-border)', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>Node</span>
+              <span style={{ padding: '0.4rem 1rem', background: 'var(--badge-bg)', borderRadius: '8px', border: '1px solid var(--glass-border)', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>Cloud</span>
             </div>
           </div>
         </StaggerItem>
