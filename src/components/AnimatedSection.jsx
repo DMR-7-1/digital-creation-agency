@@ -24,9 +24,9 @@ export const AnimatedSection = ({
       id={id}
       className={className}
       style={style}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.6, delay, ease: [0, 0, 0.2, 1] }} /* Premium ease-out */
     >
       {children}
     </Motion.div>
@@ -66,11 +66,11 @@ export const StaggerItem = ({ children, className, style, ...rest }) => (
     className={className}
     style={style}
     variants={{
-      hidden: { opacity: 0, y: 30 },
+      hidden: { opacity: 0, y: 20 },
       visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: "easeOut" },
+        transition: { duration: 0.5, ease: [0, 0, 0.2, 1] }, /* Premium ease-out */
       },
     }}
     {...rest}

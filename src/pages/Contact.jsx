@@ -41,7 +41,7 @@ const ContactPage = () => {
     background: 'rgba(255,255,255,0.05)',
     border: '1px solid rgba(255,255,255,0.12)',
     padding: '0.7rem', borderRadius: '10px',
-    color: 'white', fontFamily: 'inherit',
+    color: 'var(--color-text-main)', fontFamily: 'inherit',
     fontSize: '14px', width: '100%', boxSizing: 'border-box'
   };
 
@@ -50,9 +50,9 @@ const ContactPage = () => {
       <PageTransition>
         <div style={{ padding: '1rem 1.25rem 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-            <h1 style={{ fontSize: '1.3rem', marginBottom: '0.3rem' }}>📩 خلّينا نحكيو</h1>
-            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', margin: 0 }}>
-              نرد عليك في أقل من 5 دقائق ⚡
+            <h1 style={{ fontSize: '1.3rem', marginBottom: '0.3rem' }}>خلّينا نحكيو</h1>
+            <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: 0 }}>
+              نرد عليك في أقل من 5 دقائق
             </p>
           </div>
 
@@ -85,7 +85,7 @@ const ContactPage = () => {
             ].map((c, i) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: '0.25rem',
-                fontSize: '0.6rem', color: 'rgba(255,255,255,0.5)',
+                fontSize: '0.6rem', color: 'var(--color-text-muted)',
                 background: 'rgba(255,255,255,0.04)', borderRadius: '8px',
                 padding: '0.25rem 0.5rem'
               }}>
@@ -104,7 +104,7 @@ const ContactPage = () => {
             {status === 'success' ? (
               <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
                 <CheckCircle size={40} color="#34D399" style={{ marginBottom: '0.75rem' }} />
-                <h2 style={{ fontSize: '1.1rem', color: '#34D399', marginBottom: '0.5rem' }}>وصلنا طلبك! ✅</h2>
+                <h2 style={{ fontSize: '1.1rem', color: '#34D399', marginBottom: '0.5rem' }}>وصلنا طلبك!</h2>
                 <p style={{ fontSize: '0.78rem', marginBottom: '1rem' }}>فريقنا رايح يتواصل معاك قريبًا.</p>
                 <button onClick={() => setStatus('idle')} className="btn btn-primary" style={{ fontSize: '0.82rem' }}>إرسال طلب آخر</button>
               </div>
@@ -154,9 +154,9 @@ const ContactPage = () => {
       <div className="section" style={{ paddingTop: '8rem' }}>
         <div className="container">
           <AnimatedSection style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>📩 خلّينا نحكيو</h1>
+            <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>خلّينا نحكيو</h1>
             <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
-              قولنا وش تحتاج ونحن نعطيك <strong style={{ color: 'var(--color-primary)' }}>استشارة مجانية + اقتراح تقني مناسب</strong><br/>نرد عليك في أقل من 5 دقائق ⚡
+              قولنا وش تحتاج ونحن نعطيك <strong style={{ color: 'var(--color-primary)' }}>استشارة مجانية + اقتراح تقني مناسب</strong><br/>نرد عليك في أقل من 5 دقائق
             </p>
           </AnimatedSection>
 
@@ -179,7 +179,7 @@ const ContactPage = () => {
                   <ContactItem icon={<MapPin />} title="المقر" desc="باتنة، الجزائر" />
                 </div>
                 <div className="glass-panel" style={{ marginTop: '2rem', padding: '1.5rem' }}>
-                  <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>⏰ ساعات العمل</h3>
+                  <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>ساعات العمل</h3>
                   <p style={{ fontSize: '0.95rem' }}>الأحد - الخميس: 9:00 - 17:00</p>
                   <p style={{ fontSize: '0.85rem', color: 'var(--color-primary)', marginTop: '0.5rem' }}>نرد على الرسائل حتى خارج أوقات العمل!</p>
                 </div>
@@ -191,7 +191,7 @@ const ContactPage = () => {
                 {status === 'success' ? (
                   <div style={{ textAlign: 'center', padding: '2rem' }}>
                     <CheckCircle size={64} color="#34D399" style={{ marginBottom: '1.5rem' }} />
-                    <h2 style={{ color: '#34D399', marginBottom: '1rem' }}>وصلنا طلبك! ✅</h2>
+                    <h2 style={{ color: '#34D399', marginBottom: '1rem' }}>وصلنا طلبك!</h2>
                     <p style={{ marginBottom: '2rem' }}>فريقنا رايح يتواصل معاك قريبًا.</p>
                     <button onClick={() => setStatus('idle')} className="btn btn-primary">إرسال طلب آخر</button>
                   </div>
@@ -261,7 +261,7 @@ const desktopInput = {
   background: 'rgba(255,255,255,0.05)',
   border: '1px solid var(--glass-border)',
   padding: '1rem', borderRadius: '0.5rem',
-  color: 'white', fontFamily: 'inherit', width: '100%'
+  color: 'var(--color-text-main)', fontFamily: 'inherit', width: '100%'
 };
 
 export default ContactWrapper;

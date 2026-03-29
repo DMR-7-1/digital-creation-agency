@@ -70,7 +70,7 @@ const Contact = () => {
         <div className="container" style={{ maxWidth: '600px', textAlign: 'center' }}>
           <div className={isMobile ? '' : 'glass-panel'} style={{ padding: isMobile ? '2rem 1rem' : '4rem 3rem', ...(isMobile ? { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' } : {}) }}>
             <CheckCircle size={isMobile ? 40 : 64} color="#4ADE80" style={{ marginBottom: '1rem' }} />
-            <h2 style={{ fontSize: isMobile ? '1.15rem' : '2rem', marginBottom: '0.5rem', color: '#4ADE80' }}>وصلنا طلبك! ✅</h2>
+            <h2 style={{ fontSize: isMobile ? '1.15rem' : '2rem', marginBottom: '0.5rem', color: '#4ADE80' }}>وصلنا طلبك!</h2>
             <p style={{ marginBottom: '1.5rem', lineHeight: 1.6, fontSize: isMobile ? '0.82rem' : '1rem', color: 'var(--color-text-main)' }}>
               فريقنا رايح يتواصل معاك في أقرب وقت. شكرًا على ثقتك فينا!
             </p>
@@ -88,7 +88,7 @@ const Contact = () => {
       <section style={{ padding: '1.25rem 1.25rem 2rem' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-          <h2 style={{ fontSize: '1.15rem', marginBottom: '0.3rem', color: 'var(--color-text-main)' }}>جاهز تبدا؟ 💬</h2>
+          <h2 style={{ fontSize: '1.15rem', marginBottom: '0.3rem', color: 'var(--color-text-main)' }}>جاهز تبدا؟</h2>
           <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: 0 }}>
             الاستشارة مجانية — بلا التزام
           </p>
@@ -165,7 +165,7 @@ const Contact = () => {
     <section id="contact" className="section" style={{ paddingBottom: '8rem' }}>
       <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
         <AnimatedSection>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--color-text-main)' }}>جاهز تبدا؟ خلّينا نحكيو 💬</h2>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--color-text-main)' }}>جاهز تبدا؟ خلّينا نحكيو</h2>
           <p style={{ marginBottom: '3rem', color: 'var(--color-text-muted)' }}>قولنا وش تحتاج ونحن نتكفّلوا بالباقي. <strong>الاستشارة مجانية</strong> — بلا التزام.</p>
         </AnimatedSection>
 

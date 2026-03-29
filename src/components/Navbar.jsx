@@ -130,9 +130,9 @@ const Navbar = ({ toggleTheme, theme }) => {
         /* Shimmering CTA Button */
         .cta-shimmer {
           background: ${theme === 'light'
-            ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))'
-            : 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))'};
-          border: 1px solid ${theme === 'light' ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255,255,255,0.1)'};
+            ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1))'
+            : 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15))'};
+          border: 1px solid ${theme === 'light' ? 'rgba(6, 182, 212, 0.2)' : 'rgba(6, 182, 212, 0.3)'};
           color: ${theme === 'light' ? '#1e293b' : 'white'};
           text-decoration: none;
           padding: 0.65rem 1.4rem;
@@ -144,7 +144,7 @@ const Navbar = ({ toggleTheme, theme }) => {
           gap: 0.5rem;
           position: relative;
           overflow: hidden;
-          transition: all 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           backdrop-filter: blur(10px);
         }
 

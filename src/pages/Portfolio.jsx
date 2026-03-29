@@ -124,49 +124,101 @@ const DesktopPortfolio = () => {
 
   return (
     <PageTransition>
-      <div className="page-wrapper" style={{ paddingTop: "120px", minHeight: "100vh" }}>
+      <div className="page-wrapper" style={{ paddingTop: "120px", minHeight: "100vh", position: 'relative' }}>
+        {/* Abstract background mesh */}
+        <div style={{ position: 'absolute', top: '10%', right: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, var(--color-secondary) 0%, transparent 60%)', filter: 'blur(100px)', zIndex: -1, opacity: 0.1 }} />
+
         <section className="section">
           <div className="container">
-            <AnimatedSection style={{ textAlign: "center", marginBottom: "4rem" }}>
-              <h1 style={{ fontSize: "3rem", marginBottom: "1rem", color: 'var(--color-text-main)' }}>أعمالنا</h1>
-              <p style={{ fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto", color: 'var(--color-text-muted)' }}>
-                مشاريع حقيقية ساعدنا أصحابها يحوّلو أفكارهم لواقع رقمي
+            <AnimatedSection style={{ textAlign: "center", marginBottom: "6rem" }}>
+              <div style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'rgba(6, 182, 212, 0.1)', borderRadius: '20px', marginBottom: '1.5rem', border: '1px solid rgba(6, 182, 212, 0.2)' }}>
+                <span style={{ color: 'var(--color-primary)', fontWeight: '800' }}>أعمالنا</span>
+              </div>
+              <h1 style={{ fontSize: "3.5rem", marginBottom: "1rem", color: 'var(--color-text-main)' }}>مشاريع تصنع الفارق</h1>
+              <p style={{ fontSize: "1.25rem", maxWidth: "600px", margin: "0 auto", color: 'var(--color-text-muted)' }}>
+                مشاريع حقيقية ساعدنا أصحابها يحوّلو أفكارهم لواقع رقمي ينافس محلياً وعالمياً.
               </p>
             </AnimatedSection>
 
-            <StaggerContainer className="portfolio-grid-system" staggerDelay={0.1}>
-              {projects.map((project, index) => (
-                <StaggerItem key={index}>
-                  <div className="glass-panel" style={{ padding: 0, overflow: "hidden", cursor: "pointer", transition: "all 0.3s ease" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-10px)"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
-                  >
-                    <div style={{ height: "220px", background: `linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1)), url(${project.image})`, backgroundSize: "cover", backgroundPosition: "center", position: "relative" }}>
-                      <div style={{ position: "absolute", top: "1rem", right: "1rem", background: "var(--color-surface)", color: 'var(--color-text-main)', padding: "0.5rem 1rem", borderRadius: "20px", fontSize: "0.85rem", backdropFilter: "blur(10px)", border: '1px solid var(--glass-border)' }}>
-                        {project.category}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8rem' }}>
+              {projects.map((project, index) => {
+                const isEven = index % 2 === 0;
+                return (
+                  <AnimatedSection key={index} direction={isEven ? "right" : "left"} delay={0.1}>
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: isEven ? 'row' : 'row-reverse',
+                      alignItems: 'center',
+                      position: 'relative',
+                      gap: '0' // Overlapping handled by negative margins
+                    }}>
+                      
+                      {/* Image Container */}
+                      <div style={{
+                        flex: '0 0 60%',
+                        height: '450px',
+                        borderRadius: '24px',
+                        overflow: 'hidden',
+                        position: 'relative',
+                        boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+                        border: '1px solid rgba(255,255,255,0.05)',
+                        zIndex: 1
+                      }}>
+                        <div style={{ width: '100%', height: '100%', background: `url(${project.image})`, backgroundSize: "cover", backgroundPosition: "center", transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)' }}
+                             onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.05)"; }}
+                             onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+                        />
+                        <div style={{ position: "absolute", top: "1.5rem", [isEven ? "right" : "left"]: "1.5rem", background: "rgba(10,10,10,0.6)", color: 'var(--color-text-main)', padding: "0.5rem 1.25rem", borderRadius: "20px", fontSize: "0.85rem", backdropFilter: "blur(12px)", border: '1px solid var(--glass-border)', fontWeight: 600 }}>
+                          {project.category}
+                        </div>
                       </div>
-                    </div>
-                    <div style={{ padding: "2rem" }}>
-                      <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem", color: 'var(--color-text-main)' }}>{project.title}</h3>
-                      <p style={{ marginBottom: "1.5rem", lineHeight: "1.7", color: "var(--color-text-muted)" }}>{project.description}</p>
-                      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
-                        {project.tech.map((tech, i) => {
-                          const iconPath = iconMap[tech];
-                          if (iconPath) {
-                            return (
-                              <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }} title={tech}>
-                                <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} alt={tech} style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerText = tech; }} />
-                              </div>
-                            );
-                          }
-                          return <span key={i} style={{ fontSize: "0.7rem", color: "var(--color-primary)", fontWeight: "600" }}>{tech}</span>;
-                        })}
+
+                      {/* Content Card (Overlapping) */}
+                      <div className="glass-panel" style={{
+                        flex: '0 0 45%',
+                        padding: '3rem',
+                        background: 'var(--glass-bg)',
+                        backdropFilter: 'blur(24px)',
+                        borderRadius: '24px',
+                        border: '1px solid var(--glass-border)',
+                        boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
+                        position: 'relative',
+                        zIndex: 2,
+                        marginLeft: isEven ? '-5%' : '0',
+                        marginRight: isEven ? '0' : '-5%',
+                        transform: 'translateY(20px)'
+                      }}>
+                        <h3 style={{ fontSize: "2rem", marginBottom: "1.25rem", color: 'var(--color-text-main)', fontWeight: 800 }}>{project.title}</h3>
+                        <p style={{ marginBottom: "2rem", lineHeight: "1.8", color: "var(--color-text-muted)", fontSize: '1.1rem' }}>{project.description}</p>
+                        
+                        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: '2rem' }}>
+                          {project.tech.map((tech, i) => {
+                            const iconPath = iconMap[tech];
+                            if (iconPath) {
+                              return (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255,255,255,0.03)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }} title={tech}>
+                                  <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconPath}.svg`} alt={tech} style={{ width: '18px', height: '18px', objectFit: 'contain' }} onError={(e) => { e.target.style.display='none'; }} />
+                                  <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>{tech}</span>
+                                </div>
+                              );
+                            }
+                            return <span key={i} style={{ padding: '0.4rem 0.8rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: "0.85rem", color: "var(--color-text-muted)" }}>{tech}</span>;
+                          })}
+                        </div>
+                        
+                        {/* Fake "View Project" CTA for aesthetics */}
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-primary)', fontWeight: 700, cursor: 'pointer', transition: 'gap 0.3s ease' }}
+                             onMouseEnter={(e) => { e.currentTarget.style.gap = '1rem'; }}
+                             onMouseLeave={(e) => { e.currentTarget.style.gap = '0.5rem'; }}>
+                          اكتشف المشروع <ExternalLink size={18} />
+                        </div>
                       </div>
+
                     </div>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+                  </AnimatedSection>
+                );
+              })}
+            </div>
           </div>
         </section>
       </div>

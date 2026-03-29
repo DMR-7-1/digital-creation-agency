@@ -50,7 +50,7 @@ const StartProject = () => {
       <PageTransition>
         <div style={{ padding: '1rem 1.25rem 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-            <h1 style={{ fontSize: '1.3rem', marginBottom: '0.3rem', color: 'var(--color-text-main)' }}>🚀 خلّينا نبداو</h1>
+            <h1 style={{ fontSize: '1.3rem', marginBottom: '0.3rem', color: 'var(--color-text-main)' }}>خلّينا نبداو</h1>
             <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: 0 }}>
               نردو عليك بعرض مفصّل في أقل من 24 ساعة
             </p>
@@ -64,7 +64,7 @@ const StartProject = () => {
             {status === 'success' ? (
               <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
                 <CheckCircle size={40} color="#34D399" style={{ marginBottom: '0.75rem' }} />
-                <h2 style={{ fontSize: '1.1rem', color: '#34D399', marginBottom: '0.5rem' }}>وصلنا طلبك! ✅</h2>
+                <h2 style={{ fontSize: '1.1rem', color: '#34D399', marginBottom: '0.5rem' }}>وصلنا طلبك!</h2>
                 <p style={{ fontSize: '0.78rem', marginBottom: '1rem', color: 'var(--color-text-main)' }}>فريقنا رايح يدرس مشروعك ويتواصل معاك قريبًا.</p>
                 <button onClick={() => setStatus('idle')} className="btn btn-primary" style={{ fontSize: '0.82rem' }}>إرسال طلب آخر</button>
               </div>
@@ -117,7 +117,7 @@ const StartProject = () => {
             <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', textDecoration: 'none', marginBottom: '2rem' }}>
               <ArrowRight size={20} /> عودة للرئيسية
             </Link>
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center', color: 'var(--color-text-main)' }}>🚀 خلّينا نبداو</h1>
+            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center', color: 'var(--color-text-main)' }}>خلّينا نبداو</h1>
             <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', maxWidth: '500px', margin: '0 auto 3rem' }}>
               قولنا شوية على فكرتك ونحن نتكفّلوا بالباقي. نردو عليك بعرض مفصّل في أقل من 24 ساعة.
             </p>

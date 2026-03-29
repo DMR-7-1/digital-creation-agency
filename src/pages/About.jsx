@@ -31,8 +31,8 @@ const MobileAboutPage = () => (
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
         <h1 style={{ fontSize: '1.3rem', marginBottom: '0.4rem' }}>من نحن</h1>
-        <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', margin: 0 }}>
-          <strong style={{ color: '#06b6d4' }}>Digital Creation</strong> — فريق جزائري شغوف بالتقنية
+        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', margin: 0 }}>
+          <strong style={{ color: 'var(--color-primary)' }}>Digital Creation</strong> — فريق جزائري شغوف بالتقنية
         </p>
       </div>
 
@@ -43,7 +43,7 @@ const MobileAboutPage = () => (
         borderRadius: '14px', padding: '1rem', marginBottom: '1rem'
       }}>
         <h2 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>فريق يفهم السوق ويتقن التقنية</h2>
-        <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: '0 0 0.75rem' }}>
+        <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: '0 0 0.75rem' }}>
           ما نقدّمو مش مجرد مواقع — نحن نبنيلك أداة تخدم مشروعك كل يوم.
           نسمعو ليك مليح، نفهمو وش تحتاج، ونعطيك حل مفصّل على مقاسك.
         </p>
@@ -51,11 +51,11 @@ const MobileAboutPage = () => (
           {['فريق شغوف', 'تقنيات حديثة', 'نعرفو السوق', 'دعم مستمر'].map((t, i) => (
             <span key={i} style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.2rem',
-              fontSize: '0.62rem', color: 'rgba(255,255,255,0.65)',
-              background: 'rgba(6,182,212,0.1)', borderRadius: '6px',
+              fontSize: '0.62rem', color: 'var(--color-text-main)',
+              background: 'var(--badge-bg)', borderRadius: '6px',
               padding: '0.2rem 0.4rem'
             }}>
-              <CheckCircle size={10} color="#06b6d4" />
+              <CheckCircle size={10} color="var(--color-primary)" />
               {t}
             </span>
           ))}
@@ -77,8 +77,8 @@ const MobileAboutPage = () => (
             <div style={{ color: '#8b5cf6', marginBottom: '0.4rem', display: 'flex', justifyContent: 'center' }}>
               {React.cloneElement(v.icon, { size: 20 })}
             </div>
-            <div style={{ fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.25rem', color: 'white' }}>{v.title}</div>
-            <div style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{v.desc}</div>
+            <div style={{ fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.25rem', color: 'var(--color-text-main)' }}>{v.title}</div>
+            <div style={{ fontSize: '0.62rem', color: 'var(--color-text-muted)', lineHeight: 1.4 }}>{v.desc}</div>
           </div>
         ))}
       </div>

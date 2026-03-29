@@ -58,7 +58,7 @@ const MobileHero = () => (
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ delay: 0.2, type: 'spring', stiffness: 150, damping: 20 }}
-      style={{ fontSize: '2.1rem', lineHeight: 1.2, marginBottom: '1.25rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-main)' }}
+      style={{ fontSize: '2.1rem', lineHeight: 1.2, marginBottom: '1.25rem', fontWeight: 800, color: 'var(--color-text-main)' }}
     >
       مشروعك يستاهل يكون{' '}
       <br/>
@@ -125,66 +125,72 @@ const MobileHero = () => (
 );
 
 /* ══════════════════════════════════════════
-   DESKTOP HERO (unchanged from before)
+   DESKTOP HERO - Asymmetrical Cyber-Glass
    ══════════════════════════════════════════ */
 const DesktopHero = () => (
   <section id="hero" className="section">
-    <div className="hero-blob" style={{ position: 'absolute', top: '-10%', right: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, var(--color-primary) 0%, transparent 70%)', opacity: 0.15, filter: 'blur(80px)', zIndex: -1 }} />
-    <div className="hero-blob" style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, var(--color-secondary) 0%, transparent 70%)', opacity: 0.15, filter: 'blur(80px)', zIndex: -1 }} />
+    {/* Premium Mesh Blobs */}
+    <div className="hero-blob" style={{ position: 'absolute', top: '-10%', right: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, var(--color-primary) 0%, transparent 70%)', opacity: 0.12, filter: 'blur(80px)', zIndex: -1 }} />
+    <div className="hero-blob" style={{ position: 'absolute', bottom: '-20%', left: '-5%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, var(--color-secondary) 0%, transparent 60%)', opacity: 0.08, filter: 'blur(100px)', zIndex: -1 }} />
 
-    <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-      <div style={{ maxWidth: '650px', zIndex: 1 }}>
-        <motion.div className="glass-panel hero-badge" style={{ display: 'inline-block', padding: '0.5rem 1rem', marginBottom: '1.5rem', borderRadius: '2rem', border: '1px solid rgba(6, 182, 212, 0.3)', background: 'var(--badge-bg)' }}
-          initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
+    {/* Asymmetrical Grid (Z-Pattern Flow) */}
+    <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center' }}>
+      <div style={{ maxWidth: '750px', zIndex: 1, paddingRight: '2rem' }}>
+        <motion.div className="glass-panel hero-badge" style={{ display: 'inline-block', padding: '0.6rem 1.2rem', marginBottom: '2rem', borderRadius: '2rem', border: '1px solid rgba(6, 182, 212, 0.2)', background: 'var(--badge-bg)' }}
+          initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5, ease: [0, 0, 0.2, 1] }}
         >
-          <span style={{ color: 'var(--color-primary)', fontWeight: '700', fontSize: '0.9rem' }}>وكالة جزائرية 100% 🇩🇿</span>
+          <span style={{ color: 'var(--color-primary)', fontWeight: '800', fontSize: '0.95rem' }}>وكالة جزائرية 100%</span>
         </motion.div>
 
-        <motion.h1 style={{ marginBottom: '1.5rem', lineHeight: '1.3', fontSize: 'clamp(2rem, 5vw, 3rem)' }}
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}
+        <motion.h1 style={{ marginBottom: '1.8rem', lineHeight: '1.2', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6, ease: [0, 0, 0.2, 1] }}
         >
           مشروعك يستاهل يكون <br />
-          <span style={{ background: 'linear-gradient(to left, var(--color-primary), var(--color-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '800' }}>على مستوى طموحك.</span>
+          <span style={{ background: 'linear-gradient(to left, var(--color-primary), var(--color-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900' }}>على مستوى طموحك.</span>
         </motion.h1>
 
-        <motion.p style={{ fontSize: '1.2rem', marginBottom: '2.5rem', maxWidth: '550px' }}
-          initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}
+        <motion.p style={{ fontSize: '1.25rem', marginBottom: '3rem', maxWidth: '600px', lineHeight: '1.8' }}
+          initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6, ease: [0, 0, 0.2, 1] }}
         >
-          نصمّم لك مواقع، متاجر، وأنظمة ويب تخلّي الناس تثق فيك من أول نظرة. تصميم عصري، أداء خرافي، ونتيجة تبان من اليوم الأول.
+          نصمّم لك مواقع، متاجر، وأنظمة ويب تخلّي الناس تثق فيك من أول نظرة. تصميم عصري، أداء خيالي، ونتيجة تبان من اليوم الأول.
         </motion.p>
 
-        <motion.div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65, duration: 0.5 }}
+        {/* Fitts's Law Enforced CTA */}
+        <motion.div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65, duration: 0.5, ease: [0, 0, 0.2, 1] }}
         >
-          <Link to="/start-project" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
-            ابدأ مشروعك الآن <ArrowLeft size={20} style={{ marginRight: '10px' }} />
+          <Link to="/start-project" className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.2rem', minHeight: '60px', borderRadius: '16px' }}>
+            ابدأ مشروعك الآن <ArrowLeft size={24} style={{ marginRight: '12px' }} />
+          </Link>
+          <Link to="/portfolio" className="btn btn-outline" style={{ padding: '0.9rem 2.5rem', fontSize: '1.1rem', minHeight: '60px', borderRadius: '16px', border: '1px solid var(--glass-border)', color: 'var(--color-text-main)' }}>
+            استكشف أعمالنا
           </Link>
         </motion.div>
 
-        <motion.div style={{ marginTop: '3rem', display: 'flex', gap: '2rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}
+        <motion.div style={{ marginTop: '4rem', display: 'flex', gap: '2.5rem', fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 600 }}
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#34d399' }} /> دعم فني مستمر
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--color-primary)', boxShadow: '0 0 12px var(--color-primary)' }} /> دعم فني مستمر
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#34d399' }} /> تصميم عصري
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--color-secondary)', boxShadow: '0 0 12px var(--color-secondary)' }} /> تقنيات حديثة
           </div>
         </motion.div>
       </div>
 
       <div className="hero-visual" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-        <motion.img src={heroBg} alt="Digital Creation Dashboard" style={{ width: '100%', maxWidth: '550px', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1, y: [0, -12, 0] }}
-          transition={{ opacity: { delay: 0.4, duration: 0.8 }, scale: { delay: 0.4, duration: 0.8 }, y: { delay: 1.2, duration: 5, repeat: Infinity, ease: 'easeInOut' } }}
+        <motion.img src={heroBg} alt="Digital Creation Dashboard" style={{ width: '100%', maxWidth: '650px', borderRadius: '24px', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.05)' }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -15, 0] }}
+          transition={{ opacity: { delay: 0.4, duration: 0.8 }, scale: { delay: 0.4, duration: 0.8 }, y: { delay: 1.2, duration: 6, repeat: Infinity, ease: 'easeInOut' } }}
         />
-        <motion.div className="glass-panel" style={{ position: 'absolute', bottom: '10%', left: '-5%', padding: '1rem 1.5rem', zIndex: 2, background: 'var(--glass-bg)', borderLeft: '4px solid var(--color-primary)', display: 'flex', alignItems: 'center', gap: '1rem' }}
-          initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.6 }}
+        <motion.div className="glass-panel" style={{ position: 'absolute', bottom: '5%', left: '-10%', padding: '1.25rem 2rem', zIndex: 2, background: 'var(--glass-bg)', borderLeft: '4px solid var(--color-primary)', display: 'flex', alignItems: 'center', gap: '1.5rem', backdropFilter: 'blur(20px)' }}
+          initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.6, ease: [0, 0, 0.2, 1] }}
         >
           <div>
-            <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>مشاريع نشطة</div>
-            <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--color-text-main)' }}>+24 نظام</div>
+            <div style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>مشاريع ناجحة</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--color-text-main)' }}>+45 مشروع</div>
           </div>
         </motion.div>
       </div>
